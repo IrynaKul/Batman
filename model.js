@@ -7,6 +7,7 @@ BatmanApp.factory('Batman',function ($resource) {
 		console.log(test)
 	};
 
+	console.log("hej")console.log("hej")console.log("hej")
 	console.log("hej")
 	
 
