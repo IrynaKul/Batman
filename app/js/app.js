@@ -1,4 +1,5 @@
-var batmanPlannerApp = angular.module('batman', ['ngRoute','ngResource','ngCookies']);
+var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource','ngCookies']);
+console.log("1");
 
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
@@ -28,3 +29,5 @@ batmanPlannerApp.config(['$routeProvider',
         redirectTo: '/home'
       });
   }]);
+
+console.log("2");
