@@ -1,5 +1,5 @@
 batmanPlannerApp.factory('Batman',function ($resource,$cookieStore) {
-
+	console.log("skit");
 
   //var api_keys=[f9043525bd2e79300101a963676d0bdc40534402, bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8];
 
