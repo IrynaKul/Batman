@@ -10,10 +10,10 @@ batmanPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/search.html',
         controller: 'SearchCtrl'
       }).
-      when('/dish/:dishId', {
-        templateUrl: 'partials/character.html',
-        controller: 'CharacterCtrl'
-      }).
+      // when('/dish/:dishId', {
+      //   templateUrl: 'partials/character.html',
+      //   controller: 'CharacterCtrl'
+      // }).
 
       // // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       // when('/overview',{
