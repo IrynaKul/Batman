@@ -1,4 +1,4 @@
-var batmanPlannerApp = angular.module('batmanPlanner', ['ngRoute','ngResource','ngCookies']);
+var batmanPlannerApp = angular.module('batman', ['ngRoute','ngResource','ngCookies']);
 
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
@@ -10,10 +10,10 @@ batmanPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/search.html',
         controller: 'SearchCtrl'
       }).
-      when('/dish/:dishId', {
-        templateUrl: 'partials/character.html',
-        controller: 'CharacterCtrl'
-      }).
+      // when('/dish/:dishId', {
+      //   templateUrl: 'partials/character.html',
+      //   controller: 'CharacterCtrl'
+      // }).
 
       // // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       // when('/overview',{
@@ -25,6 +25,6 @@ batmanPlannerApp.config(['$routeProvider',
       //   controller: 'batmanCtrl'
       // }).
       otherwise({
-        redirectTo: 'partials/home.html'
+        redirectTo: '/home'
       });
   }]);
