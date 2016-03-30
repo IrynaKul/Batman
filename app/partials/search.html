@@ -1,2 +1,8 @@
 Haaaaa
-<div>{{character.name}}</div>
+<div class="character_display" ng-repeat="x in character">
+	<div id='name'> Name: {{x.name}}</div>
+</div>
+
+<div class="characters" ng-repeat="a in allCharacters()">
+	<div id='name'> Character: {{a.name}}</div>
+</div>

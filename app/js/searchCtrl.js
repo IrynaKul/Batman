@@ -1,18 +1,34 @@
 console.log("mjauuu");
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
-  console.log("hshhsh");
   // batmanModel.bla.get(function(data){
   //   console.log(data);
   // })
 
-	batmanModel.bla.get(function(data){
-      console.log("i CharacterSearch");
-      console.log(data.results);
-     $scope.character=data.Results;
+	batmanModel.BatmanEnemies.get(function(data){
+    //console.log("i CharacterSearch");
+     $scope.character=data.results.character_enemies;
+     //console.log("character", $scope.character);
      $scope.status = "Showing " + data.length + " results";
+     batmanModel.setEnemiesArray(data.results.character_enemies);
    },function(data){
      $scope.status = "There was an error";
    });
+
+  // batmanModel.AllCharacters.get(function(data){
+  //     console.log("i AllCharacters");
+  //    $scope.characters=data.results;
+     
+  //    console.log("allCharacters ", data.results);
+  //    $scope.status = "Showing " + data.length + " results";
+  //    batmanModel.setAllCharactersArray(data.results);
+  //  },function(data){
+  //    $scope.status = "There was an error";
+  //  });
+
+  $scope.allCharacters=function(){
+    console.log("array ",batmanModel.mergeArrays());
+    return batmanModel.mergeArrays();
+  }
 
 
  //  $scope.search = function(query) {
