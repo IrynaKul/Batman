@@ -1,4 +1,3 @@
-console.log("mjauuu");
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   console.log("hshhsh");
   // batmanModel.bla.get(function(data){
@@ -6,10 +5,11 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   // })
 
 	batmanModel.bla.get(function(data){
-      console.log("i CharacterSearch");
+      //console.log("i CharacterSearch");
       console.log(data.results);
-     $scope.character=data.Results;
-     $scope.status = "Showing " + data.length + " results";
+     $scope.character=data.results.character_enemies;
+
+     $scope.status = "Name: " + data.name;
    },function(data){
      $scope.status = "There was an error";
    });
