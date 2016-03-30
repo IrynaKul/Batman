@@ -1,8 +1,9 @@
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
  
+  batmanModel.getTop10();
+  $scope.array= batmanModel.getArray();
 
-  $scope.getTop=function(){
-    return batmanModel.getTop10();
-  }
-
+  $scope.getObj = function(){
+    return $scope.array;
+  };
 });
