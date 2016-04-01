@@ -62,7 +62,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		
 		for (var i=0;i<searchArray.length;i++){
 			for(var j=0; j<enemiesArray.length;j++){
-				if(searchArray[i]==enemiesArray[j].id&&query.toLowerCase()==enemiesArray[j].name.toLowerCase()){
+				if(searchArray[i]==enemiesArray[j].id && query.toLowerCase() == enemiesArray[j].name.toLowerCase()){
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
