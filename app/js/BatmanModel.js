@@ -16,7 +16,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	}
 	var BatmanEnemies=this.BatmanEnemies=$resource('http://comicvine.com/api/character/4005-1699/?api_key=f9043525bd2e79300101a963676d0bdc40534402&field_list=character_enemies&format=json');
 
-
 	this.getTop12 = function(){
 		arrayObjects=[];
 		for (var i=0;i<top12id.length;i++){
@@ -84,6 +83,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	this.getArray = function(){
 		return arrayObjects;
 	};
+
 
 	//function that returns a dish of specific ID
 	return this;
