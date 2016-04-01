@@ -53,7 +53,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	// }
 
 	this.setFiltered =function(data,query){
-		console.log("i setFiltered query ", query);
+		console.log("i setFiltered query ", typeof query, query);
 		arrayObjects=[];
 		searchArray=[];
 		for(var i=0; i<data.length; i++){
@@ -62,7 +62,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		
 		for (var i=0;i<searchArray.length;i++){
 			for(var j=0; j<enemiesArray.length;j++){
-				if(searchArray[i]==enemiesArray[j].id && query.toLowerCase() == enemiesArray[j].name.toLowerCase()){
+				if(searchArray[i]==enemiesArray[j].id&&query.toLowerCase()==enemiesArray[j].name.toLowerCase()){
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -74,17 +74,20 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
+					break;
 
 				}
+
 			}
 		}
+
 	}
 
 	this.getArray = function(){
 		return arrayObjects;
 	};
 
-
+	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;
 });

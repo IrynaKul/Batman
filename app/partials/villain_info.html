@@ -47,23 +47,23 @@
 	</div>
 
 
-	<div id="container">	
-
-
-		<div id="characterinfo" ng-repeat="a in getObj()">
+	<div id="container">
+		<div id="characterinfo">
 			<div id="leftinfo">
 				<div id="imageinfo">
-					<button id="fightbtn">FIGHT</button>
-					<img src="{{a.image.small_url}}">
+					<a ng-href="#/fight" type="button">
+						<button id="fightbtn">FIGHT</button>
+					</a>
+					<img src="{{villain.image.small_url}}"/>
 					<div id="info" >
-						<div class="infotitle">ALIASES</div><div class="infoline">{{a.aliases}}</div></br>
-						<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{a.real_name}}</div>
+						<div class="infotitle">ALIASES</div><div class="infoline">{{villain.aliases}}</div></br>
+						<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{villain.real_name}}</div>
 					</div>
 				</div>
 			</div>
 			<div id="description">
-				<div id="name">{{a.name}}</div>	
-				<p>{{a.deck}}</p>			
+				<div id="name">{{villain.name}}</div>	
+				<p>{{villain.deck}}</p>	
 			</div>
 
 		</div>
