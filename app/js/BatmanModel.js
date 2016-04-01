@@ -4,11 +4,15 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 
 	var arrayObjects=[];
 	var top10id=[6129,1696,4885,1698,1807,5555,1697,3715,1702,3718];
+	var find;
+
+	var findCharacter= this.findCharacter=function(index){
+		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&limit=10&format=json&filter=id:'+top10id[index]);
+	}
 
 	this.getTop10 = function(){
-		for (var i=0;i<top10id.length;i++){
-			var find = $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&limit=10&format=json&filter=id:'+top10id[i]);
-			find.get(function(data){
+		for (var i=0;i<top10id.length+1;i++){
+				findCharacter(i).get(function(data){
 				var a=data.results[0];
 				arrayObjects.push({id:a.id,
 							name:a.name,
@@ -19,10 +23,15 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 							gender:a.gender,
 							aliases:a.aliases});
 				console.log(arrayObjects);
-			})
+				});
+
 		}
+		console.log("getTop");
+	};
+
+	this.getArray = function(){
 		return arrayObjects;
-	}
+	};
 
 
 	//function that returns a dish of specific ID
