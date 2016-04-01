@@ -42,30 +42,35 @@
 
 	<div class="header">
 		<p>BATMAN</p>
-		<p style="font-size: 15px;">programmig is fun</p>
-	</div>
-
-	<div class="menu">
-		<p>Choose your villain</p>
-		<input class="input_form" style="width: 150px;" ng-model="name"/>
-		<button ng-click="search(name)" class="button2" style="padding-top: 3px; padding-bottom: 3px;">Find</button>
+		<p style="font-size: 15px;">programming is fun</p>
 		<input onclick="activateSideMenu()" type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
-<!-- 		<button id="activate" style="float: right;">activate</button>
-		<button id="deactivate" style="float: right;">deactivate</button> -->
-		
 	</div>
 
-	<div id="container">
 
-		<div class="villain" ng-repeat="a in getObj()">
-			<a ng-href="#/info/{{a.id}}" type="button">
-				<img class="circle" src="{{a.image.small_url}}"/>
-				<br/>
-				<p>{{a.name}}</p>
-			</a>
+	<div id="container">	
+
+
+		<div id="characterinfo" ng-repeat="a in getObj()">
+			<div id="leftinfo">
+				<div id="imageinfo">
+					<button id="fightbtn">FIGHT</button>
+					<img src="{{a.image.small_url}}">
+					<div id="info" >
+						<div class="infotitle">ALIASES</div><div class="infoline">{{a.aliases}}</div></br>
+						<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{a.real_name}}</div>
+					</div>
+				</div>
+			</div>
+			<div id="description">
+				<div id="name">{{a.name}}</div>	
+				<p>{{a.deck}}</p>			
+			</div>
+
 		</div>
-		
+
+
 	</div>
+
 
 	<div id="sidebar">
 		<p><bold>3 Defeated</bold></p>
