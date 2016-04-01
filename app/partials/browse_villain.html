@@ -58,10 +58,11 @@
 	<div id="container">
 
 		<div class="villain" ng-repeat="a in getObj()">
-		
-			<img class="circle" src="{{a.image.small_url}}"/>
-			<br/>
-			<p>{{a.name}}</p>
+			<a ng-href="#/info/{{a.id}}" type="button">
+				<img class="circle" src="{{a.image.small_url}}"/>
+				<br/>
+				<p>{{a.name}}</p>
+			</a>
 		</div>
 		
 	</div>

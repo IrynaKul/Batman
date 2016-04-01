@@ -10,9 +10,9 @@ batmanPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/browse_villain.html',
         controller: 'SearchCtrl'
       }).
-      when('/info', {
+      when('/info/:characterId', {
         templateUrl: 'partials/villain_info.html',
-        controller: 'SearchCtrl'
+        controller: 'InfoCtrl'
       }).
       when('/fight', {
         templateUrl: 'partials/vs.html',
