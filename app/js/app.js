@@ -1,5 +1,5 @@
 var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource']);
-
+//console.log("mjauuu");
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
