@@ -18,12 +18,12 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 							first_appeared_in_issue:a.first_appeared_in_issue,
 							gender:a.gender,
 							aliases:a.aliases});
-				console.log(data.results);
 				console.log(arrayObjects);
 			})
 		}
 		return arrayObjects;
 	}
+
 
 	//function that returns a dish of specific ID
 	return this;
