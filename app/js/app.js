@@ -4,10 +4,18 @@ batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/homepage.html'
       }).
       when('/search', {
-        templateUrl: 'partials/search.html',
+        templateUrl: 'partials/browse_villain.html',
+        controller: 'SearchCtrl'
+      }).
+      when('/info', {
+        templateUrl: 'partials/villain_info.html',
+        controller: 'SearchCtrl'
+      }).
+      when('/fight', {
+        templateUrl: 'partials/vs.html',
         controller: 'SearchCtrl'
       }).
       // when('/dish/:dishId', {
