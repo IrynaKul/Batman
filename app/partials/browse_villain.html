@@ -47,8 +47,8 @@
 
 	<div class="menu">
 		<p>Choose your villain</p>
-		<input type="text" placeholder="Enter key words" name="search"/>
-
+		<input class="input_form" style="width: 150px;" ng-model="name"/>
+		<button ng-click="search(name)" class="button2" style="padding-top: 3px; padding-bottom: 3px;">Find</button>
 		<input onclick="activateSideMenu()" type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
 <!-- 		<button id="activate" style="float: right;">activate</button>
 		<button id="deactivate" style="float: right;">deactivate</button> -->
@@ -57,79 +57,11 @@
 
 	<div id="container">
 
-		<div class="villain">
-			<div class="smallcircle">
-				<img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Healthcare-Skull-icon.png" style="max-width:70%; max-height:70%; margin-top: 8px;"/>
-			</div>
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/c/c6/Jokerrotj.jpg/revision/latest?cb=20140219065824" class="circle"/>
-			</br>
-			<p>JOKER</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette1.wikia.nocookie.net/batman/images/2/2f/Bane.jpg/revision/latest?cb=20120126111601" class="circle">
-			</br>
-			<p>BANE</p>
-		</div>
-
-		<div class="villain">
-			<img src="https://s-media-cache-ak0.pinimg.com/736x/b1/74/eb/b174eb3bee4fd633ab2c9a96bf630ae9.jpg" class="circle">
-			</br>
-			<p>POISON IVY</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette3.wikia.nocookie.net/villains/images/4/49/Two_face_Flatt.jpg/revision/latest?cb=20140131013557" class="circle">
-			</br>
-			<p>TWO FACE</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://cdn5.thr.com/sites/default/files/2015/01/scarecrow_batman.jpg" class="circle">
-			</br>
-			<p>SCARECROW</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://media.dcentertainment.com/sites/default/files/GalleryChar_1900x900_Catwoman_52ab9c21818074.19952677.jpg" class="circle">
-			</br>
-			<p>CAT WOMAN</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/1/12/TBPenguin.jpg/revision/latest?cb=20090213222829" class="circle">
-			</br>
-			<p>PENGUIN</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette1.wikia.nocookie.net/batman/images/0/0d/Mr._Freeze_-_New_52.jpg/revision/latest?cb=20120523170930" class="circle">
-			</br>
-			<p>MR FREEZE</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/c/c6/Jokerrotj.jpg/revision/latest?cb=20140219065824" class="circle">
-			</br>
-			<p>JOKOER</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/c/c6/Jokerrotj.jpg/revision/latest?cb=20140219065824" class="circle">
-			</br>
-			<p>JOKOER</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/c/c6/Jokerrotj.jpg/revision/latest?cb=20140219065824" class="circle">
-			</br>
-			<p>JOKOER</p>
-		</div>
-
-		<div class="villain">
-			<img src="http://vignette4.wikia.nocookie.net/batman/images/c/c6/Jokerrotj.jpg/revision/latest?cb=20140219065824" class="circle">
-			</br>
-			<p>JOKOER</p>
+		<div class="villain" ng-repeat="a in getObj()">
+		
+			<img class="circle" src="{{a.image.small_url}}"/>
+			<br/>
+			<p>{{a.name}}</p>
 		</div>
 		
 	</div>
