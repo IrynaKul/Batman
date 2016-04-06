@@ -16,7 +16,7 @@ batmanPlannerApp.config(['$routeProvider',
       }).
       when('/fight', {
         templateUrl: 'partials/vs.html',
-        controller: 'SearchCtrl'
+        controller: 'GameCtrl'
       }).
       // when('/dish/:dishId', {
       //   templateUrl: 'partials/character.html',
