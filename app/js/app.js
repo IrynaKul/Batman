@@ -1,5 +1,5 @@
 var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource']);
-
+//console.log("mjauuu");
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -10,9 +10,9 @@ batmanPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/browse_villain.html',
         controller: 'SearchCtrl'
       }).
-      when('/info', {
+      when('/info/:characterId', {
         templateUrl: 'partials/villain_info.html',
-        controller: 'SearchCtrl'
+        controller: 'infoCtrl'
       }).
       when('/fight', {
         templateUrl: 'partials/vs.html',

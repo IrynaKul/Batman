@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	$('#highscoreBtn').click(function() {
+    	document.getElementById("high").style.display="block";
+  		document.getElementById("chat").style.display="none";
+	});
+	$('#chatBtn').click(function() {
+    	document.getElementById("high").style.display="none";
+  		document.getElementById("chat").style.display="block";
+	});
+</script>
+
+<div id="sidebar">
+
+	<button id="highscoreBtn">Highscore</button>
+	<button id="chatBtn">Chat</button>
+	<div id="high" style="display:block;">Hehhehhehehh</div>
+
+	<div id="chat" style="display:none;">
+		  <div class='example-chat-toolbar'>
+		    <label for="nameInput"></label>
+		    <input type='text' id='nameInput' placeholder='Enter name...'>
+		  </div>
+
+		  	<ul id='example-messages' class="example-chat-messages"></ul>
+
+		  <footer>
+		    <input type='text' id='messageInput'  placeholder='Type a message...'>
+		  </footer>
+	</div>
+
+</div>
+
+

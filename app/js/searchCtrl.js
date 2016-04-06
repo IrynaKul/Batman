@@ -1,9 +1,22 @@
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
- 
-  batmanModel.getTop10();
-  $scope.array= batmanModel.getArray();
+  $scope.top12=batmanModel.getTop12();
+  $scope.array= function(){
+    return batmanModel.getArray();
+  }
 
   $scope.getObj = function(){
-    return $scope.array;
+    return $scope.array();
   };
+
+  $scope.search = function(query) {
+   $scope.status = "Searching...";
+   console.log(query);
+   batmanModel.searchVillain(query).get(function(data){
+     console.log(data.results)
+     batmanModel.setFiltered(data.results,query);
+     $scope.status = "Showing " + data.results.length + " results";
+   },function(data){
+     $scope.status = "There was an error";
+   });
+ }
 });
