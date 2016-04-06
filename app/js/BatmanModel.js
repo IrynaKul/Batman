@@ -75,12 +75,9 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 								aliases:a.aliases});
 					});
 					break;
-
 				}
-
 			}
 		}
-
 	}
 
 	this.getArray = function(){

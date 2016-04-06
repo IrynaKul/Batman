@@ -1,73 +1,64 @@
-<!DOCTYPE html>
-<html>
-	<head>
-
-		<link rel="icon" type="image/png" href="http://vectorlogofree.com/wp-content/uploads/2013/01/batman-logo-vector-400x400.png">
-
-		<link rel="stylesheet" type="text/css" href="css.css"/>
-		<title>batman</title>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script>
-
-		function action(){
-			$("#resultMenu").fadeIn();({
-			});
-		}
-
-		function rock(){
-			$("#rock").animate({
-				left: '298px'
-			});
-
-			$(".flipper").animate({
-				left: '-230px'
-			});
-
-			setTimeout(function(){
-				$(".flipper").css({
-					transform: 'rotateY(180deg)'
-				});
-			}, 2000);
-		}
-
-		function paper(){
-			$("#paper").animate({
-				left: '214px'
-			});
-
-			$(".flipper").animate({
-				left: '-230px'
-			});
-
-			setTimeout(function(){
-				$(".flipper").css({
-					transform: 'rotateY(180deg)'
-				});
-			}, 2000);
-		}
-
-		function scissors(){
-			$("#scissors").animate({
-				left: '130px'
-			});
-
-			$(".flipper").animate({
-				left: '-230px'
-			});
-
-			setTimeout(function(){
-				$(".flipper").css({
-					transform: 'rotateY(180deg)'
-				});
-			}, 1500);
-		}
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
 
-		</script>
+		// <script>
 
-	</head>
-	<body>
+		// function action(){
+		// 	$("#resultMenu").fadeIn();({
+		// 	});
+		// }
+
+		// function rock(){
+		// 	$("#rock").animate({
+		// 		left: '298px'
+		// 	});
+
+		// 	$(".flipper").animate({
+		// 		left: '-230px'
+		// 	});
+
+		// 	setTimeout(function(){
+		// 		$(".flipper").css({
+		// 			transform: 'rotateY(180deg)'
+		// 		});
+		// 	}, 2000);
+		// }
+
+		// function paper(){
+		// 	$("#paper").animate({
+		// 		left: '214px'
+		// 	});
+
+		// 	$(".flipper").animate({
+		// 		left: '-230px'
+		// 	});
+
+		// 	setTimeout(function(){
+		// 		$(".flipper").css({
+		// 			transform: 'rotateY(180deg)'
+		// 		});
+		// 	}, 2000);
+		// }
+
+		// function scissors(){
+		// 	$("#scissors").animate({
+		// 		left: '130px'
+		// 	});
+
+		// 	$(".flipper").animate({
+		// 		left: '-230px'
+		// 	});
+
+		// 	setTimeout(function(){
+		// 		$(".flipper").css({
+		// 			transform: 'rotateY(180deg)'
+		// 		});
+		// 	}, 1500);
+		// }
+
+
+		// </script>
+
 
 	<div class="header">
 		<p>BATMAN</p>
@@ -128,6 +119,3 @@
 			</div>
 		</div>
 	</center>
-
-	</body>
-</html>

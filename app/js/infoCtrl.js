@@ -15,6 +15,9 @@ console.log(id)
      $scope.status = "There was an error";
    });
 
+
+   
+
   // $scope.array2= function(){
   //   return batmanModel.getArray();
   // }
