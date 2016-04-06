@@ -1,44 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css.css"/>
-		<title>batman</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script>
 
-	function activateSideMenu(){
-		console.log("activate");
-		var button_status = document.getElementById("sidebutton");
-		console.log("status", button_status);
-		if (button_status.value=="show sidebar"){
-			console.log("if");
-			button_status.value = "hide sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '70%'
-			});
-		}
-
-		else{
-			console.log("else");
-			button_status.value = "show sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '100%'
-			});
-		}
-	}
+	
 
 	</script>
 
-
-	</head>
-	<body>
 
 	<div class="header">
 		<p>BATMAN</p>
@@ -79,6 +44,3 @@
 		<p>Two Face</p>
 		<p>Three Face</p>
 	</div>
-
-	</body>
-</html>

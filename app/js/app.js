@@ -1,4 +1,4 @@
-var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource']);
+var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource','firebase']);
 //console.log("mjauuu");
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {

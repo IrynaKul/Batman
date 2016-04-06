@@ -8,6 +8,7 @@
 		<title>batman</title>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 		<script>
 
 		function action(){
@@ -63,6 +64,23 @@
 			}, 1500);
 		}
 
+		$('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.set('User ' + name + ' says ' + text);
+          $('#messageInput').val('');
+        }
+      });
+		myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+		displayChatMessage(message.name, message.text);[MESSAGE CALLBACK CODE GOES HERE]
+      });
+      function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+
 
 		</script>
 
@@ -90,6 +108,8 @@
 			<img src="http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg" style="max-width:100%; max-height:100%; position: absolute; left: 0px;"/>
 			<!-- http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg -->
 			<p>YOU LOSE</p>
+			<input type='text' id='nameInput' placeholder='Name'>
+    		<input type='text' id='messageInput' placeholder='Message'>
 		</div>
 
 		<div style="margin-top: 5%; width: 60%;">

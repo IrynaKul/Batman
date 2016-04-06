@@ -14,18 +14,4 @@ console.log(id)
    },function(data){
      $scope.status = "There was an error";
    });
-
-  // $scope.array2= function(){
-  //   return batmanModel.getArray();
-  // }
-
-  // $scope.getObj2 = function(){
-  //   console.log("infoCtrl getObj ",$scope.array2());
-  //   return $scope.array2();
-  // };
- 
-
-
-
-
 });

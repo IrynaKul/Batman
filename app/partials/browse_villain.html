@@ -39,6 +39,8 @@
 
 	</head>
 	<body>
+	<!-- We include the sidebar as it is shared across two screens. -->
+	<ng-include src="'partials/sidebar.html'" ng-controller="SidebarCtrl"></ng-include>
 
 	<div class="header">
 		<p>BATMAN</p>
@@ -65,14 +67,3 @@
 		</div>
 		
 	</div>
-
-	<div id="sidebar">
-		<p><bold>3 Defeated</bold></p>
-		</br>
-		<p>Mr Freeze</p>
-		<p>Two Face</p>
-		<p>Three Face</p>
-	</div>
-
-	</body>
-</html>
