@@ -1,5 +1,14 @@
 batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel){
 
+$scope.getCharacter= function(){
+    return batmanModel.getCharacter();
+};
+console.log("id: ",$scope.getCharacter()[0].id);
+
+$scope.getGif=function(){
+    return batmanModel.getGif($scope.getCharacter()[0].id);
+}
+
 var userChoice = "";
 var userWinning = 0;
 var computerWinning = 0;

@@ -1,42 +1,38 @@
-batmanPlannerApp.controller('SidebarCtrl', function ($scope,$firebase,batmanModel){
+batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanModel){
 
-	var ref = new Firebase("https://resplendent-fire-2426.firebaseio.com/");  
-	var fb = $firebase(ref);
-	// REGISTER DOM ELEMENTS
-	var messageField = $('#messageInput');
-	var nameField = $('#nameInput');
-	var messageList = $('#example-messages');
+	//function activateSideMenu(){
 
-	// LISTEN FOR KEYPRESS EVENT
-	messageField.keypress(function (e) {
-	if (e.keyCode == 13) {
-	  //FIELD VALUES
-	  var username = nameField.val();
-	  var message = messageField.val();
+		$("#sidebutton").click(function(){
+			console.log("activate");
+			var button_status = document.getElementById("sidebutton");
+			console.log("status", button_status);
+			if (button_status.value=="show sidebar"){
+				console.log("if");
+				button_status.value = "hide sidebar";
+				$("#sidebar").animate({
+					width: 'toggle'
+				});
+				$("#container").animate({
+					width: '70%'
+				});
+			}
 
-	  //SAVE DATA TO FIREBASE AND EMPTY FIELD
-	  messagesRef.push({name:username, text:message});
-	  messageField.val('');
-	}
-	});
+			else{
+				console.log("else");
+				button_status.value = "show sidebar";
+				$("#sidebar").animate({
+					width: 'toggle'
+				});
+				$("#container").animate({
+					width: '100%'
+				});
+			}
 
-	// Add a callback that is triggered for each chat message.
-	messagesRef.limitToLast(10).on('child_added', function (snapshot) {
-	//GET DATA
-	var data = snapshot.val();
-	var username = data.name || "anonymous";
-	var message = data.text;
+		})
+		
+		
+	//}
 
-	//CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-	var messageElement = $("<li>");
-	var nameElement = $("<strong class='example-chat-username'></strong>")
-	nameElement.text(username);
-	messageElement.text(message).prepend(nameElement);
 
-	//ADD MESSAGE
-	messageList.append(messageElement)
 
-	//SCROLL TO BOTTOM OF MESSAGE LIST
-	messageList[0].scrollTop = messageList[0].scrollHeight;
-	});
 });
