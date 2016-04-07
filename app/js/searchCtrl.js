@@ -19,4 +19,5 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
      $scope.status = "There was an error";
    });
  }
+
 });
