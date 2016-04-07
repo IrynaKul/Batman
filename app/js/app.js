@@ -1,5 +1,6 @@
+
 var batmanPlannerApp = angular.module('Batman', ['ngRoute','ngResource','firebase']);
-//console.log("mjauuu");
+
 batmanPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -16,7 +17,7 @@ batmanPlannerApp.config(['$routeProvider',
       }).
       when('/fight', {
         templateUrl: 'partials/vs.html',
-        controller: 'SearchCtrl'
+        controller: 'GameCtrl'
       }).
       // when('/dish/:dishId', {
       //   templateUrl: 'partials/character.html',
