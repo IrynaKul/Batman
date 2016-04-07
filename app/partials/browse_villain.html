@@ -1,69 +1,27 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css.css"/>
-		<title>batman</title>
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script>
+<div class="header">
+	<p>BATMAN</p>
+	<p style="font-size: 15px;">programmig is fun</p>
+</div>
 
-	function activateSideMenu(){
-		console.log("activate");
-		var button_status = document.getElementById("sidebutton");
-		console.log("status", button_status);
-		if (button_status.value=="show sidebar"){
-			console.log("if");
-			button_status.value = "hide sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '70%'
-			});
-		}
-
-		else{
-			console.log("else");
-			button_status.value = "show sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '100%'
-			});
-		}
-	}
-
-	</script>
-
-
-	</head>
-	<body>
-	<!-- We include the sidebar as it is shared across two screens. -->
-	<ng-include src="'partials/sidebar.html'" ng-controller="SidebarCtrl"></ng-include>
-
-	<div class="header">
-		<p>BATMAN</p>
-		<p style="font-size: 15px;">programmig is fun</p>
-	</div>
-
-	<div class="menu">
-		<p>Choose your villain</p>
-		<input class="input_form" style="width: 150px;" ng-model="name"/>
-		<button ng-click="search(name)" class="button2" style="padding-top: 3px; padding-bottom: 3px;">Find</button>
-		<input onclick="activateSideMenu()" type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
+<div class="menu">
+	<p>Choose your villain</p>
+	<input class="input_form" style="width: 150px;" ng-model="name"/>
+	<button ng-click="search(name)" class="button2" style="padding-top: 3px; padding-bottom: 3px;">Find</button>
+	<input type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
 <!-- 		<button id="activate" style="float: right;">activate</button>
-		<button id="deactivate" style="float: right;">deactivate</button> -->
-		
-	</div>
+	<button id="deactivate" style="float: right;">deactivate</button> -->
+	
+</div>
 
-	<div id="container">
-		<div class="villain" ng-repeat="a in getObj()">
-			<a ng-href="#/info/{{a.id}}" type="button">
-				<img class="circle" src="{{a.image.small_url}}"/>
-				<br/>
-				<p>{{a.name}}</p>
-			</a>
-		</div>
-		
+<div id="container">
+	<div class="villain" ng-repeat="a in getObj()">
+		<a ng-href="#/info/{{a.id}}" type="button">
+			<img class="circle" src="{{a.image.small_url}}"/>
+			<br/>
+			<p>{{a.name}}</p>
+		</a>
 	</div>
+	
+</div>
