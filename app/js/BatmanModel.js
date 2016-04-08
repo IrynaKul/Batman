@@ -153,12 +153,22 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		console.log("Game over! List cleared", enemiesBeaten)
 	};
 
+//Tar ut listan med slagna skurkar
+	this.getBeatenEnemies = function(){
+		return enemiesBeaten;
+	};
+
 //Tar längden av listan med slagna skurkar och lägger till i highscore-listan
-	this.submitHighscore = function(){
+	this.setHighscore = function(){
 		var score = enemiesBeaten.length
 		highscoreList.push(score)
 		console.log(highscoreList)
-	}
+	};
+
+//Tar ut highscore
+	this.getHighscore = function(){
+		return highscoreList;
+	};
 
 
 	this.setEnemiesArray();
