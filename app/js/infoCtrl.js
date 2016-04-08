@@ -20,7 +20,6 @@ batmanModel.findCharacter(id).get(function(data){
 
 
 
-
    
 
   // $scope.array2= function(){
@@ -32,5 +31,4 @@ batmanModel.findCharacter(id).get(function(data){
   //   return $scope.array2();
   // };
  
-
 });

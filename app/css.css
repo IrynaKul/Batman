@@ -151,7 +151,7 @@ div #name {
 */
 
 
-#fightbtn {
+.fightbtn {
 	background-color:#f4c914;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -169,12 +169,12 @@ div #name {
 	height: 60px;
 	margin-bottom: 20px;
 }
-#fightbtn:hover {
+.fightbtn:hover {
 	background-color:#fade28;
 	font-size: 35px;
 	letter-spacing: 3px;
 }
-#fightbtn:active {
+.fightbtn:active {
 	position:relative;
 	top:1px;
 }
