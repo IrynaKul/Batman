@@ -20,7 +20,8 @@ var choises = ["rock", "paper", "scissors"];
 
     $scope.setChoise = function(choise){
         userChoice = choise;
-        var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+        // var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+        var computerChoice = 'rock';
         console.log("ditt val: " + userChoice);
         console.log("datorns val: " + computerChoice);
 
@@ -102,6 +103,7 @@ var choises = ["rock", "paper", "scissors"];
 
     decideWinner = function(){
         if (userWinning == 2) {
+            batmanModel.addBeatenEnemy($scope.getCharacter()[0].name);
             console.log("You win everything!!");
             $("#resultPicture").attr({
                 "src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"

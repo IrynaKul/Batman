@@ -20,6 +20,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
 				];
 	var characterId;
+	var enemiesBeaten = [];
+
 
 	var findCharacter= this.findCharacter=function(filter){
 		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
@@ -140,4 +142,17 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;
+
+
+
+	this.addBeatenEnemy = function(enemy) {
+		enemiesBeaten.push(enemy);
+		console.log(enemiesBeaten);
+	}
+
+	this.clearBeatenEnemy = function(){
+		enemiesBeaten = [];
+	}
+
+
 });
