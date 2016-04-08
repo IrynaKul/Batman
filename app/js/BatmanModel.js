@@ -16,7 +16,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				{id:3715, gifurl:'http://i255.photobucket.com/albums/hh135/afrikabambaataassf/DC%20SPRITES%20ANIMATION/mrfreeze.gif'},
 				{id:1702, gifurl:'http://i282.photobucket.com/albums/kk255/super_joker/jokerstance2013sj_zps377b96af.gif'},
 				{id:3726, gifurl:'http://i132.photobucket.com/albums/q17/beast96240/angelecksfix.gif'},
-				]
+				{id:9589, gifurl:'http://orig00.deviantart.net/70f6/f/2015/302/a/a/clayface_walkcycle_by_bwwd-d9c1afs.gif'},
+				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
+				];
+	var characterId;
 
 	var findCharacter= this.findCharacter=function(filter){
 		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
@@ -120,13 +123,20 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 			else{
 				if(id==character[0].id){
 					gif=character[0].image.small_url;
-					break;
 				}
 			}
 		}
 
 		return gif;
+	};
+	this.setCharacterId=function(id){
+		characterId=id;
+	};
+
+	this.getCharacterId=function(){
+		return characterId;
 	}
+
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;

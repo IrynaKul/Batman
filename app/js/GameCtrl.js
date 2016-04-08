@@ -1,12 +1,16 @@
 batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel){
 
+$scope.getCharacterId=function(){
+    return batmanModel.getCharacterId();
+}
+
 $scope.getCharacter= function(){
     return batmanModel.getCharacter();
 };
-console.log("id: ",$scope.getCharacter()[0].id);
+console.log("id: ",$scope.getCharacterId());
 
 $scope.getGif=function(){
-    return batmanModel.getGif($scope.getCharacter()[0].id);
+    return batmanModel.getGif($scope.getCharacterId());
 }
 
 var userChoice = "";

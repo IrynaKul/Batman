@@ -1,6 +1,7 @@
 batmanPlannerApp.controller('infoCtrl', function ($scope,$routeParams,batmanModel){
 
 var id=$routeParams.characterId;
+batmanModel.setCharacterId(id);
 console.log(id)
 
 $scope.status = "Searching...";
@@ -15,7 +16,6 @@ batmanModel.findCharacter(id).get(function(data){
   },function(data){
   $scope.status = "There was an error";
 });
-
 
 
 
