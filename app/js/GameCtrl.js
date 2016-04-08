@@ -104,7 +104,8 @@ var choises = ["rock", "paper", "scissors"];
         if (userWinning == 2) {
             console.log("You win everything!!");
             $("#resultPicture").attr({
-                "src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
+                //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
+                "src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
