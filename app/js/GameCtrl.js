@@ -94,6 +94,11 @@ var choises = ["rock", "paper", "scissors"];
                 "src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
+
+            var highscore_status = document.getElementById("highscore");
+            var continue_status = document.getElementById("continue");
+            highscore_status.value="View highscore"
+            continue_status.value="Continue"
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
 
             $("#resultMenu").fadeIn();({
@@ -107,7 +112,13 @@ var choises = ["rock", "paper", "scissors"];
                 // "src": "http://images-cdn.moviepilot.com/image/upload/c_limit,h_379,w_500/t_mp_quality/batman-v-superman-who-would-win-in-this-situation-superman-breaks-the-bat-jpeg-74958.jpg"
             });
             document.getElementById("resultText").innerHTML = "YOU LOSE";
+
+            var highscore_status = document.getElementById("highscore");
+            var continue_status = document.getElementById("continue");
+            highscore_status.value="Submit highscore"
+            continue_status.value="Game Over"
             // document.getElementById("resultText2").innerHTML = "Hit Game Over to start over. Hit  to submit your highscore";
+
             $("#resultMenu").fadeIn();({
             });
         }
