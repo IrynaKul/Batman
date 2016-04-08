@@ -7,6 +7,19 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	var find;
 	var searchArray=[];
 	var enemiesArray=[];
+	var character=[];
+	var gifArray=[{id:6129, gifurl:'http://s1.gamewalkers.com/games/tabs/mugen/heroes/bane.gif'},
+				{id:1696, gifurl:'http://i202.photobucket.com/albums/aa64/DARKTALBAIN/harley2ev1.gif'},
+				{id:1807, gifurl:'http://i.imgur.com/bwz90US.gif'},
+				{id:5555, gifurl:'http://i.imgur.com/qoeEe.gif'},
+				{id:1697, gifurl:'http://i71.photobucket.com/albums/i143/esn23/ivystance-2.gif'},
+				{id:3715, gifurl:'http://i255.photobucket.com/albums/hh135/afrikabambaataassf/DC%20SPRITES%20ANIMATION/mrfreeze.gif'},
+				{id:1702, gifurl:'http://i282.photobucket.com/albums/kk255/super_joker/jokerstance2013sj_zps377b96af.gif'},
+				{id:3726, gifurl:'http://i132.photobucket.com/albums/q17/beast96240/angelecksfix.gif'},
+				{id:9589, gifurl:'http://orig00.deviantart.net/70f6/f/2015/302/a/a/clayface_walkcycle_by_bwwd-d9c1afs.gif'},
+				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
+				];
+	var characterId;
 
 	var findCharacter= this.findCharacter=function(filter){
 		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
@@ -75,17 +88,54 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 								aliases:a.aliases});
 					});
 					break;
-
 				}
-
 			}
 		}
-
 	}
 
 	this.getArray = function(){
 		return arrayObjects;
 	};
+
+	this.setCharacter= function(data){
+		character=[];
+		character.push({id:data.id,
+						name:data.name,
+						real_name:data.real_name,
+						image:data.image,
+						deck:data.deck,
+						first_appeared_in_issue:data.first_appeared_in_issue,
+						gender:data.gender,
+						aliases:data.aliases});
+
+	};
+	this.getCharacter=function(){
+		return character;
+	};
+
+	this.getGif=function(id){
+		var gif;
+		for(var i=0;i<gifArray.length;i++){
+			if(id==gifArray[i].id){
+				gif=gifArray[i].gifurl;
+				break;
+			}
+			else{
+				if(id==character[0].id){
+					gif=character[0].image.small_url;
+				}
+			}
+		}
+
+		return gif;
+	};
+	this.setCharacterId=function(id){
+		characterId=id;
+	};
+
+	this.getCharacterId=function(){
+		return characterId;
+	}
 
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID

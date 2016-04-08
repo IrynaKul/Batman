@@ -151,7 +151,7 @@ div #name {
 */
 
 
-#fightbtn {
+.fightbtn {
 	background-color:#f4c914;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -169,12 +169,12 @@ div #name {
 	height: 60px;
 	margin-bottom: 20px;
 }
-#fightbtn:hover {
+.fightbtn:hover {
 	background-color:#fade28;
 	font-size: 35px;
 	letter-spacing: 3px;
 }
-#fightbtn:active {
+.fightbtn:active {
 	position:relative;
 	top:1px;
 }
@@ -278,9 +278,6 @@ p{
 	box-shadow: 0 0 5px #888;
 	display: inline-block;
 	position: absolute;
-	margin-top: 160px;
-	margin-left: 160px;
-
 }
 
 .smallcircle:hover{
@@ -291,7 +288,7 @@ p{
 	display: inline-table;
 	width: 25px;
 	height: 25px;
-	background: darkred;
+	background: #f4c914;
 	-moz-border-radius: 12.5px;
 	-webkit-border-radius: 12.5px;
 	border-radius: 12.5px;
@@ -340,15 +337,19 @@ p{
 #resultMenu{
 	display: none;
 	z-index: 3;
-	margin-left: 25%;
-	margin-right: 25%;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
 	margin-top: 30px;
 	position: absolute;
-	width: 50%;
+	width: 750px;
 	height: 360px;
 	background-color: darkred;
 	border: 5px solid white;
+	overflow-y: hidden;
 }
+
 #resultMenu p{
 	font-size: 90px;
 	color: white;
@@ -364,9 +365,9 @@ p{
 	perspective: 1000;
 }
 	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
+/*	.flip-container:hover .flipper, .flip-container.hover .flipper {
 		transform: rotateY(180deg);
-	}
+	}*/
 
 /*.flip-container, .front, .back {
 	width: 320px;
@@ -400,4 +401,86 @@ p{
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
+}
+
+
+#backbutton {
+    background: #f4c914;
+    background: -moz-linear-gradient(top, #f4c914 0%, #f4c914 100%);
+    background: -o-linear-gradient(top, #f4c914 0%, #f4c914 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
+    background: -webkit-linear-gradient(top, #f4c914 0%, #f4c914 100%);
+    background: linear-gradient(top, #f4c914 0%, #f4c914 100%);
+    border: solid #f4c914;
+    border-width: 1px 1px 1px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-left: 20px;
+    margin-right: 2px;
+    padding: 0 7px 0 3px;
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    text-decoration: none;
+}
+
+#backbutton:before {
+    background: #f4c914;
+    background: -moz-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
+    background: -o-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
+    background: -webkit-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
+    background: linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
+    border: solid #f4c914;
+    border-width: 0 0 1px 1px;
+    border-radius: 2px 0 2px 2px;
+    content: '';
+    display: block;
+    height: 21px;
+    left: -11px;
+    position: absolute;
+    top: 3px;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 21px;
+}
+
+#backbutton:hover, #backbutton:focus {
+    border-color: #950006;
+    background: #de0009;
+    background: -moz-linear-gradient(top, #950006 0%, #de0009 100%);
+    background: -o-linear-gradient(top, #950006 0%, #de0009 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #950006), color-stop(100%, #de0009));
+    background: -webkit-linear-gradient(top, #950006 0%, #de0009 100%);
+    background: linear-gradient(top, #950006 0%, #de0009 100%);
+}
+
+#backbutton:hover:before, #backbutton:focus:before {
+    border-color: #7a6306;
+    background: #950006;
+    background: -moz-linear-gradient(-45deg, #950006 0%, #de0009 100%);
+    background: -o-linear-gradient(-45deg, #950006 0%, #de0009 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #950006), color-stop(100%, #de0009));
+    background: -webkit-linear-gradient(-45deg, #950006 0%, #de0009 100%);
+    background: linear-gradient(-45deg, #950006 0%, #de0009 100%);
+}
+
+#backbutton span {
+    color: #000;
+    position: relative;
+    top:-14.5px;
+    font-size: 12pt;
+}
+
+#backbutton:hover span {
+    color: #000;
+    position: relative;
+    top:-13px;
+    font-size: 16pt;
 }

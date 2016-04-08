@@ -1,84 +1,31 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css.css"/>
-		<title>batman</title>
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script>
-
-	function activateSideMenu(){
-		console.log("activate");
-		var button_status = document.getElementById("sidebutton");
-		console.log("status", button_status);
-		if (button_status.value=="show sidebar"){
-			console.log("if");
-			button_status.value = "hide sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '70%'
-			});
-		}
-
-		else{
-			console.log("else");
-			button_status.value = "show sidebar";
-			$("#sidebar").animate({
-				width: 'toggle'
-			});
-			$("#container").animate({
-				width: '100%'
-			});
-		}
-	}
-
-	</script>
+<div class="header">
+	<p>BATMAN</p>
+	<p style="font-size: 15px;">programming is fun</p>
+	<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back</span></a>
+	<input type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
+</div>
 
 
-	</head>
-	<body>
-
-	<div class="header">
-		<p>BATMAN</p>
-		<p style="font-size: 15px;">programming is fun</p>
-		<input onclick="activateSideMenu()" type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
-	</div>
-
-
-	<div id="container">
-		<div id="characterinfo">
-			<div id="leftinfo">
-				<div id="imageinfo">
-					<a ng-href="#/fight" type="button">
-						<button id="fightbtn">FIGHT</button>
-					</a>
-					<img src="{{villain.image.small_url}}"/>
-					<div id="info" >
-						<div class="infotitle">ALIASES</div><div class="infoline">{{villain.aliases}}</div></br>
-						<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{villain.real_name}}</div>
-					</div>
+<div id="container">
+	<div id="characterinfo">
+		<div id="leftinfo">
+			<div id="imageinfo">
+				<a ng-href="#/fight" type="button">
+					<button id="fightbtn">FIGHT</button>
+				</a>
+				<img src="{{villain.image.small_url}}"/>
+				<div id="info" >
+					<div class="infotitle">ALIASES</div><div class="infoline">{{villain.aliases}}</div></br>
+					<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{villain.real_name}}</div>
 				</div>
 			</div>
-			<div id="description">
-				<div id="name">{{villain.name}}</div>	
-				<p>{{villain.deck}}</p>	
-			</div>
-
 		</div>
-
-
+		<div id="description">
+			<div id="name">{{villain.name}}</div>	
+			<p>{{villain.deck}}</p>	
+		</div>
 	</div>
+</div>
 
-
-	<div id="sidebar">
-		<p><bold>3 Defeated</bold></p>
-		</br>
-		<p>Mr Freeze</p>
-		<p>Two Face</p>
-		<p>Three Face</p>
-	</div>
-
-	</body>
-</html>
