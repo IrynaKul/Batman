@@ -20,7 +20,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
 				];
 	var characterId;
-	var enemiesBeaten = [];
+	var enemiesBeaten = []; //Lista med slagna skurkar
+	var highscoreList = [];	//Temporär lista med highscore
 
 
 	var findCharacter= this.findCharacter=function(filter){
@@ -137,22 +138,33 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 
 	this.getCharacterId=function(){
 		return characterId;
+	};
+
+//Lägger till skurken i listan enemiesBeaten när denna vunnits över
+	this.addBeatenEnemy = function(enemy) {
+		console.log("add")
+		enemiesBeaten.push(enemy);
+		console.log(enemiesBeaten);
+	};
+
+//Clearar listan med slagna skurkar då man förlorat
+	this.clearBeatenEnemy = function(){
+		enemiesBeaten = [];
+		console.log("Game over! List cleared", enemiesBeaten)
+	};
+
+//Tar längden av listan med slagna skurkar och lägger till i highscore-listan
+	this.submitHighscore = function(){
+		var score = enemiesBeaten.length
+		highscoreList.push(score)
+		console.log(highscoreList)
 	}
+
 
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;
 
-
-
-	this.addBeatenEnemy = function(enemy) {
-		enemiesBeaten.push(enemy);
-		console.log(enemiesBeaten);
-	}
-
-	this.clearBeatenEnemy = function(){
-		enemiesBeaten = [];
-	}
 
 
 });
