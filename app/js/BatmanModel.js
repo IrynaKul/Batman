@@ -20,6 +20,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
 				];
 	var characterId;
+
 	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
 					"https://media.giphy.com/media/O3IHMKIYwLT8I/giphy.gif",
 					"https://media.giphy.com/media/vgSJqTTWV7tC0/giphy.gif",
@@ -28,6 +29,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 					"https://media.giphy.com/media/b1O5lApuMGEhi/giphy.gif",
 					"https://media.giphy.com/media/VNONSuCtUMRdC/giphy.gif"]
 	var waitingGif;
+
+	var enemiesBeaten = []; //Lista med slagna skurkar
+	var highscoreList = [];	//Temporär lista med highscore
+
 
 	var findCharacter= this.findCharacter=function(filter){
 		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
@@ -143,7 +148,38 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 
 	this.getCharacterId=function(){
 		return characterId;
-	}
+	};
+
+//Lägger till skurken i listan enemiesBeaten när denna vunnits över
+	this.addBeatenEnemy = function(enemy) {
+		console.log("add")
+		enemiesBeaten.push(enemy);
+		console.log(enemiesBeaten);
+	};
+
+//Clearar listan med slagna skurkar då man förlorat
+	this.clearBeatenEnemy = function(){
+		enemiesBeaten = [];
+		console.log("Game over! List cleared", enemiesBeaten)
+	};
+
+//Tar ut listan med slagna skurkar
+	this.getBeatenEnemies = function(){
+		return enemiesBeaten;
+	};
+
+//Tar längden av listan med slagna skurkar och lägger till i highscore-listan
+	this.setHighscore = function(){
+		var score = enemiesBeaten.length
+		highscoreList.push(score)
+		console.log(highscoreList)
+	};
+
+//Tar ut highscore
+	this.getHighscore = function(){
+		return highscoreList;
+	};
+
 
 	this.randomiseWaitingGif=function(){
 		waitingGif=waitingArray[Math.floor(Math.random()*waitingArray.length)];
@@ -152,4 +188,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;
+
+
+
 });
