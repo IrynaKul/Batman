@@ -14,8 +14,6 @@ console.log(id)
    },function(data){
      $scope.status = "There was an error";
    });
-<<<<<<< HEAD
-=======
 
    
 
@@ -28,9 +26,4 @@ console.log(id)
   //   return $scope.array2();
   // };
  
-
-
-
-
->>>>>>> 1121153eace0050d9bc08aabfd28e3c89290673c
 });
