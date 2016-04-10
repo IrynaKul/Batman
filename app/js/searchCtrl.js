@@ -8,10 +8,22 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
     return $scope.array();
   };
 
+  $scope.waitingGif=function(){
+    return batmanModel.randomiseWaitingGif();
+  }
+
   $scope.search = function(query) {
-   $scope.status = "Searching...";
+   $("#waiting").attr({
+      "src":$scope.waitingGif
+    });
+
+   $(".villain").css({
+      display: 'none'
+   });
    console.log(query);
    batmanModel.searchVillain(query).get(function(data){
+
+    document.getElementById("waiting").removeAttribute("src");
      console.log(data.results)
      batmanModel.setFiltered(data.results,query);
      $scope.status = "Showing " + data.results.length + " results";

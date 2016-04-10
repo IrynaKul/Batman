@@ -16,7 +16,8 @@
 </div>
 
 <div id="container">
-	<div class="villain" ng-repeat="a in getObj()">
+	<img id="waiting" style="max-width:100%; position: relative; left: 0px;"/>
+	<div id="villain" class="villain" ng-repeat="a in getObj()">
 		<a ng-href="#/info/{{a.id}}" type="button">
 			<img class="circle" src="{{a.image.small_url}}"/>
 			<br/>

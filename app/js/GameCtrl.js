@@ -1,5 +1,18 @@
 batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel){
 
+$scope.getCharacterId=function(){
+    return batmanModel.getCharacterId();
+}
+
+$scope.getCharacter= function(){
+    return batmanModel.getCharacter();
+};
+console.log("id: ",$scope.getCharacterId());
+
+$scope.getGif=function(){
+    return batmanModel.getGif($scope.getCharacterId());
+}
+
 var userChoice = "";
 var userWinning = 0;
 var computerWinning = 0;
@@ -7,7 +20,8 @@ var choises = ["rock", "paper", "scissors"];
 
     $scope.setChoise = function(choise){
         userChoice = choise;
-        var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+        // var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+        var computerChoice = 'rock';
         console.log("ditt val: " + userChoice);
         console.log("datorns val: " + computerChoice);
 
@@ -89,11 +103,19 @@ var choises = ["rock", "paper", "scissors"];
 
     decideWinner = function(){
         if (userWinning == 2) {
+            batmanModel.addBeatenEnemy($scope.getCharacter()[0].name);
+
             console.log("You win everything!!");
             $("#resultPicture").attr({
-                "src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
+                //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
+                "src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
+
+            var highscore_status = document.getElementById("highscore");
+            var continue_status = document.getElementById("continue");
+            highscore_status.value="View highscore"
+            continue_status.value="Continue"
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
 
             $("#resultMenu").fadeIn();({
@@ -107,12 +129,45 @@ var choises = ["rock", "paper", "scissors"];
                 // "src": "http://images-cdn.moviepilot.com/image/upload/c_limit,h_379,w_500/t_mp_quality/batman-v-superman-who-would-win-in-this-situation-superman-breaks-the-bat-jpeg-74958.jpg"
             });
             document.getElementById("resultText").innerHTML = "YOU LOSE";
+
+            var highscore_submit = document.getElementById("highscore");
+            var continue_status = document.getElementById("continue");
+            highscore_submit.value="Submit highscore"
+            continue_status.value="Game Over"
+
             // document.getElementById("resultText2").innerHTML = "Hit Game Over to start over. Hit  to submit your highscore";
+
             $("#resultMenu").fadeIn();({
             });
+
         }
 
     }
+
+//Vänstra knappen
+    continueBtn = function(){
+        var continue_status = document.getElementById("continue");
+        if (continue_status.value == "Game Over"){                  //Förlust
+            batmanModel.clearBeatenEnemy();
+        }
+        else if (continue_status.value == "Continue"){              //Vinst
+            // back to search
+        }
+        console.log("game over/continue", continue_status.value); 
+    };
+
+//Högra knappen
+    highscoreBtn = function(){
+        var highscore_status = document.getElementById("highscore");
+        if (highscore_status.value == "Submit highscore"){          //Förlust
+            batmanModel.submitHighscore();
+
+        }
+        else if (continue_status.value == "View highscore"){        //Vinst
+            // view highscore
+        }
+    }
+
 
     resetPosition = function(choise){
         $(".flipper").animate({
