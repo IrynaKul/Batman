@@ -53,7 +53,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	// }
 
 	this.setFiltered =function(data,query){
-		console.log("i setFiltered query ", typeof query, query);
 		arrayObjects=[];
 		searchArray=[];
 		for(var i=0; i<data.length; i++){
@@ -62,7 +61,11 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		
 		for (var i=0;i<searchArray.length;i++){
 			for(var j=0; j<enemiesArray.length;j++){
-				if(searchArray[i]==enemiesArray[j].id&&query.toLowerCase()==enemiesArray[j].name.toLowerCase()){
+
+				var query = query.toLowerCase();
+				var enemyname = enemiesArray[j].name.toLowerCase();
+
+				if(searchArray[i]==enemiesArray[j].id && query==enemyname){
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -74,7 +77,20 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
-					break;
+				}
+
+				else if (searchArray[i]==enemiesArray[j].id && enemyname.indexOf(query)!= -1){
+					findCharacter(searchArray[i]).get(function(data){
+					var a=data.results[0];
+					arrayObjects.push({id:a.id,
+								name:a.name,
+								real_name:a.real_name,
+								image:a.image,
+								deck:a.deck,
+								first_appeared_in_issue:a.first_appeared_in_issue,
+								gender:a.gender,
+								aliases:a.aliases});
+					});
 				}
 			}
 		}
