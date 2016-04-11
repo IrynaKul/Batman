@@ -232,7 +232,8 @@ p{
 }
 
 .menu{
-	background-color: #2B2A2C;
+	/*background-color: #2B2A2C;*/
+	background-color: #232328;
 	text-align: center;
 	color: white;
 }
@@ -249,7 +250,7 @@ p{
 	display: inline-block;
 	width: 250px;
 	padding: 20px;
-	background-color: #333350;
+	background-color: #232328;
 }
 
 .circle {
@@ -259,12 +260,25 @@ p{
 	-webkit-border-radius: 100px;
 	border-radius: 100px;
 
-	border: 5px solid white;
-	box-shadow: 0 0 2px #888;
+	border: 5px solid #2f2d49;
+	box-shadow: 5px 5px 5px black;
 }
 
 .circle:hover {
-	border: 5px solid #D2AB3C;
+	border: 5px solid #fade28;
+}
+
+.nametag{
+	position: absolute;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	background-color: #fade28;
+	padding: 5px;
+	border-radius: 10px;
+
+	box-shadow: 5px 5px 5px black;
 }
 
 .smallcircle {
@@ -316,14 +330,6 @@ p{
 .fighter_box img {
 	margin: 30px 0px 20px 0px;
 }
-
-.nametag {
-	font-family: pantonblack;
-	font-size: 20px;
-	letter-spacing: 2px;
-	margin-bottom: 20px;
-}
-
 
 .flipimg {
         -moz-transform: scaleX(-1);

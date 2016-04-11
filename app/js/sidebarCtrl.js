@@ -6,9 +6,9 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 			console.log("activate");
 			var button_status = document.getElementById("sidebutton");
 			console.log("status", button_status);
-			if (button_status.value=="show sidebar"){
+			if (button_status.value=="Show highscore"){
 				console.log("if");
-				button_status.value = "hide sidebar";
+				button_status.value = "Hide highscore";
 				$("#sidebar").animate({
 					width: 'toggle'
 				});
@@ -19,7 +19,7 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 
 			else{
 				console.log("else");
-				button_status.value = "show sidebar";
+				button_status.value = "Show highscore";
 				$("#sidebar").animate({
 					width: 'toggle'
 				});
