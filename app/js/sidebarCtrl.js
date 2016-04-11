@@ -33,13 +33,6 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 		
 	//}
 
-$scope.myHighscore = function(){
-	return batmanModel.getBeatenEnemies().length;
-};
-
-$scope.beatenEnemies = function(){
-	return batmanModel.getBeatenEnemies();
-};
 
 
 });
