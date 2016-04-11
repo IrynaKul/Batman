@@ -21,6 +21,19 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				];
 	var characterId;
 
+	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
+					"https://media.giphy.com/media/O3IHMKIYwLT8I/giphy.gif",
+					"https://media.giphy.com/media/vgSJqTTWV7tC0/giphy.gif",
+					"https://media.giphy.com/media/JDTbmhOGrx6es/giphy.gif",
+					"https://media.giphy.com/media/SgBFcIje2WNkk/giphy.gif",
+					"https://media.giphy.com/media/b1O5lApuMGEhi/giphy.gif",
+					"https://media.giphy.com/media/VNONSuCtUMRdC/giphy.gif"]
+	var waitingGif;
+
+	var enemiesBeaten = []; //Lista med slagna skurkar
+	var highscoreList = [];	//Temporär lista med highscore
+
+
 	var findCharacter= this.findCharacter=function(filter){
 		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
 	}
@@ -66,7 +79,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	// }
 
 	this.setFiltered =function(data,query){
-		console.log("i setFiltered query ", typeof query, query);
 		arrayObjects=[];
 		searchArray=[];
 		for(var i=0; i<data.length; i++){
@@ -75,7 +87,11 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		
 		for (var i=0;i<searchArray.length;i++){
 			for(var j=0; j<enemiesArray.length;j++){
-				if(searchArray[i]==enemiesArray[j].id&&query.toLowerCase()==enemiesArray[j].name.toLowerCase()){
+
+				var query = query.toLowerCase();
+				var enemyname = enemiesArray[j].name.toLowerCase();
+
+				if(searchArray[i]==enemiesArray[j].id && query==enemyname){
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -87,7 +103,20 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
-					break;
+				}
+
+				else if (searchArray[i]==enemiesArray[j].id && enemyname.indexOf(query)!= -1){
+					findCharacter(searchArray[i]).get(function(data){
+					var a=data.results[0];
+					arrayObjects.push({id:a.id,
+								name:a.name,
+								real_name:a.real_name,
+								image:a.image,
+								deck:a.deck,
+								first_appeared_in_issue:a.first_appeared_in_issue,
+								gender:a.gender,
+								aliases:a.aliases});
+					});
 				}
 			}
 		}
@@ -135,9 +164,47 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 
 	this.getCharacterId=function(){
 		return characterId;
-	}
+	};
 
+//Lägger till skurken i listan enemiesBeaten när denna vunnits över
+	this.addBeatenEnemy = function(enemy) {
+		console.log("add")
+		enemiesBeaten.push(enemy);
+		console.log(enemiesBeaten);
+	};
+
+//Clearar listan med slagna skurkar då man förlorat
+	this.clearBeatenEnemy = function(){
+		enemiesBeaten = [];
+		console.log("Game over! List cleared", enemiesBeaten)
+	};
+
+//Tar ut listan med slagna skurkar
+	this.getBeatenEnemies = function(){
+		return enemiesBeaten;
+	};
+
+//Tar längden av listan med slagna skurkar och lägger till i highscore-listan
+	this.setHighscore = function(){
+		var score = enemiesBeaten.length
+		highscoreList.push(score)
+		console.log(highscoreList)
+	};
+
+//Tar ut highscore
+	this.getHighscore = function(){
+		return highscoreList;
+	};
+
+
+	this.randomiseWaitingGif=function(){
+		waitingGif=waitingArray[Math.floor(Math.random()*waitingArray.length)];
+		return waitingGif;
+	}
 	this.setEnemiesArray();
 	//function that returns a dish of specific ID
 	return this;
+
+
+
 });
