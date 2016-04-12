@@ -106,6 +106,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				}
 
 				else if (searchArray[i]==enemiesArray[j].id && enemyname.indexOf(query)!= -1){
+					console.log(enemiesArray[j].name)
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
