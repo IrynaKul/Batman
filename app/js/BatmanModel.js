@@ -12,10 +12,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	//APIs
 	var findCharacter= this.findCharacter=function(filter){
-		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
+		return $resource('https://www.comicvine.com/api/characters/?api_key=bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8&limit=12&format=json&filter=id:'+filter);
 	}
 	this.searchVillain= function(a){
-		return $resource('https://www.comicvine.com/api/search/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&resources=character&query=batman,'+a);
+		return $resource('https://www.comicvine.com/api/search/?api_key=bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8&format=json&resources=character&query='+a);
 	}
 
 	////// coockies funktions
@@ -84,7 +84,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 
 	
-	var BatmanEnemies=this.BatmanEnemies=$resource('http://comicvine.com/api/character/4005-1699/?api_key=f9043525bd2e79300101a963676d0bdc40534402&field_list=character_enemies&format=json');
+	var BatmanEnemies=this.BatmanEnemies=$resource('http://comicvine.com/api/character/4005-1699/?api_key=bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8&field_list=character_enemies&format=json');
 
 	this.getTop12 = function(){
 		// $cookieStore.remove('characterId');
@@ -119,21 +119,17 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		
  	}
 
-	this.setFiltered =function(data,query){
+	this.setFiltered =function(query){
 		arrayObjects=[];
-		searchArray=[];
-		for(var i=0; i<data.length; i++){
-			searchArray.push(data[i].id);
-		}
-		
-		for (var i=0;i<searchArray.length;i++){
-			for(var j=0; j<enemiesArray.length;j++){
-
-				var query = query.toLowerCase();
-				var enemyname = enemiesArray[j].name.toLowerCase();
-
-				if(searchArray[i]==enemiesArray[j].id && query==enemyname){
-					findCharacter(searchArray[i]).get(function(data){
+		var query = query.toLowerCase();
+		var x =12;
+	
+		for(var j=0; j<enemiesArray.length;j++){
+			var enemyname = enemiesArray[j].name.toLowerCase();
+			if (enemyname.indexOf(query)!== -1){
+				for(var i=0; i<x;i++){
+					console.log("Enemies ",enemiesArray[j].name)
+					findCharacter(enemiesArray[j].id).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
 								name:a.name,
@@ -144,22 +140,14 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
-				}
+					if(i==x){
+						break;
+					}
 
-				else if (searchArray[i]==enemiesArray[j].id && enemyname.indexOf(query)!= -1){
-					console.log(enemiesArray[j].name)
-					findCharacter(searchArray[i]).get(function(data){
-					var a=data.results[0];
-					arrayObjects.push({id:a.id,
-								name:a.name,
-								real_name:a.real_name,
-								image:a.image,
-								deck:a.deck,
-								first_appeared_in_issue:a.first_appeared_in_issue,
-								gender:a.gender,
-								aliases:a.aliases});
-					});
 				}
+				
+				
+				
 			}
 		}
 	}
