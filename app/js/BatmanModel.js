@@ -223,7 +223,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		return score;
 	};
 
-
 //Hämtar ut en slumpad GIF från array med GIF:ar
 	this.randomiseWaitingGif=function(){
 		waitingGif=waitingArray[Math.floor(Math.random()*waitingArray.length)];
