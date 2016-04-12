@@ -21,7 +21,7 @@ var choises = ["rock", "paper", "scissors"];
     $scope.setChoise = function(choise){
         userChoice = choise;
         // var computerChoice = choises[Math.floor(Math.random()*choises.length)];
-        var computerChoice = 'rock';
+        var computerChoice = "rock";
         console.log("ditt val: " + userChoice);
         console.log("datorns val: " + computerChoice);
 

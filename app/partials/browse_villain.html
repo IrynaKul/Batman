@@ -1,19 +1,20 @@
-<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
-
 <div class="header">
 	<p>BATMAN</p>
 	<p style="font-size: 15px;">programmig is fun</p>
 </div>
 
-<div class="menu">
+<div class="menu" style="margin: 30px;">
 	<p>Choose your villain</p>
-	<input class="input_form" style="width: 150px;" ng-model="name"/>
-	<button ng-click="search(name)" class="button2" style="padding-top: 3px; padding-bottom: 3px;">Find</button>
-	<input type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
+	<input type="button" value="Show highscore" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -40px; border: none;"></input>
+	<input class="input_form" style="width: 150px; border-radius: 10px; margin-top: 5px; padding-left: 5px;" ng-model="name"/>
+	<a ng-click="search(name)" style="margin: 3px;">
+		<img src="http://www.tarsa.ca/wp-content/uploads/2015/06/search.png" style="width: 20px; -webkit-filter: invert(1); filter: invert(1);">
+	</a>
 <!-- 		<button id="activate" style="float: right;">activate</button>
 	<button id="deactivate" style="float: right;">deactivate</button> -->
-	
 </div>
+
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
 <div id="container">
 	<img id="waiting" style="max-width:100%; position: relative; left: 0px;"/>
@@ -21,7 +22,7 @@
 		<a ng-href="#/info/{{a.id}}" type="button">
 			<img class="circle" src="{{a.image.small_url}}"/>
 			<br/>
-			<p>{{a.name}}</p>
+			<div class="nametag" style="left: 25%; right: 25%; margin-top: -30px;">{{a.name}}</div>
 		</a>
 	</div>
 	
