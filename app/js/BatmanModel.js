@@ -12,10 +12,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	//APIs
 	var findCharacter= this.findCharacter=function(filter){
-		return $resource('https://www.comicvine.com/api/characters/?api_key=bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8&limit=12&format=json&filter=id:'+filter);
+		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&limit=12&format=json&filter=id:'+filter);
 	}
 	this.searchVillain= function(a){
-		return $resource('https://www.comicvine.com/api/search/?api_key=bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8&format=json&resources=character&query='+a);
+		return $resource('https://www.comicvine.com/api/search/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&resources=character&query='+a);
 	}
 
 	////// coockies funktions
