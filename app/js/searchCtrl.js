@@ -13,23 +13,12 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   }
 
   $scope.search = function(query) {
-   $("#waiting").attr({
-      "src":$scope.waitingGif
-    });
-
    $(".villain").css({
       display: 'none'
    });
    console.log(query);
-   batmanModel.searchVillain(query).get(function(data){
-
-    document.getElementById("waiting").removeAttribute("src");
-     //console.log(data.results)
-     batmanModel.setFiltered(data.results,query);
-     $scope.status = "Showing " + data.results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
+   batmanModel.setFiltered(query);
+   
  }
 
 

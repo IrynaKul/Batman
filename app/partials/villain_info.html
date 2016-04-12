@@ -2,10 +2,8 @@
 
 <div class="header">
 	<p>BATMAN</p>
-	<p style="font-size: 15px;">programming is fun</p>
-	<a ng-href="#/search" type="button">
-		<button id="backbutton" style="float:left;">Back</button>
-	</a>
+	<p style="font-size: 15px;">Fuck you crime</p>
+	<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back</span></a>
 	<input type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
 </div>
 
@@ -18,15 +16,17 @@
 					<button class="fightbtn">FIGHT</button>
 				</a>
 				<img src="{{villain.image.small_url}}"/>
-				<div id="info" >
-					<div class="infotitle">ALIASES</div><div class="infoline">{{villain.aliases}}</div></br>
-					<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{real_name}}</div>
-				</div>
 			</div>
 		</div>
 		<div id="description">
 			<div id="name">{{villain.name}}</div>	
 			<p>{{villain.deck}}</p>	
+			<div id="info" >
+					<div class="infotitle">ALIASES</div><div class="infoline">{{alias}}</div>
+					<div class="infotitle">REAL NAME</div><div class="infoline" id="spoiled">{{real_name}}</div>
+					<div class="infotitle">FIRST APPEARED IN</div><div class="infoline">{{villain.first_appeared_in_issue.name}}</div>
+					<div class="infotitle">ORIGIN</div><div class="infoline">{{villain.origin.name}}</div>
+		</div>
 		</div>
 	</div>
 </div>
