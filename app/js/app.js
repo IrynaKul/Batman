@@ -33,6 +33,12 @@ batmanPlannerApp.config(['$routeProvider',
       //   templateUrl: 'partials/preparation.html',
       //   controller: 'batmanCtrl'
       // }).
+
+      when('/chat', {
+        templateUrl: 'partials/chat.html',
+        controller: 'infoCtrl'
+      }).
+
       otherwise({
         redirectTo: '/home'
       });

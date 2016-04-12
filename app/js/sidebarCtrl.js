@@ -33,6 +33,13 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 		
 	//}
 
+	$scope.myScore = function(){
+		return batmanModel.getUserScore();
+	};
+	 
+	$scope.beatenEnemies = function(){
+		return batmanModel.getBeatenEnemies();
+	};
 
 
 });

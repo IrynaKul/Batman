@@ -322,8 +322,12 @@ p{
 #messageInput {
 	margin-top: 5px;
 	margin-bottom: 10px;
+	border-radius: 4px;
 }
-
+#nameInput {
+	border-radius: 4px;
+	width: 100px;
+}
 
 #messagesDiv p {
 	margin: 5px 0px;

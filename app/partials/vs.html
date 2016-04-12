@@ -57,6 +57,9 @@
 
 		</script>
 
+		<script src="js/highscore.js"></script>
+
+
 	<div class="header">
 		<p>BATMAN</p>
 		<p style="font-size: 15px;">programming is fun</p>
@@ -85,10 +88,29 @@
 			<a ng-href="#/search">
 				<input type="button" id="continue" class="fightbtn" value="" onclick="continueBtn()" style="position: absolute; left: 150px; top:75%;"></input>
 			</a>
-			<a ng-href="#/home">
+			<!-- <a ng-href="#/home"> -->
 				<input type="button" id="highscore" class="fightbtn" value="" onclick="highscoreBtn()" style="position: absolute; right: 150px; top:75%;"></input>
-			</a>
+			<!-- </a> -->
+
 		</div>
+
+		<div id="viewHighscore">
+
+		<div id="highscoreList">
+			<table id="leaderboardTable">
+			    <tr>
+			      <th>Player</th>
+			      <th>Score</th>
+			    </tr>
+			</table>
+			<input class="example-leaderboard-name" type="text" id="nameInput" placeholder="Enter a name">
+			<input class="example-leaderboard-score" type="text" id="scoreInput" placeholder="Record your score...">
+		</div>
+
+
+
+		</div>
+
 
 		<div style="margin-top: 5%; width: 60%;">
 			<div class="fighter_box">
