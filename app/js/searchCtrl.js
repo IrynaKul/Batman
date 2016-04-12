@@ -24,7 +24,7 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
    batmanModel.searchVillain(query).get(function(data){
 
     document.getElementById("waiting").removeAttribute("src");
-     console.log(data.results)
+     //console.log(data.results)
      batmanModel.setFiltered(data.results,query);
      $scope.status = "Showing " + data.results.length + " results";
    },function(data){

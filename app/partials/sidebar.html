@@ -2,25 +2,40 @@
 	$('#highscoreBtn').click(function() {
     	document.getElementById("high").style.display="block";
   		document.getElementById("chat").style.display="none";
+
+		$("#highscoreBtn").css({
+			background: '#535363'
+		});
+		$("#chatBtn").css({
+			background: '#2A2B37'
+		});
+
 	});
 	$('#chatBtn').click(function() {
     	document.getElementById("high").style.display="none";
   		document.getElementById("chat").style.display="block";
   		$("#messagesDiv").scrollTop($("#messagesDiv")[0].scrollHeight);
+
+		$("#highscoreBtn").css({
+			background: '#2A2B37'
+		});
+		$("#chatBtn").css({
+			background: '#535363'
+		});
+
 	});
 </script>
-
 
 <script src="js/chat.js"></script>
 
 <div id="sidebar">
-	<button id="highscoreBtn">Highscore</button>
-	<button id="chatBtn">Chat</button>
+	<button id="highscoreBtn" style="display: inline-block; float: left; width: 190px; height: 50px; border-radius: 3px; border: none; outline: none; background: #535363;">Highscore</button>
+	<button id="chatBtn" style="display: inline-block; float: right; width: 190px; height: 50px; border-radius: 3px; border: none; outline: none; background: #2A2B37;">Chat</button>
 	
 	<div id="high" style="display:block;">
 		<div id="userScore">
-			<p>{{myScore()}}</p>
-			<p>{{beatenEnemies()}}</p>
+			<p style="padding-left: 20px;">{{myScore()}}</p>
+			<p style="padding-left: 20px;">{{beatenEnemies()}}</p>
 		</div>
 
 
