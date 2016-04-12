@@ -1,11 +1,11 @@
 @font-face {
     font-family: pantonlight;
-    src: url(Panton-LightCaps.otf);
+    src: url(../Panton-LightCaps.otf);
 }
 
 @font-face {
     font-family: pantonblack;
-    src: url(Panton-BlackCaps.otf);
+    src: url(../Panton-BlackCaps.otf);
 }
 
 
@@ -310,27 +310,34 @@ p{
 
 #sidebar {
 	display: none;
-	background-color: #2A2B37;
+	/*background-color: #2A2B37;*/
+	background-color: #535363;
 	float:right;
-	width: 300px;
-	height: 300px;
-	padding: 20px;
+	width: 380px;
+	height: 70vh;
 	position: relative;
+	border-radius: 3px;
 }
 
 
 /* CHATT */
 
 #messagesDiv {
-	height: 220px;
+	height: 53vh;
 	font-family: sans-serif;
 	overflow: scroll;
+	margin-top: 50px;
+	padding-right: 20px;
+	padding-left: 20px;
+
 }
 
 #chatInput {
 	position: absolute;
 	bottom: 0px;
 	width: 300px;
+	padding-right: 20px;
+	padding-left: 20px;
 }
 
 #messageInput {
