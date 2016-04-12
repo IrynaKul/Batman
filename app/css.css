@@ -43,6 +43,7 @@
 	letter-spacing: 2px;
 	width: 100px;
 	display: inline-block;
+	vertical-align: top;
 }
 
 .infoline {
