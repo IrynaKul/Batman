@@ -55,9 +55,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 						aliases:info.aliases});
 		})
 	}
-	else{
-		console.log("skit");
-	}
 
 	//array with searching GIFs
 	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
@@ -83,7 +80,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 
 	var enemiesBeaten = []; //Lista med slagna skurkar
-	var highscoreList = [];	//Temporär lista med highscore
+	// var highscoreList = [];	//Temporär lista med highscore
 
 
 	
@@ -150,6 +147,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				}
 
 				else if (searchArray[i]==enemiesArray[j].id && enemyname.indexOf(query)!= -1){
+					console.log(enemiesArray[j].name)
 					findCharacter(searchArray[i]).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -213,16 +211,18 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	};
 
 //Tar längden av listan med slagna skurkar och lägger till i highscore-listan
-	this.setHighscore = function(){
+	// this.setHighscore = function(){
+	// 	var score = enemiesBeaten.length
+	// 	highscoreList.push(score)
+	// 	console.log(highscoreList)
+	// };
+
+//Tar ut score
+ 	this.getUserScore = function(){
 		var score = enemiesBeaten.length
-		highscoreList.push(score)
-		console.log(highscoreList)
+		return score;
 	};
 
-//Tar ut highscore
-	this.getHighscore = function(){
-		return highscoreList;
-	};
 
 //Hämtar ut en slumpad GIF från array med GIF:ar
 	this.randomiseWaitingGif=function(){

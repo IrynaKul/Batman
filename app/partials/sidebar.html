@@ -6,18 +6,38 @@
 	$('#chatBtn').click(function() {
     	document.getElementById("high").style.display="none";
   		document.getElementById("chat").style.display="block";
+  		$("#messagesDiv").scrollTop($("#messagesDiv")[0].scrollHeight);
 	});
 </script>
+
+
+<script src="js/chat.js"></script>
 
 <div id="sidebar">
 	<button id="highscoreBtn">Highscore</button>
 	<button id="chatBtn">Chat</button>
+	
 	<div id="high" style="display:block;">
-		<p>{{myHighscore()}}</p>
-		<p>{{beatenEnemies()}}</p>
+		<div id="userScore">
+			<p>{{myScore()}}</p>
+			<p>{{beatenEnemies()}}</p>
+		</div>
+
+
+<!-- 		<div id="highscoreList">
+			<table id="leaderboardTable">
+			    <tr>
+			      <th>Player</th>
+			      <th>Score</th>
+			    </tr>
+			</table>
+		</div> -->
+
+
 	</div>
+
 	<div id="chat" style="display:none;">
-		  <div class='example-chat-toolbar'>
+<!-- 		  <div class='example-chat-toolbar'>
 		    <label for="nameInput"></label>
 		    <input type='text' id='nameInput' placeholder='Enter name...'>
 		  </div>
@@ -26,7 +46,15 @@
 
 		  <footer>
 		    <input type='text' id='messageInput'  placeholder='Type a message...'>
-		  </footer>
+		  </footer> -->
+
+		<div id='messagesDiv'>
+		</div>
+
+		<div id="chatInput">
+	    	<input type='text' id='nameInput' placeholder='Name'>
+	    	<textarea rows="2" cols="45" id='messageInput' placeholder='Message'/>
+		</div>
 	</div>
 
 </div>
