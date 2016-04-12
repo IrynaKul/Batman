@@ -79,7 +79,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				];
 
 
-	var enemiesBeaten = []; //Lista med slagna skurkar
+	var enemiesBeaten = [6129,1696]; //Lista med slagna skurkar
 	// var highscoreList = [];	//Temporär lista med highscore
 
 
@@ -163,6 +163,22 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 			}
 		}
 	}
+
+
+	///////////////////////// måste fixas(kanske ändra attribut i enemies array till "dead":true/false);
+
+	// this.checkIfDead=function(id){
+	// 	for(var i=0;i<enemiesBeaten.length;i++){
+	// 		if(id==enemiesBeaten[i].id){
+	// 			$("#dead").css({
+	// 				display: 'block'
+	// 			});
+	// 			// $("#villain_image").css({
+	// 			// 	-webkit-filter: 'grayscale(100%)'
+	// 			// });
+	// 		}
+	// 	}
+	// }
 
 	this.getArray = function(){
 		return arrayObjects;

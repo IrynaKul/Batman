@@ -32,4 +32,5 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
    });
  }
 
+
 });
