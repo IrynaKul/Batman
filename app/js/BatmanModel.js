@@ -1,6 +1,7 @@
-batmanPlannerApp.factory('batmanModel',function ($resource) {
+batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	
 	//var api_keys=[f9043525bd2e79300101a963676d0bdc40534402, bad0d77f8c20f0671597ccd9a8bcdf3b3c680fb8];
+
 
 	var arrayObjects=[];
 	var top12id=[6129,1696,4885,1698,1807,5555,1697,3715,1702,3718,3726,9589];
@@ -8,6 +9,63 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	var searchArray=[];
 	var enemiesArray=[];
 	var character=[];
+
+	//APIs
+	var findCharacter= this.findCharacter=function(filter){
+		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
+	}
+	this.searchVillain= function(a){
+		return $resource('https://www.comicvine.com/api/search/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&resources=character&query=batman,'+a);
+	}
+
+	////// coockies funktions
+	var characterId=$cookieStore.get('characterId');
+	this.setCharacterId=function(id){
+		characterId=id;
+		$cookieStore.put('characterId',characterId);
+		console.log("cookie id", $cookieStore.get("characterId"));
+	};
+	console.log("characterId modelen ", typeof characterId, characterId);
+
+	var setCharacter=this.setCharacter= function(info){
+		character=[];
+		character.push({id:info.id,
+						name:info.name,
+						real_name:info.real_name,
+						image:info.image,
+						deck:info.deck,
+						first_appeared_in_issue:info.first_appeared_in_issue,
+						gender:info.gender,
+						aliases:info.aliases});
+	
+	};
+	
+	if(typeof characterId!='undefined'){
+		console.log("characterId ", typeof characterId,characterId);
+		findCharacter(characterId).get(function(data){
+		var info=data.results[0];
+		character=[];
+		character.push({id:info.id,
+						name:info.name,
+						real_name:info.real_name,
+						image:info.image,
+						deck:info.deck,
+						first_appeared_in_issue:info.first_appeared_in_issue,
+						gender:info.gender,
+						aliases:info.aliases});
+		})
+	}
+
+	//array with searching GIFs
+	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
+					"https://media.giphy.com/media/O3IHMKIYwLT8I/giphy.gif",
+					"https://media.giphy.com/media/vgSJqTTWV7tC0/giphy.gif",
+					"https://media.giphy.com/media/JDTbmhOGrx6es/giphy.gif",
+					"https://media.giphy.com/media/SgBFcIje2WNkk/giphy.gif",
+					"https://media.giphy.com/media/b1O5lApuMGEhi/giphy.gif",
+					"https://media.giphy.com/media/VNONSuCtUMRdC/giphy.gif"]
+	var waitingGif;
+
 	var gifArray=[{id:6129, gifurl:'http://s1.gamewalkers.com/games/tabs/mugen/heroes/bane.gif'},
 				{id:1696, gifurl:'http://i202.photobucket.com/albums/aa64/DARKTALBAIN/harley2ev1.gif'},
 				{id:1807, gifurl:'http://i.imgur.com/bwz90US.gif'},
@@ -19,30 +77,18 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 				{id:9589, gifurl:'http://orig00.deviantart.net/70f6/f/2015/302/a/a/clayface_walkcycle_by_bwwd-d9c1afs.gif'},
 				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
 				];
-	var characterId;
 
-	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
-					"https://media.giphy.com/media/O3IHMKIYwLT8I/giphy.gif",
-					"https://media.giphy.com/media/vgSJqTTWV7tC0/giphy.gif",
-					"https://media.giphy.com/media/JDTbmhOGrx6es/giphy.gif",
-					"https://media.giphy.com/media/SgBFcIje2WNkk/giphy.gif",
-					"https://media.giphy.com/media/b1O5lApuMGEhi/giphy.gif",
-					"https://media.giphy.com/media/VNONSuCtUMRdC/giphy.gif"]
-	var waitingGif;
 
 	var enemiesBeaten = []; //Lista med slagna skurkar
 	// var highscoreList = [];	//Temporär lista med highscore
 
 
-	var findCharacter= this.findCharacter=function(filter){
-		return $resource('https://www.comicvine.com/api/characters/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&filter=id:'+filter);
-	}
-	this.searchVillain= function(a){
-		return $resource('https://www.comicvine.com/api/search/?api_key=f9043525bd2e79300101a963676d0bdc40534402&format=json&resources=character&query=batman,'+a);
-	}
+	
 	var BatmanEnemies=this.BatmanEnemies=$resource('http://comicvine.com/api/character/4005-1699/?api_key=f9043525bd2e79300101a963676d0bdc40534402&field_list=character_enemies&format=json');
 
 	this.getTop12 = function(){
+		// $cookieStore.remove('characterId');
+		console.log("ska inte finnas ", typeof characterId, characterId);
 		arrayObjects=[];
 		for (var i=0;i<top12id.length;i++){
 				findCharacter(top12id[i]).get(function(data){
@@ -72,11 +118,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		return enemiesArray;
 		
  	}
-	// this.setArray=function(data){
-	// 	for(var i=0; i<data.length; i++){
-	// 		searchArray.push(data[i].id);
-	// 	}
-	// }
 
 	this.setFiltered =function(data,query){
 		arrayObjects=[];
@@ -127,44 +168,28 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		return arrayObjects;
 	};
 
-	this.setCharacter= function(data){
-		character=[];
-		character.push({id:data.id,
-						name:data.name,
-						real_name:data.real_name,
-						image:data.image,
-						deck:data.deck,
-						first_appeared_in_issue:data.first_appeared_in_issue,
-						gender:data.gender,
-						aliases:data.aliases});
-
+	this.clearCookies=function(){
+		$cookieStore.remove('characterId');
 	};
+
+	
 	this.getCharacter=function(){
 		return character;
 	};
 
-	this.getGif=function(id){
+	this.getGif=function(){
 		var gif;
 		for(var i=0;i<gifArray.length;i++){
-			if(id==gifArray[i].id){
+			if(characterId==gifArray[i].id){
+				console.log("gifArray ", gifArray[i]);
 				gif=gifArray[i].gifurl;
 				break;
 			}
-			else{
-				if(id==character[0].id){
-					gif=character[0].image.small_url;
-				}
-			}
 		}
-
+		if(typeof gif=="undefined"){
+			gif=character[0].image.small_url;
+		}
 		return gif;
-	};
-	this.setCharacterId=function(id){
-		characterId=id;
-	};
-
-	this.getCharacterId=function(){
-		return characterId;
 	};
 
 //Lägger till skurken i listan enemiesBeaten när denna vunnits över
@@ -198,14 +223,12 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 		return score;
 	};
 
-
-
+//Hämtar ut en slumpad GIF från array med GIF:ar
 	this.randomiseWaitingGif=function(){
 		waitingGif=waitingArray[Math.floor(Math.random()*waitingArray.length)];
 		return waitingGif;
 	}
 	this.setEnemiesArray();
-	//function that returns a dish of specific ID
 	return this;
 
 
