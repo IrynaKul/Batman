@@ -31,7 +31,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	var waitingGif;
 
 	var enemiesBeaten = []; //Lista med slagna skurkar
-	var highscoreList = [];	//Temporär lista med highscore
+	// var highscoreList = [];	//Temporär lista med highscore
 
 
 	var findCharacter= this.findCharacter=function(filter){
@@ -186,16 +186,18 @@ batmanPlannerApp.factory('batmanModel',function ($resource) {
 	};
 
 //Tar längden av listan med slagna skurkar och lägger till i highscore-listan
-	this.setHighscore = function(){
+	// this.setHighscore = function(){
+	// 	var score = enemiesBeaten.length
+	// 	highscoreList.push(score)
+	// 	console.log(highscoreList)
+	// };
+
+//Tar ut score
+ 	this.getUserScore = function(){
 		var score = enemiesBeaten.length
-		highscoreList.push(score)
-		console.log(highscoreList)
+		return score;
 	};
 
-//Tar ut highscore
-	this.getHighscore = function(){
-		return highscoreList;
-	};
 
 
 	this.randomiseWaitingGif=function(){

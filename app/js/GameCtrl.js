@@ -21,7 +21,7 @@ var choises = ["rock", "paper", "scissors"];
     $scope.setChoise = function(choise){
         userChoice = choise;
         // var computerChoice = choises[Math.floor(Math.random()*choises.length)];
-        var computerChoice = 'rock';
+        var computerChoice = "rock";
         console.log("ditt val: " + userChoice);
         console.log("datorns val: " + computerChoice);
 
@@ -144,6 +144,12 @@ var choises = ["rock", "paper", "scissors"];
 
     }
 
+
+
+    myScore = function(){
+        return batmanModel.getUserScore();
+    };    
+
 //Vänstra knappen
     continueBtn = function(){
         var continue_status = document.getElementById("continue");
@@ -160,7 +166,8 @@ var choises = ["rock", "paper", "scissors"];
     highscoreBtn = function(){
         var highscore_status = document.getElementById("highscore");
         if (highscore_status.value == "Submit highscore"){          //Förlust
-            batmanModel.submitHighscore();
+            $("#resultMenu").fadeOut();
+             $("#viewHighscore").fadeIn();
 
         }
         else if (continue_status.value == "View highscore"){        //Vinst
