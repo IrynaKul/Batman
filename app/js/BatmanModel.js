@@ -121,14 +121,11 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	this.setFiltered =function(query){
 		arrayObjects=[];
-		var query = query.toLowerCase();
-		
+		var query = query.toLowerCase();			
+		var counter=0;
 		for(var j=0; j<enemiesArray.length;j++){
 			var enemyname = enemiesArray[j].name.toLowerCase();
-			for(var i=0;i<13;i++){
-			
-				if (enemyname.indexOf(query)!== -1){
-					console.log(i);
+				if (enemyname.indexOf(query)!== -1 && counter<12){
 					findCharacter(enemiesArray[j].id).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -140,15 +137,9 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
-					
-					
-
-				}
-			break;
+				counter+=1;
 			}
-
 		}
-		
 	}
 
 

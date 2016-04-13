@@ -568,3 +568,11 @@ p{
     font-size: 18pt;
     font-family: pantonblack;
 }
+
+.welcome{
+	font-family:pantonblack; 
+	font-size: 100px;
+	letter-spacing: 4px; 
+	color: white; 
+	margin-top: 10%;
+}
