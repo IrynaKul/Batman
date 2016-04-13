@@ -260,6 +260,10 @@ p{
 	background-color: #232328;
 }
 
+.villain a{
+	text-decoration:none;
+}
+
 .circle {
 	width: 200px;
 	height: 200px;

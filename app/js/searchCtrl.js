@@ -1,5 +1,6 @@
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   $scope.top12=batmanModel.getTop12();
+  $("#morebutton").hide();
   $scope.array= function(){
     return batmanModel.getArray();
   }
@@ -17,9 +18,28 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
       display: 'none'
    });
    console.log(query);
-   batmanModel.setFiltered(query);
+   $scope.abc=batmanModel.setFiltered(query);
+   console.log($scope.abc);
+   hideshow();
    
  }
 
+ $scope.getMore = function(query){
+  console.log(query)
+  $scope.abc=batmanModel.getMoreFiltered(query);
+  hideshow();
+  //return batmanModel.getMoreFiltered(query);
+ };
+
+
+var hideshow=function(){
+
+ if ($scope.abc==1) {
+   $("#morebutton").show();
+  }
+  else{
+   $("#morebutton").hide();
+ }
+}
 
 });
