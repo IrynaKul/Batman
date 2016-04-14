@@ -260,6 +260,10 @@ p{
 	background-color: #232328;
 }
 
+.villain a{
+	text-decoration:none;
+}
+
 .circle {
 	width: 200px;
 	height: 200px;
@@ -595,4 +599,12 @@ p{
     top:-12px;
     font-size: 18pt;
     font-family: pantonblack;
+}
+
+.welcome{
+	font-family:pantonblack; 
+	font-size: 100px;
+	letter-spacing: 4px; 
+	color: white; 
+	margin-top: 10%;
 }
