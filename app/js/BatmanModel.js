@@ -9,6 +9,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	var searchArray=[];
 	var enemiesArray=[];
 	var character=[];
+	var arrayObjectsID=[];
 
 	//APIs
 	var findCharacter= this.findCharacter=function(filter){
@@ -124,14 +125,12 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	this.setFiltered =function(query){
 		arrayObjects=[];
-		var query = query.toLowerCase();
-		
+		var query = query.toLowerCase();			
+		counter=0;
+		hideshow=0;
 		for(var j=0; j<enemiesArray.length;j++){
 			var enemyname = enemiesArray[j].name.toLowerCase();
-			for(var i=0;i<13;i++){
-			
-				if (enemyname.indexOf(query)!== -1){
-					console.log(i);
+				if (enemyname.indexOf(query)!== -1 && counter<12){
 					findCharacter(enemiesArray[j].id).get(function(data){
 					var a=data.results[0];
 					arrayObjects.push({id:a.id,
@@ -143,17 +142,46 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 								gender:a.gender,
 								aliases:a.aliases});
 					});
-					
-					
+				counter+=1;
 
-				}
-			break;
 			}
 
+			}
+		if(counter>=12){
+			hideshow=1;
 		}
-		
+		return hideshow;
 	}
 
+	this.getMoreFiltered =function(query){
+		var query = query.toLowerCase();
+		hideshow=0;
+		counter=0;
+		for (var k=0;k<arrayObjects.length;k++){
+			arrayObjectsID.push(arrayObjects[k].id)
+		}
+		for(var j=0; j<enemiesArray.length;j++){
+			var enemyname = enemiesArray[j].name.toLowerCase();
+			if (enemyname.indexOf(query)!==-1 && counter<12 && j<enemiesArray.length && arrayObjectsID.indexOf(enemiesArray[j].id)==-1){
+				findCharacter(enemiesArray[j].id).get(function(data){
+					var a=data.results[0];
+					arrayObjects.push({id:a.id,
+								name:a.name,
+								real_name:a.real_name,
+								image:a.image,
+								deck:a.deck,
+								first_appeared_in_issue:a.first_appeared_in_issue,
+								gender:a.gender,
+								aliases:a.aliases});
+					});
+				counter+=1;
+			}
+			if(counter>=12){
+				hideshow=1;
+			}
+		}
+		return hideshow;
+	}
 
 	///////////////////////// måste fixas(kanske ändra attribut i enemies array till "dead":true/false);
 
@@ -187,7 +215,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		var gif;
 		for(var i=0;i<gifArray.length;i++){
 			if(characterId==gifArray[i].id){
-				//console.log("gifArray ", gifArray[i]);
 				gif=gifArray[i].gifurl;
 				break;
 			}
@@ -200,7 +227,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 //Lägger till skurken i listan enemiesBeaten när denna vunnits över
 	this.addBeatenEnemy = function(enemy) {
-		console.log("add")
 		enemiesBeaten.push(enemy);
 		$cookieStore.put("enemiesBeaten",enemiesBeaten);
 		console.log("enemiesBeaten ", enemiesBeaten, "cookie ", $cookieStore.get("enemiesBeaten"));
@@ -210,7 +236,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	this.clearBeatenEnemy = function(){
 		enemiesBeaten = [];
 		$cookieStore.remove("enemiesBeaten");
-		console.log("Game over! List cleared", enemiesBeaten)
+		console.log("Game over! List cleared", enemiesBeaten);
 	};
 
 //Tar ut listan med slagna skurkar

@@ -94,12 +94,23 @@
 
 		</div>
 
-		<div id="viewHighscore">
+		<div id="viewHighscore" ng-controller="HighscoreCtrl">
 
 		<div id="highscoreDiv">
-		<input type="text" id="scoreInput" placeholder="Enter a name">
+			<table>
+				<tr>
+					<th>NAME</th>
+					<th>SCORE</th>
+				</tr>
+				<tr ng-repeat="score in highscore">
+					<td>{{ score.name }}</td>
+					<td>{{ score.score }}</td>
+				</tr>
+			</table>
 		</div>
 
+		<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name">
+		<button ng-click="submitScore(scoreName)">Submit</button>
 
 
 		</div>

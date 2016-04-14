@@ -100,7 +100,7 @@ $scope.result=function(){
 
 
 
-    myScore = function(){
+    $scope.myScore = function(){
         return batmanModel.getUserScore();
     };    
 

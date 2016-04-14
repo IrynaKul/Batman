@@ -26,45 +26,47 @@
 	});
 </script>
 
-<script src="js/chat.js"></script>
-<script src="js/highscore.js"></script>
 
 <div id="sidebar">
 	<button id="highscoreBtn" style="display: inline-block; float: left; width: 190px; height: 50px; border-radius: 3px; border: none; outline: none; background: #535363;">Highscore</button>
 	<button id="chatBtn" style="display: inline-block; float: right; width: 190px; height: 50px; border-radius: 3px; border: none; outline: none; background: #2A2B37;">Chat</button>
 	
-	<div id="high" style="display:block;">
+	<div id="high" style="display:block;" ng-controller="HighscoreCtrl">
 		<div id="userScore">
 			<p style="padding-left: 20px;">{{myScore()}}</p>
 			<p style="padding-left: 20px;">{{beatenEnemies()}}</p>
 		</div>
 
-
-			<div id="highscoreDiv">
-			</div>
-
-
+		<div id="highscoreDiv">
+				<table>
+					<tr>
+						<th>NAME</th>
+						<th>SCORE</th>
+					</tr>
+					<tr ng-repeat="score in highscore">
+						<td><strong>{{ score.name }}</strong></td>
+						<td>{{ score.score }}</td>
+					</tr>    		
+       			<table>
+		</div>
 	</div>
 
-	<div id="chat" style="display:none;">
-<!-- 		  <div class='example-chat-toolbar'>
-		    <label for="nameInput"></label>
-		    <input type='text' id='nameInput' placeholder='Enter name...'>
-		  </div>
 
-		  	<ul id='example-messages' class="example-chat-messages"></ul>
+	<div id="chat" style="display:none;" ng-controller="ChatCtrl">
 
-		  <footer>
-		    <input type='text' id='messageInput'  placeholder='Type a message...'>
-		  </footer> -->
+      <div id="messagesDiv">
+        <p ng-repeat="msg in messages">
+          <em>{{ msg.name }}</em>
+          {{ msg.text }}
+        </p>
+      </div>
 
-		<div id='messagesDiv'>
+ 		<div id="chatInput">
+	    	<input ng-model="name" type="text" id="nameInput" placeholder="Name">
+	    	<textarea rows="2" cols="45" ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput"  placeholder="Message">
 		</div>
 
-		<div id="chatInput">
-	    	<input type='text' id='nameInput' placeholder='Name'>
-	    	<textarea rows="2" cols="45" id='messageInput' placeholder='Message'/>
-		</div>
+
 	</div>
 
 </div>
