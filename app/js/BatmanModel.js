@@ -79,7 +79,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				];
 
 
-	var enemiesBeaten = [6129,1696]; //Lista med slagna skurkar
+	var enemiesBeaten = $cookieStore.get("enemiesBeaten"); //Lista med slagna skurkar
+	if(typeof enemiesBeaten=="undefined"){
+		enemiesBeaten=[];
+	}
 	// var highscoreList = [];	//Temporär lista med highscore
 
 
@@ -184,7 +187,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		var gif;
 		for(var i=0;i<gifArray.length;i++){
 			if(characterId==gifArray[i].id){
-				console.log("gifArray ", gifArray[i]);
+				//console.log("gifArray ", gifArray[i]);
 				gif=gifArray[i].gifurl;
 				break;
 			}
@@ -199,12 +202,14 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	this.addBeatenEnemy = function(enemy) {
 		console.log("add")
 		enemiesBeaten.push(enemy);
-		console.log(enemiesBeaten);
+		$cookieStore.put("enemiesBeaten",enemiesBeaten);
+		console.log("enemiesBeaten ", enemiesBeaten, "cookie ", $cookieStore.get("enemiesBeaten"));
 	};
 
 //Clearar listan med slagna skurkar då man förlorat
 	this.clearBeatenEnemy = function(){
 		enemiesBeaten = [];
+		$cookieStore.remove("enemiesBeaten");
 		console.log("Game over! List cleared", enemiesBeaten)
 	};
 
@@ -232,6 +237,138 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		return waitingGif;
 	}
 	this.setEnemiesArray();
+
+
+////////////// Game /////////////////////////
+	//$cookieStore.remove('userWinning');
+	//$cookieStore.remove('computerWinning');
+	var userChoice;
+	var userWinning = $cookieStore.get('userWinning');
+	if(typeof userWinning=="undefined"){
+		userWinning=0;
+	}
+	var computerWinning = $cookieStore.get('computerWinning');
+	if(typeof computerWinning=="undefined"){
+		computerWinning=0;
+	}
+	console.log("userWinning ", userWinning, "computerWinning ", computerWinning);
+	var choises = ["rock", "paper", "scissors"];
+	var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+	var setRoundChoice;
+
+	this.setUserChoise= function(choise){
+		userChoice = choise;
+	}
+
+	this.getPicture = function(){
+		var src;
+		if (computerChoice =='rock') {
+			src="https://www.randomlists.com/img/rock-paper-scissors/rock.png";
+        }
+
+        else if (computerChoice =='paper') {
+        	src="http://www.veryicon.com/icon/ico/System/Icons8%20Metro%20Style/Rock%20Paper%20Scissors%20Paper.ico";
+        }
+
+        else if (computerChoice =='scissors') {
+        	src="http://megaicons.net/static/img/icons_sizes/8/178/256/rock-paper-scissors-scissors-icon.png";
+        }
+        return src;
+	}
+
+	this.compareChoices=function(){
+		if(userChoice == "rock"){
+            if(computerChoice == "rock"){
+                console.log("TIE!");
+            }
+            else if(computerChoice == "paper"){
+                console.log("Computer wins");
+                computerWinning += 1;
+                setRoundChoice=false;
+            }
+            else if(computerChoice == "scissors"){
+                console.log("You win");
+                userWinning += 1;
+                setRoundChoice=true;
+            }
+        }
+        
+        else if(userChoice == "paper"){
+            if(computerChoice == "rock"){
+                console.log("You win!");
+                userWinning += 1;
+                setRoundChoice=true;
+            }
+            else if(computerChoice == "paper"){
+                console.log("TIE");
+            }
+            else if(computerChoice == "scissors"){
+                console.log("You lose");
+                computerWinning += 1;
+                setRoundChoice=false;
+            }
+        }
+        
+        else if(userChoice == "scissors"){
+            if(computerChoice == "rock"){
+                console.log("You lose!");
+                computerWinning += 1;
+                setRoundChoice=false;
+                
+            }
+            else if(computerChoice == "paper"){
+                console.log("You win");
+                userWinning += 1;
+                setRoundChoice=true;
+            }
+            else if(computerChoice == "scissors"){
+                console.log("Tie");
+            }
+        }
+        $cookieStore.put('userWinning',userWinning);
+        $cookieStore.put('computerWinning',computerWinning);
+        //console.log("user ", $cookieStore.get('userWinning'));
+        //console.log("computer ", $cookieStore.get('computerWinning'));
+	}
+	this.clearGameCookies=function(){
+		//console.log("userWinning ", $cookieStore.get("userWinning"),"computerWinning", $cookieStore.get("computerWinning"));
+		userWinning=0;
+		computerWinning=0;
+		$cookieStore.remove('userWinning');
+		$cookieStore.remove('computerWinning');
+	}
+
+	var setRound= this.setRound = function(){
+		var background;
+        if (setRoundChoice == true) {
+        	background="darkgreen";
+        }
+        else {
+        	background="darkred";
+        }
+        return background;
+    }
+
+    this.getUserWinning=function(){
+    	return userWinning;
+    }
+
+    this.getComputerWinning=function(){
+    	return computerWinning;
+    }
+
+    this.getRoundChoice=function(){
+    	return setRoundChoice;
+    }
+
+    this.getSumResult=function(){
+    	return userWinning+computerWinning;
+    }
+
+
+
+
+
 	return this;
 
 

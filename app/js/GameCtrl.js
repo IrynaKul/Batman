@@ -13,84 +13,33 @@ $scope.getGif=function(){
     return batmanModel.getGif();
 }
 
-var userChoice = "";
-var userWinning = 0;
-var computerWinning = 0;
-var choises = ["rock", "paper", "scissors"];
+$scope.getPicture=function(){
+    return batmanModel.getPicture();
+}
+
+$scope.userWinning=function(){
+    return batmanModel.getUserWinning();
+}
+$scope.computerWinning=function(){
+    return batmanModel.getComputerWinning();
+}
+
+$scope.getColor=function() {
+    return batmanModel.setRound();
+}
+
+$scope.result=function(){
+    return batmanModel.getSumResult();
+}
 
     $scope.setChoise = function(choise){
-        userChoice = choise;
-        // var computerChoice = choises[Math.floor(Math.random()*choises.length)];
-        var computerChoice = "rock";
-        console.log("ditt val: " + userChoice);
-        console.log("datorns val: " + computerChoice);
-
-        if (computerChoice =='rock') {
-            $("#villain_choise_img").attr({
-                "src": "https://www.randomlists.com/img/rock-paper-scissors/rock.png"
+        batmanModel.setUserChoise(choise);
+        $("#villain_choise_img").attr({
+               "src": $scope.getPicture()
             });
-        }
+        batmanModel.compareChoices();
 
-        else if (computerChoice =='paper') {
-            $("#villain_choise_img").attr({
-                "src": "http://www.veryicon.com/icon/ico/System/Icons8%20Metro%20Style/Rock%20Paper%20Scissors%20Paper.ico"
-            });
-        }
-
-        else if (computerChoice =='scissors') {
-            $("#villain_choise_img").attr({
-                "src": "http://megaicons.net/static/img/icons_sizes/8/178/256/rock-paper-scissors-scissors-icon.png"
-            });
-        }
-
-        if(userChoice == "rock"){
-            if(computerChoice == "rock"){
-                console.log("TIE!");
-            }
-            else if(computerChoice == "paper"){
-                console.log("Computer wins");
-                computerWinning += 1;
-                setTimeout(function(){setRound(false);}, 3000);
-            }
-            else if(computerChoice == "scissors"){
-                console.log("You win");
-                userWinning += 1;
-                setTimeout(function(){setRound(true);}, 3000);
-            }
-        }
-
-        else if(userChoice == "paper"){
-            if(computerChoice == "rock"){
-                console.log("You win!");
-                userWinning += 1;
-                setTimeout(function(){setRound(true);}, 3000);
-            }
-            else if(computerChoice == "paper"){
-                console.log("TIE");
-            }
-            else if(computerChoice == "scissors"){
-                console.log("You lose");
-                computerWinning += 1;
-                setTimeout(function(){setRound(false);}, 3000);
-            }
-        }
-
-        else if(userChoice == "scissors"){
-            if(computerChoice == "rock"){
-                console.log("You lose!");
-                computerWinning += 1;
-                setTimeout(function(){setRound(false);}, 3000);
-            }
-            else if(computerChoice == "paper"){
-                console.log("You win");
-                userWinning += 1;
-                setTimeout(function(){setRound(true);}, 3000);
-            }
-            else if(computerChoice == "scissors"){
-                console.log("Tie");
-            }
-        }
-
+        
         setTimeout(function(){
             resetPosition(choise);
         }, 3000);
@@ -99,11 +48,16 @@ var choises = ["rock", "paper", "scissors"];
             decideWinner();
         }, 2500);
 
+        setTimeout(function(){
+            setRound();
+        },3000);
+
     }
 
     decideWinner = function(){
-        if (userWinning == 2) {
-            batmanModel.addBeatenEnemy($scope.getCharacter()[0].name);
+        //console.log("userWinning ",$scope.userWinning());
+        if ($scope.userWinning() = 2) {
+            batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
 
             console.log("You win everything!!");
             $("#resultPicture").attr({
@@ -114,15 +68,15 @@ var choises = ["rock", "paper", "scissors"];
 
             var highscore_status = document.getElementById("highscore");
             var continue_status = document.getElementById("continue");
-            highscore_status.value="View highscore"
-            continue_status.value="Continue"
+            highscore_status.value="View highscore";
+            continue_status.value="Continue";
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
 
             $("#resultMenu").fadeIn();({
             });
         }
 
-        else if (computerWinning == 2) {
+        else if ($scope.computerWinning() = 2) {
             console.log("You lose everything!!");
             $("#resultPicture").attr({
                 "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
@@ -132,8 +86,8 @@ var choises = ["rock", "paper", "scissors"];
 
             var highscore_submit = document.getElementById("highscore");
             var continue_status = document.getElementById("continue");
-            highscore_submit.value="Submit highscore"
-            continue_status.value="Game Over"
+            highscore_submit.value="Submit highscore";
+            continue_status.value="Game Over";
 
             // document.getElementById("resultText2").innerHTML = "Hit Game Over to start over. Hit  to submit your highscore";
 
@@ -155,8 +109,10 @@ var choises = ["rock", "paper", "scissors"];
         var continue_status = document.getElementById("continue");
         if (continue_status.value == "Game Over"){                  //Förlust
             batmanModel.clearBeatenEnemy();
+            batmanModel.clearGameCookies();
         }
         else if (continue_status.value == "Continue"){              //Vinst
+            batmanModel.clearGameCookies();
             // back to search
         }
         console.log("game over/continue", continue_status.value); 
@@ -206,45 +162,23 @@ var choises = ["rock", "paper", "scissors"];
         }, 1000);
     }
 
-    setRound = function(boolean){
-        if (userWinning + computerWinning == 1) {
-            if (boolean == true) {
-                $("#roundcircle1").css({
-                background: 'darkgreen'
-                });
-            }
-            else {
-                $("#roundcircle1").css({
-                background: 'darkred'
-                });
-            }
-        }
-        else if (userWinning + computerWinning == 2) {
-            if (boolean == true) {
-                $("#roundcircle2").css({
-                background: 'darkgreen'
-                });
-            }
-            else {
-                $("#roundcircle2").css({
-                background: 'darkred'
-                });
-            }
-        }
-        else if (userWinning + computerWinning == 3) {
-            if (boolean == true) {
-                $("#roundcircle3").css({
-                background: 'darkgreen'
-                });
-            }
-            else {
-                $("#roundcircle3").css({
-                background: 'darkred'
-                });
-            }
-
-        }
-
+    setRound=function(){
+    if($scope.result()==1){
+        $("#roundcircle1").css({
+            background: $scope.getColor()
+        })
     }
+    else if($scope.result()==2){
+        $("#roundcircle2").css({
+            background: $scope.getColor()
+        })
+    }
+    else if($scope.result()==3){
+        $("#roundcircle3").css({
+            background: $scope.getColor()
+        })
+    }
+}
+
     
 })
