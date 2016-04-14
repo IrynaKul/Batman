@@ -146,7 +146,7 @@ var choises = ["rock", "paper", "scissors"];
 
 
 
-    myScore = function(){
+    $scope.myScore = function(){
         return batmanModel.getUserScore();
     };    
 
