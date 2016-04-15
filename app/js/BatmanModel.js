@@ -150,6 +150,9 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		if(counter>=12){
 			hideshow=1;
 		}
+		else if(counter==0){
+			hideshow=2;
+		}
 		return hideshow;
 	}
 

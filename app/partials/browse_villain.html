@@ -10,8 +10,9 @@
 
 <div class="menu" style="margin: 30px;">
 	<p>Choose your villain</p>
-	<input class="input_form" style="width: 150px; border-radius: 10px; margin-top: 5px; padding-left: 5px;" ng-model="name"/>
-	<a ng-click="search(name)" style="margin: 3px;">
+	<input class="input_form" style="width: 150px; border-radius: 10px; margin-top: 5px; padding-left: 5px;" ng-model="name"  onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('fuckfuck').click()"/>
+	<a id="fuckfuck" ng-click="search(name)" style="margin: 3px;">
 		<img src="http://www.tarsa.ca/wp-content/uploads/2015/06/search.png" style="width: 20px; -webkit-filter: invert(1); filter: invert(1);">
 	</a>
 <!-- 		<button id="activate" style="float: right;">activate</button>
@@ -29,6 +30,10 @@
 			<br/>
 			<div class="nametag" style="left: 25%; right: 25%; margin-top: -30px;">{{a.name}}</div>
 		</a>
+	</div>
+	<div class="noresults">
+		<img src="http://i.imgur.com/zO6q4iY.gif">
+		<p style="color:white; font-family:pantonblack; letter-spacing:2pt; margin-top:10px;">No results found</p>
 	</div>
 	
 </div>
