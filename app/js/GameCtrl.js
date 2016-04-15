@@ -101,6 +101,7 @@ $scope.result=function(){
 
 
     $scope.myScore = function(){
+        console.log("score",batmanModel.getUserScore());
         return batmanModel.getUserScore();
     };    
 

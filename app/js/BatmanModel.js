@@ -254,7 +254,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 //Tar ut score
  	this.getUserScore = function(){
 		var score = enemiesBeaten.length;
-		console.log("userscore",score);
 		return score;
 	};
 
