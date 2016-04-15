@@ -1,4 +1,4 @@
-batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel){
+batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel, $location){
 
 // $scope.getCharacterId=function(){
 //     return batmanModel.getCharacterId();
@@ -115,11 +115,12 @@ $scope.result=function(){
         var continue_status = document.getElementById("continue");
         if (continue_status.value == "Game Over"){                  //Förlust
             batmanModel.clearBeatenEnemy();
+            $location.path('/home');
+
         }
         else if (continue_status.value == "Continue"){              //Vinst
             // back to search
         }
-        console.log("game over/continue", continue_status.value); 
     };
 
 //Högra knappen
@@ -133,7 +134,9 @@ $scope.result=function(){
 
         }
         else if (continue_status.value == "View highscore"){        //Vinst
-            // view highscore
+            $("#viewHighscore").fadeIn();
+            $("#submitDiv").hide();
+            $("#startoverbtn").hide();
         }
     }
 

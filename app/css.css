@@ -249,6 +249,7 @@ p{
 }
 
 .nametag{
+	z-index: 1;
 	position: absolute;
 	font-family: pantonblack;
 	font-size: 20px;
@@ -366,7 +367,7 @@ p{
 
 #highscoreDiv td {
 	font-family: pantonlight;
-	font-size: 20px;
+	font-size: 18px;
 	width: 120px;
 	text-align: center;
 }
@@ -383,15 +384,15 @@ p{
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	margin-top: 30px;
 	position: absolute;
-	width: 750px;
-	height: 460px;
+	width: 760px;
+	height: 420px;
 	background-color: #535363;
 	border: 5px solid white;
 	overflow-y: hidden;
 	color: white;
 }
+
 
 #startoverbtn {
 	width: 170px;
@@ -462,10 +463,9 @@ p{
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	margin-top: 30px;
 	position: absolute;
-	width: 750px;
-	height: 360px;
+	width: 760px;
+	height: 420px;
 	background-color: darkred;
 	border: 5px solid white;
 	overflow-y: hidden;
