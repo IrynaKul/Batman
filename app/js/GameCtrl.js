@@ -56,7 +56,7 @@ $scope.result=function(){
 
     decideWinner = function(){
         //console.log("userWinning ",$scope.userWinning());
-        if ($scope.userWinning() = 2) {
+        if ($scope.userWinning() == 2) {
             batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
 
             console.log("You win everything!!");
@@ -76,7 +76,7 @@ $scope.result=function(){
             });
         }
 
-        else if ($scope.computerWinning() = 2) {
+        else if ($scope.computerWinning() == 2) {
             console.log("You lose everything!!");
             $("#resultPicture").attr({
                 "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
