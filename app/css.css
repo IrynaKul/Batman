@@ -408,6 +408,14 @@ p{
 }
 
 
+#continuebtn {
+	width: 170px;
+	height: 35px;
+	font-size: 20px;
+	letter-spacing: 1px;
+	padding:0px 0px;
+}
+
 /* FIGHT */
 
 .fighter_box {

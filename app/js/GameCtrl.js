@@ -1,4 +1,4 @@
-batmanPlannerApp.controller('GameCtrl', function($scope, batmanModel, $location){
+batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel){
 
 // $scope.getCharacterId=function(){
 //     return batmanModel.getCharacterId();
@@ -71,13 +71,16 @@ $scope.result=function(){
             document.getElementById("resultText").innerHTML = "YOU WIN";
 
             var highscore_status = document.getElementById("highscore");
-            var continue_status = document.getElementById("continue");
+            var continue_status = document.getElementById("continue1");
             highscore_status.value="View highscore";
-            continue_status.value="Continue";
+            continue_status.value="Next Villain";
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
 
             $("#resultMenu").fadeIn();({
             });
+            $("#continue1").css({
+                display:'block'
+            })
         }
 
         else if ($scope.computerWinning() == 2) {
@@ -87,17 +90,20 @@ $scope.result=function(){
                 "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
                 // "src": "http://images-cdn.moviepilot.com/image/upload/c_limit,h_379,w_500/t_mp_quality/batman-v-superman-who-would-win-in-this-situation-superman-breaks-the-bat-jpeg-74958.jpg"
             });
-            document.getElementById("resultText").innerHTML = "YOU LOSE";
+            document.getElementById("resultText").innerHTML = "GAME OVER";
 
             var highscore_submit = document.getElementById("highscore");
-            var continue_status = document.getElementById("continue");
+            var continue_status = document.getElementById("continue2");
             highscore_submit.value="Submit highscore";
-            continue_status.value="Game Over";
+            continue_status.value="Start Over";
 
             // document.getElementById("resultText2").innerHTML = "Hit Game Over to start over. Hit  to submit your highscore";
 
             $("#resultMenu").fadeIn();({
             });
+            $("#continue2").css({
+                display:'block'
+            })
 
         }
 
@@ -113,13 +119,16 @@ $scope.result=function(){
 //Vänstra knappen
     continueBtn = function(){
         var continue_status = document.getElementById("continue");
-        if (continue_status.value == "Game Over"){                  //Förlust
+        if (continue_status.value == "Start Over"){                  //Förlust
             batmanModel.clearBeatenEnemy();
-            $location.path('/home');
-
+            //$location.path('/home');
+            console.log("start over btn")
+            
         }
-        else if (continue_status.value == "Continue"){              //Vinst
-            // back to search
+        else if (continue_status.value == "Next Villain"){            //Vinst
+            //$location.path('/search');
+            
+            console.log("ny villain btn")
         }
     };
 
@@ -129,14 +138,16 @@ $scope.result=function(){
         if (highscore_status.value == "Submit highscore"){          //Förlust
             $("#resultMenu").fadeOut();
             $("#viewHighscore").fadeIn();
+            $("#continuebtn").hide();
             $("#startoverbtn").hide();
             $("#submitDiv").show();
 
         }
-        else if (continue_status.value == "View highscore"){        //Vinst
+        else if (highscore_status.value == "View highscore"){        //Vinst
             $("#viewHighscore").fadeIn();
             $("#submitDiv").hide();
             $("#startoverbtn").hide();
+            $("#continuebtn").show();
         }
     }
 
