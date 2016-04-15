@@ -1,13 +1,12 @@
-<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
-
 <div class="header">
 	<p>BATMAN</p>
 	<p style="font-size: 15px;">Fuck you crime</p>
 	<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back</span></a>
-	<input type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
 </div>
-
-
+<div id="side">
+<input type="button" value="Show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -60px; margin-right:20px; border: none;"></input>
+</div>
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 <div id="container">
 	<div id="characterinfo">
 		<div id="leftinfo">
