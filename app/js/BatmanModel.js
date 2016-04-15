@@ -253,7 +253,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 //Tar ut score
  	this.getUserScore = function(){
-		var score = enemiesBeaten.length
+		var score = enemiesBeaten.length;
+		console.log("userscore",score);
 		return score;
 	};
 
@@ -281,7 +282,9 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	}
 	console.log("userWinning ", userWinning, "computerWinning ", computerWinning);
 	var choises = ["rock", "paper", "scissors"];
-	var computerChoice; 
+
+	// var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+	var computerChoice = "rock";
 	var setRoundChoice;
 
 	this.setUserChoise= function(choise){

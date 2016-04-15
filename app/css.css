@@ -14,7 +14,7 @@
 #characterinfo {
 	background-color: #535363;
 	width: 800px;
-	min-height: 600px;
+	min-height: 500px;
 	margin: 60px auto 0 auto;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 25px 0 rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
@@ -388,6 +388,10 @@ p{
 	width: 120px;
 	padding-bottom: 15px;
 	letter-spacing: 2px;
+}
+
+#highscoreDiv p {
+	display: none;
 }
 
 #highscoreDiv td {
