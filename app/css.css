@@ -97,7 +97,7 @@ div #name {
 
 #imageinfo img {
 	max-width: 95%;
-	max-height:95%; 
+	max-height:350px; 
 	display:block;
 	border: 5px solid #2f2d49;
 	margin-bottom: 10px;
