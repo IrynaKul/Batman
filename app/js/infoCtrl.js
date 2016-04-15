@@ -19,9 +19,9 @@ $scope.status = "Searching...";
 batmanModel.findCharacter(id).get(function(data){
   $scope.villain=data.results[0];
   $scope.aliases = $scope.villain.aliases;
-  $scope.alias = $scope.aliases.split("\n");
-
-  for (var i=0; i < $scope.alias.length;i++){
+  if($scope.aliases){
+    $scope.alias = $scope.aliases.split("\n");
+    for (var i=0; i < $scope.alias.length;i++){
      if (i==$scope.alias.length){
      }
      else if(i==0){
@@ -32,6 +32,13 @@ batmanModel.findCharacter(id).get(function(data){
      }
    }
    $scope.alias=String($scope.alias)
+  }
+  else{
+    $scope.alias= "Unknown";
+  }
+  
+
+
 
   if($scope.villain.real_name==null){
     $scope.real_name="Unknown";
