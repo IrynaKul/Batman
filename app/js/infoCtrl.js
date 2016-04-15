@@ -5,13 +5,11 @@ $("#backbutton").click(function(){
 
 var id=$routeParams.characterId;
 batmanModel.setCharacterId(id);
-var isDead=function(id){
+$scope.isDead=function(id){
   return batmanModel.setEnemyToDead(id);
  }
-isDead(id);
-console.log("dead ",isDead()[0].dead);
-if(isDead()[0].dead=="block"){
-  $("#fightbtn").css({
+if($scope.isDead(id)[0].dead=="block"){
+  $(".fightbtn").css({
     display:'none'
   })
 }

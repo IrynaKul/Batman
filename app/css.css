@@ -84,7 +84,7 @@ div #name {
 	max-width: 95%;
 	max-height:95%; 
 	display:block;
-	border: 5px solid white;
+	border: 5px solid #2f2d49;
 	margin-bottom: 10px;
 	border-radius: 2px;
 }
