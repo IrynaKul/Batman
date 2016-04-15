@@ -5,6 +5,15 @@ $("#backbutton").click(function(){
 
 var id=$routeParams.characterId;
 batmanModel.setCharacterId(id);
+$scope.isDead=function(id){
+  return batmanModel.setEnemyToDead(id);
+ }
+if($scope.isDead(id)[0].dead=="block"){
+  $(".fightbtn").css({
+    display:'none'
+  })
+}
+
 
 $scope.status = "Searching...";
 batmanModel.findCharacter(id).get(function(data){
