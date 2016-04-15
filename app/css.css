@@ -612,3 +612,10 @@ p{
 	color: white; 
 	margin-top: 10%;
 }
+
+#dead{
+	display:none;
+	z-index: 1;
+	background-color: darkred;
+	left: 50px;
+}

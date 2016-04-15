@@ -24,10 +24,10 @@
 	<img id="waiting" style="max-width:100%; position: relative; left: 0px;"/>
 	<div id="villain" class="villain" ng-repeat="a in getObj()">
 		<a ng-href="#/info/{{a.id}}" type="button">
-			<div id="dead" class="smallcircle" style="background-color: darkred; z-index: 1; display: none;">
+			<div id="dead" class="smallcircle" ng-style="{'display':isDead(a.id)[0].dead}">
 				<img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Healthcare-Skull-icon.png" style="max-width:70%; max-height:70%; margin-top: 8px;"/>
 			</div>
-			<img id="villain_image" class="circle" style="-webkit-filter: grayscale(0%);" src="{{a.image.small_url}}"/>
+			<img id="villain_image" class="circle" style="-webkit-filter:grayscale({{isDead(a.id)[0].grayscale}}%)" src="{{a.image.small_url}}"/>
 			<br/>
 			<div class="nametag" style="left: 25%; right: 25%; margin-top: -30px;">{{a.name}}</div>
 		</a>
