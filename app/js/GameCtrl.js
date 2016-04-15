@@ -34,10 +34,13 @@ $scope.result=function(){
 
     $scope.setChoise = function(choise){
         batmanModel.setUserChoise(choise);
+        batmanModel.compareChoices();
         $("#villain_choise_img").attr({
                "src": $scope.getPicture()
             });
-        batmanModel.compareChoices();
+        setTimeout(function(){
+            setRound();
+        }, 2500);
 
         
         setTimeout(function(){
@@ -46,18 +49,19 @@ $scope.result=function(){
 
         setTimeout(function(){
             decideWinner();
-        }, 2500);
+        }, 3000);
 
-        setTimeout(function(){
-            setRound();
-        },3000);
+        
 
     }
 
     decideWinner = function(){
         //console.log("userWinning ",$scope.userWinning());
         if ($scope.userWinning() == 2) {
+            console.log("userWinning ", batmanModel.getUserWinning());
+            batmanModel.clearGameCookies();
             batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
+            console.log("userWinning ", batmanModel.getUserWinning());
 
             console.log("You win everything!!");
             $("#resultPicture").attr({
@@ -77,6 +81,7 @@ $scope.result=function(){
         }
 
         else if ($scope.computerWinning() == 2) {
+            batmanModel.clearGameCookies();
             console.log("You lose everything!!");
             $("#resultPicture").attr({
                 "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
@@ -109,10 +114,8 @@ $scope.result=function(){
         var continue_status = document.getElementById("continue");
         if (continue_status.value == "Game Over"){                  //Förlust
             batmanModel.clearBeatenEnemy();
-            batmanModel.clearGameCookies();
         }
         else if (continue_status.value == "Continue"){              //Vinst
-            batmanModel.clearGameCookies();
             // back to search
         }
         console.log("game over/continue", continue_status.value); 

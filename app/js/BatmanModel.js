@@ -269,17 +269,19 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	//$cookieStore.remove('userWinning');
 	//$cookieStore.remove('computerWinning');
 	var userChoice;
-	var userWinning = $cookieStore.get('userWinning');
+	//var userWinning = $cookieStore.get('userWinning');
+	var userWinning=0;
 	if(typeof userWinning=="undefined"){
 		userWinning=0;
 	}
-	var computerWinning = $cookieStore.get('computerWinning');
+	//var computerWinning = $cookieStore.get('computerWinning');
+	var computerWinning=0;
 	if(typeof computerWinning=="undefined"){
 		computerWinning=0;
 	}
 	console.log("userWinning ", userWinning, "computerWinning ", computerWinning);
 	var choises = ["rock", "paper", "scissors"];
-	var computerChoice = choises[Math.floor(Math.random()*choises.length)];
+	var computerChoice; 
 	var setRoundChoice;
 
 	this.setUserChoise= function(choise){
@@ -303,17 +305,18 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	}
 
 	this.compareChoices=function(){
+		computerChoice= choises[Math.floor(Math.random()*choises.length)];
 		if(userChoice == "rock"){
             if(computerChoice == "rock"){
                 console.log("TIE!");
             }
             else if(computerChoice == "paper"){
-                console.log("Computer wins");
+                console.log("Computer wins(papper slår rock)");
                 computerWinning += 1;
                 setRoundChoice=false;
             }
             else if(computerChoice == "scissors"){
-                console.log("You win");
+                console.log("You win(rock slår scissors)");
                 userWinning += 1;
                 setRoundChoice=true;
             }
@@ -321,7 +324,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
         
         else if(userChoice == "paper"){
             if(computerChoice == "rock"){
-                console.log("You win!");
+                console.log("You win(paper slår rock)");
                 userWinning += 1;
                 setRoundChoice=true;
             }
@@ -329,7 +332,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
                 console.log("TIE");
             }
             else if(computerChoice == "scissors"){
-                console.log("You lose");
+                console.log("Computer wins(rock slår scissors)");
                 computerWinning += 1;
                 setRoundChoice=false;
             }
@@ -337,13 +340,13 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
         
         else if(userChoice == "scissors"){
             if(computerChoice == "rock"){
-                console.log("You lose!");
+                console.log("Computer wins(rock slår scissors)");
                 computerWinning += 1;
                 setRoundChoice=false;
                 
             }
             else if(computerChoice == "paper"){
-                console.log("You win");
+                console.log("You win(scissors slår paper)");
                 userWinning += 1;
                 setRoundChoice=true;
             }
@@ -351,8 +354,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
                 console.log("Tie");
             }
         }
-        $cookieStore.put('userWinning',userWinning);
-        $cookieStore.put('computerWinning',computerWinning);
+        // $cookieStore.put('userWinning',userWinning);
+        // $cookieStore.put('computerWinning',computerWinning);
         //console.log("user ", $cookieStore.get('userWinning'));
         //console.log("computer ", $cookieStore.get('computerWinning'));
 	}
@@ -360,8 +363,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		//console.log("userWinning ", $cookieStore.get("userWinning"),"computerWinning", $cookieStore.get("computerWinning"));
 		userWinning=0;
 		computerWinning=0;
-		$cookieStore.remove('userWinning');
-		$cookieStore.remove('computerWinning');
+		// $cookieStore.remove('userWinning');
+		// $cookieStore.remove('computerWinning');
 	}
 
 	var setRound= this.setRound = function(){
