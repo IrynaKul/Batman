@@ -427,9 +427,10 @@ p{
 
 }
 
-.nametagchoice{
-	height: 50%
+.nametagchoice img{
+	height: 70%
 }
+
 
 .vsnametag{
 	display:block;
@@ -440,7 +441,7 @@ p{
 	background-color: #fade28;
 	padding: 5px;
 	border-radius: 10px;
-	width: 175px;
+	width: 150px;
 
 	margin:20px auto 0 auto;
 
