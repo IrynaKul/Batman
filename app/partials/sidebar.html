@@ -33,7 +33,7 @@
 	
 	<div id="high" style="display:block;" ng-controller="HighscoreCtrl">
 		<div id="userScore">
-			<p style="padding-left: 20px;">{{myScore()}}</p>
+			<p style="padding-left: 20px;">{{ScoreLenght()}}</p>
 			<p style="padding-left: 20px;">{{beatenEnemies()}}</p>
 		</div>
 
@@ -43,14 +43,13 @@
 						<th>NAME</th>
 						<th>SCORE</th>
 					</tr>
-					<tr ng-repeat="score in highscore">
+					<tr ng-repeat="score in highscore | orderBy: 'score':true">
 						<td><strong>{{ score.name }}</strong></td>
 						<td>{{ score.score }}</td>
 					</tr>    		
-       			<table>
+       			</table>
 		</div>
 	</div>
-
 
 	<div id="chat" style="display:none;" ng-controller="ChatCtrl">
 

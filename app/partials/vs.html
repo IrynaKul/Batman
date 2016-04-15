@@ -106,7 +106,7 @@
 					<th>NAME</th>
 					<th>SCORE</th>
 				</tr>
-				<tr ng-repeat="score in highscore">
+				<tr ng-repeat="score in highscore | orderBy: 'score':true">
 					<td>{{ score.name }}</td>
 					<td>{{ score.score }}</td>
 				</tr>
