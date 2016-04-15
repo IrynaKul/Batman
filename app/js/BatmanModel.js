@@ -56,6 +56,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 						aliases:info.aliases});
 		})
 	}
+	console.log("show character ", character);
 
 	//array with searching GIFs
 	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
@@ -92,7 +93,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	this.getTop12 = function(){
 		// $cookieStore.remove('characterId');
-		console.log("ska inte finnas ", typeof characterId, characterId);
 		arrayObjects=[];
 		for (var i=0;i<top12id.length;i++){
 				findCharacter(top12id[i]).get(function(data){
