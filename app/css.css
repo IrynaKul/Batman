@@ -321,6 +321,7 @@ p{
 
 #sidebar {
 	display: none;
+	margin-top: 60px;
 	/*background-color: #2A2B37;*/
 	background-color: #535363;
 	float:right;
@@ -438,7 +439,30 @@ p{
 }
 
 .fighter_box img {
-	margin: 30px 0px 20px 0px;
+	display: block;
+	height: 45%;
+	margin: 30px auto 20px auto;
+
+}
+
+.nametagchoice{
+	height: 50%
+}
+
+.vsnametag{
+	display:block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	background-color: #fade28;
+	padding: 5px;
+	border-radius: 10px;
+	width: 175px;
+
+	margin:20px auto 0 auto;
+
+	box-shadow: 5px 5px 5px black;
 }
 
 .flipimg {
@@ -523,13 +547,13 @@ p{
 
 
 #backbutton {
-    background: #f4c914;
-    background: -moz-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: -o-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
-    background: -webkit-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    border: solid #f4c914;
+    background: #fade28;
+    background: -moz-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: -o-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fade28), color-stop(100%, #fade28));
+    background: -webkit-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: linear-gradient(top, #fade28 0%, #fade28 100%);
+    border: solid #fade28;
     border-width: 1px 1px 1px 0;
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
@@ -547,13 +571,13 @@ p{
 }
 
 #backbutton:before {
-    background: #f4c914;
-    background: -moz-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: -o-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
-    background: -webkit-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    border: solid #f4c914;
+    background: #fade28;
+    background: -moz-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: -o-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #fade28), color-stop(100%, #fade28));
+    background: -webkit-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    border: solid #fade28;
     border-width: 0 0 1px 1px;
     border-radius: 2px 0 2px 2px;
     content: '';
