@@ -28,8 +28,11 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   console.log(query)
   $scope.abc=batmanModel.getMoreFiltered(query);
   hideshow();
-  //return batmanModel.getMoreFiltered(query);
  };
+
+ $scope.isDead=function(id){
+  return batmanModel.setEnemyToDead(id);
+ }
 
 
 var hideshow=function(){
