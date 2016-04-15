@@ -307,7 +307,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	}
 
 	this.compareChoices=function(){
-		computerChoice= choises[Math.floor(Math.random()*choises.length)];
+		// computerChoice= choises[Math.floor(Math.random()*choises.length)];
 		if(userChoice == "rock"){
             if(computerChoice == "rock"){
                 console.log("TIE!");

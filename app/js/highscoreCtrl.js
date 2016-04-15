@@ -1,4 +1,4 @@
-batmanPlannerApp.controller("HighscoreCtrl", function($scope, $firebaseArray, batmanModel) {
+batmanPlannerApp.controller("HighscoreCtrl", function($scope, $firebaseArray, $location, batmanModel) {
           
   var highscoreRef = new Firebase('https://batman-highscore.firebaseio.com/');
   $scope.scorelist = $firebaseArray(highscoreRef);
@@ -14,11 +14,10 @@ var userScore = function(){
   $scope.submitScore = function(username) {
       console.log(userScore)
          $scope.scorelist.$add({ name: username, score: userScore() });
+          $("#submitDiv").hide();
+          $("#startoverbtn").show();
+
      };
 
-  // $scope.ScoreLenght=function(){
-  //   return batmanModel.getUserScore();
-  // }
-      });
-
+});
 

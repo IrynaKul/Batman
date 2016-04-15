@@ -66,11 +66,6 @@
 		<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back</span></a>
 	</div>
 
-<div id="side">
-<input type="button" value="Show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -60px; margin-right:20px; border: none;"></input>
-</div>
-<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
-
 	<div class="menu">
 		<p>ROUND</p>
 
@@ -79,6 +74,7 @@
 		<div id="roundcircle3" class="roundcircle"></div>
 
 		<br/>
+		<input onclick="action()" type="button" value="show sidebar" id="sidebutton" style="float: right;"></input>
 	</div>
 
 	<center>
@@ -100,22 +96,27 @@
 
 		<div id="viewHighscore" ng-controller="HighscoreCtrl">
 
-		<div id="highscoreDiv">
-			<table>
-				<tr>
-					<th>NAME</th>
-					<th>SCORE</th>
-				</tr>
-				<tr ng-repeat="score in highscore | orderBy: 'score':true">
-					<td>{{ score.name }}</td>
-					<td>{{ score.score }}</td>
-				</tr>
-			</table>
-		</div>
+			<div id="highscoreDiv">
+				<table>
+					<tr>
+						<th>NAME</th>
+						<th>SCORE</th>
+					</tr>
+					<tr ng-repeat="score in highscore | orderBy: 'score':true">
+						<td>{{ score.name }}</td>
+						<td>{{ score.score }}</td>
+					</tr>
+				</table>
+			</div>
 
-		<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name">
-		<button ng-click="submitScore(scoreName)">Submit</button>
+			<div id="submitDiv">
+				<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name">
+				<button ng-click="submitScore(scoreName)">Submit</button>
+			</div>
 
+			<a ng-href="#/home" type="button">
+				<button id="startoverbtn" class="fightbtn">Start Over</button>
+			</a>
 
 		</div>
 

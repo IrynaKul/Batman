@@ -127,7 +127,9 @@ $scope.result=function(){
         var highscore_status = document.getElementById("highscore");
         if (highscore_status.value == "Submit highscore"){          //Förlust
             $("#resultMenu").fadeOut();
-             $("#viewHighscore").fadeIn();
+            $("#viewHighscore").fadeIn();
+            $("#startoverbtn").hide();
+            $("#submitDiv").show();
 
         }
         else if (continue_status.value == "View highscore"){        //Vinst
