@@ -6,7 +6,7 @@
 <input type="button" value="Show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -60px; margin-right:20px; border: none;"></input>
 </div>
 
-
+<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
 <div class="menu" style="margin: 30px;">
 	<p>Choose your villain</p>
@@ -17,8 +17,6 @@
 <!-- 		<button id="activate" style="float: right;">activate</button>
 	<button id="deactivate" style="float: right;">deactivate</button> -->
 </div>
-
-<ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
 
 <div id="container">
 	<img id="waiting" style="max-width:100%; position: relative; left: 0px;"/>
