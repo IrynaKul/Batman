@@ -1,4 +1,4 @@
-batmanPlannerApp.controller("ChatCtrl", ["$scope", "$firebaseArray", function($scope, $firebaseArray, batmanModel) {
+batmanPlannerApp.controller("ChatCtrl", function($scope, $firebaseArray, batmanModel) {
           
   var chatRef = new Firebase("https://burning-fire-174.firebaseio.com/");
   $scope.messages = $firebaseArray(chatRef);
@@ -12,4 +12,4 @@ batmanPlannerApp.controller("ChatCtrl", ["$scope", "$firebaseArray", function($s
       }
     }
         }
-      ]);
+      );

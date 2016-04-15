@@ -244,6 +244,19 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		return enemiesBeaten;
 	};
 
+//Loppar genom enemies
+	
+	this.setEnemyToDead=function(id){
+		var deadArray=[{dead:"none", grayscale:"0"}];
+		for(var i=0;i<enemiesBeaten.length;i++){
+			if(id==enemiesBeaten[i]){
+				deadArray=[{dead:"block", grayscale:"100"}];
+				break;
+			}
+		}
+		return deadArray;
+	}
+
 //Tar längden av listan med slagna skurkar och lägger till i highscore-listan
 	// this.setHighscore = function(){
 	// 	var score = enemiesBeaten.length
@@ -254,7 +267,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 //Tar ut score
  	this.getUserScore = function(){
 		var score = enemiesBeaten.length;
-		console.log("userscore",score);
 		return score;
 	};
 
@@ -308,7 +320,9 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	}
 
 	this.compareChoices=function(){
-		computerChoice= choises[Math.floor(Math.random()*choises.length)];
+
+		// computerChoice= choises[Math.floor(Math.random()*choises.length)];
+
 		if(userChoice == "rock"){
             if(computerChoice == "rock"){
                 console.log("TIE!");

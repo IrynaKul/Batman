@@ -8,6 +8,21 @@
     src: url(Panton-BlackCaps.otf);
 }
 
+/* START */
+
+#startbtn {
+	width: 460px;
+	height: 60px;
+	font-size:40px; 
+	padding:17px 30px 7px;
+	margin-top: 50px;
+}
+
+#startbtn:hover {
+	font-size:47px; 
+	letter-spacing: 4px;
+	padding:12px 30px;
+}
 
 /* INFO */
 
@@ -84,7 +99,7 @@ div #name {
 	max-width: 95%;
 	max-height:95%; 
 	display:block;
-	border: 5px solid white;
+	border: 5px solid #2f2d49;
 	margin-bottom: 10px;
 	border-radius: 2px;
 }
@@ -110,53 +125,6 @@ div #name {
 }
 
 
-/*
-#fightbtn {
-	-moz-box-shadow:inset 0px 0px 15px 3px #23395e;
-	-webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
-	box-shadow:inset 0px 0px 15px 3px #23395e;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
-	background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
-	background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
-	background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
-	background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
-	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
-	background-color:#2e466e;
-	-moz-border-radius:17px;
-	-webkit-border-radius:17px;
-	border-radius:17px;
-	border:1px solid #1f2f47;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-family:pantonblack;
-	font-size:25px;
-	letter-spacing: 6px;
-	padding:6px 13px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #263666;
-	width: 200px;
-	height: 60px;
-	margin-bottom: 20px;
-}
-#fightbtn:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
-	background:-moz-linear-gradient(top, #415989 5%, #2e466e 100%);
-	background:-webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
-	background:-o-linear-gradient(top, #415989 5%, #2e466e 100%);
-	background:-ms-linear-gradient(top, #415989 5%, #2e466e 100%);
-	background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e',GradientType=0);
-	background-color:#415989;
-}
-#fightbtn:active {
-	position:relative;
-	top:1px;
-}
-
-*/
-
 
 .fightbtn {
 	background-color:#f4c914;
@@ -175,6 +143,7 @@ div #name {
 	width: 200px;
 	height: 60px;
 	margin-bottom: 20px;
+	box-shadow: 5px 5px 5px black;
 }
 .fightbtn:hover {
 	background-color:#fade28;
@@ -280,6 +249,7 @@ p{
 }
 
 .nametag{
+	z-index: 1;
 	position: absolute;
 	font-family: pantonblack;
 	font-size: 20px;
@@ -321,6 +291,7 @@ p{
 
 #sidebar {
 	display: none;
+	margin-top: 60px;
 	/*background-color: #2A2B37;*/
 	background-color: #535363;
 	float:right;
@@ -396,7 +367,7 @@ p{
 
 #highscoreDiv td {
 	font-family: pantonlight;
-	font-size: 20px;
+	font-size: 18px;
 	width: 120px;
 	text-align: center;
 }
@@ -413,16 +384,28 @@ p{
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	margin-top: 30px;
 	position: absolute;
-	width: 750px;
-	height: 460px;
+	width: 760px;
+	height: 420px;
 	background-color: #535363;
 	border: 5px solid white;
 	overflow-y: hidden;
 	color: white;
 }
 
+
+#startoverbtn {
+	width: 170px;
+	height: 35px;
+	font-size: 20px;
+	letter-spacing: 1px;
+	padding:0px 0px;
+}
+
+#startoverbtn:hover {
+	font-size: 20px;
+	letter-spacing: 1px;
+}
 
 
 /* FIGHT */
@@ -438,7 +421,31 @@ p{
 }
 
 .fighter_box img {
-	margin: 30px 0px 20px 0px;
+	display: block;
+	height: 45%;
+	margin: 30px auto 20px auto;
+
+}
+
+.nametagchoice img{
+	height: 70%
+}
+
+
+.vsnametag{
+	display:block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	background-color: #fade28;
+	padding: 5px;
+	border-radius: 10px;
+	width: 150px;
+
+	margin:20px auto 0 auto;
+
+	box-shadow: 5px 5px 5px black;
 }
 
 .flipimg {
@@ -457,10 +464,9 @@ p{
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	margin-top: 30px;
 	position: absolute;
-	width: 750px;
-	height: 360px;
+	width: 760px;
+	height: 420px;
 	background-color: darkred;
 	border: 5px solid white;
 	overflow-y: hidden;
@@ -523,13 +529,13 @@ p{
 
 
 #backbutton {
-    background: #f4c914;
-    background: -moz-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: -o-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
-    background: -webkit-linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    background: linear-gradient(top, #f4c914 0%, #f4c914 100%);
-    border: solid #f4c914;
+    background: #fade28;
+    background: -moz-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: -o-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fade28), color-stop(100%, #fade28));
+    background: -webkit-linear-gradient(top, #fade28 0%, #fade28 100%);
+    background: linear-gradient(top, #fade28 0%, #fade28 100%);
+    border: solid #fade28;
     border-width: 1px 1px 1px 0;
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
@@ -547,13 +553,13 @@ p{
 }
 
 #backbutton:before {
-    background: #f4c914;
-    background: -moz-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: -o-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #f4c914), color-stop(100%, #f4c914));
-    background: -webkit-linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    background: linear-gradient(-45deg, #f4c914 0%, #f4c914 100%);
-    border: solid #f4c914;
+    background: #fade28;
+    background: -moz-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: -o-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #fade28), color-stop(100%, #fade28));
+    background: -webkit-linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    background: linear-gradient(-45deg, #fade28 0%, #fade28 100%);
+    border: solid #fade28;
     border-width: 0 0 1px 1px;
     border-radius: 2px 0 2px 2px;
     content: '';
@@ -611,4 +617,11 @@ p{
 	letter-spacing: 4px; 
 	color: white; 
 	margin-top: 10%;
+}
+
+#dead{
+	display:none;
+	z-index: 1;
+	background-color: darkred;
+	left: 50px;
 }
