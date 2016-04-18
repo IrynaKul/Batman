@@ -26,7 +26,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		$cookieStore.put('characterId',characterId);
 		console.log("cookie id", $cookieStore.get("characterId"));
 	};
-	console.log("characterId modelen ", typeof characterId, characterId);
 
 	var setCharacter=this.setCharacter= function(info){
 		character=[];
@@ -42,7 +41,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	};
 	
 	if(typeof characterId!='undefined'){
-		console.log("characterId ", typeof characterId,characterId);
 		findCharacter(characterId).get(function(data){
 		var info=data.results[0];
 		character=[];
@@ -56,7 +54,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 						aliases:info.aliases});
 		})
 	}
-	//console.log("show character ", character);
 
 	//array with searching GIFs
 	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
@@ -108,7 +105,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				});
 
 		}
-		console.log("getTop");
 	};
 
 	this.setEnemiesArray=function(){
@@ -222,10 +218,14 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				break;
 			}
 		}
+		if(typeof character[0]=="undefined"){
+			gif="https://www.randomlists.com/img/rock-paper-scissors/rock.png";
+		}
 		if(typeof gif=="undefined"){
 			gif=character[0].image.small_url;
 		}
 		return gif;
+
 	};
 
 //Lägger till skurken i listan enemiesBeaten när denna vunnits över
