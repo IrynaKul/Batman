@@ -223,6 +223,8 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		}
 		if(typeof gif=="undefined"){
 			gif=character[0].image.small_url;
+
+			//Här nåt med class circle
 		}
 		return gif;
 

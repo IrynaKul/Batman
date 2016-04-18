@@ -153,7 +153,13 @@
 
 			<div class="fightcircle fighter_box" style="float: right;">
 				<div class="vsnametag" style="top:-45px; left: 12.5px;">{{getCharacter()[0].name}}</div>
-				<img src="{{getGif()}}" class="flipimg" style="max-width:100%; max-height:100%; margin-left: 110px;" />
+				
+
+
+				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin-left: 110px;" />
+				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="max-width:100%; max-height:100%; margin-left: 110px;" />
+
+
 
 				<div class="smallcircle" style="position: relative; top: -175px; left: -45px;">
 					<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>

@@ -33,8 +33,17 @@ $scope.Gif=function(){
     return batmanModel.getGif();
 }
 
+// Kollar om bilden är gif lr ej. Om inte gif (false) visa img tag med class .circle för att göra bilden rund
     $scope.getGif=function(){
-        return $scope.Gif();
+        var gif = $scope.Gif();
+
+        if (gif.slice(-1)=="f"){
+            $scope.gif = true;
+         }
+         else {
+            $scope.gif = false;
+         }
+        return gif;
     };
 
 
