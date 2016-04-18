@@ -56,7 +56,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 						aliases:info.aliases});
 		})
 	}
-	console.log("show character ", character);
+	//console.log("show character ", character);
 
 	//array with searching GIFs
 	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",

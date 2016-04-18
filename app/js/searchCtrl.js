@@ -1,5 +1,6 @@
 batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   $scope.top12=batmanModel.getTop12();
+  $("#top12").show();
   $("#morebutton").hide();
    $(".noresults").hide();
   $scope.array= function(){
@@ -22,6 +23,7 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
 
   $scope.search = function(query) {
   $(".noresults").hide();
+  $("#top12").hide();
    $(".villain").css({
       display: 'none'
    });

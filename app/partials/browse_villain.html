@@ -21,6 +21,8 @@
 
 <div id="container">
 	<img id="waiting" style="max-width:100%; position: relative; left: 0px;"/>
+	<div id="top12" style="margin-bottom:10px;"><span id="top12span" style="color:white; font-family:pantonlight; letter-spacing:2pt; margin-bottom:20px; border-bottom:2px solid #fade28;">Top 12 villains</span>
+	</div>
 	<div id="villain" class="villain" ng-repeat="a in getObj()">
 		<a ng-href="#/info/{{a.id}}" type="button">
 			<div id="dead" class="smallcircle" ng-style="{'display':isDead(a.id)[0].dead}">
