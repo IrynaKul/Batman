@@ -9,10 +9,6 @@ $scope.getCharacter= function(){
 };
 // console.log("id: ",$scope.getCharacterId());
 
-$scope.getGif=function(){
-    return batmanModel.getGif();
-}
-
 $scope.getPicture=function(){
     return batmanModel.getPicture();
 }
@@ -31,6 +27,17 @@ $scope.getColor=function() {
 $scope.result=function(){
     return batmanModel.getSumResult();
 }
+
+
+$scope.Gif=function(){
+    return batmanModel.getGif();
+}
+
+    $scope.getGif=function(){
+        return $scope.Gif();
+    };
+
+
 
     $scope.setChoise = function(choise){
         batmanModel.setUserChoise(choise);
@@ -85,6 +92,7 @@ $scope.result=function(){
 
         else if ($scope.computerWinning() == 2) {
             batmanModel.clearGameCookies();
+            batmanModel.clearBeatenEnemy();
             console.log("You lose everything!!");
             $("#resultPicture").attr({
                 "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
@@ -116,21 +124,21 @@ $scope.result=function(){
         return batmanModel.getUserScore();
     };    
 
-//Vänstra knappen
-    continueBtn = function(){
-        var continue_status = document.getElementById("continue");
-        if (continue_status.value == "Start Over"){                  //Förlust
-            batmanModel.clearBeatenEnemy();
-            //$location.path('/home');
-            console.log("start over btn")
+// //Vänstra knappen
+//     continueBtn = function(){
+//         var continue_status = document.getElementById("continue2");
+//         if (continue_status.value == "Start Over"){                  //Förlust
             
-        }
-        else if (continue_status.value == "Next Villain"){            //Vinst
-            //$location.path('/search');
+//             //$location.path('/home');
+//             console.log("start over btn")
             
-            console.log("ny villain btn")
-        }
-    };
+//         }
+//         else if (continue_status.value == "Next Villain"){            //Vinst
+//             //$location.path('/search');
+            
+//             console.log("ny villain btn")
+//         }
+//     };
 
 //Högra knappen
     highscoreBtn = function(){
@@ -138,7 +146,7 @@ $scope.result=function(){
         if (highscore_status.value == "Submit highscore"){          //Förlust
             // $("#resultMenu").fadeOut();
             $("#viewHighscore").fadeIn();
-            $("#continuebtn").hide();
+            $(".continuebtn").hide();
             $("#startoverbtn").hide();
             $("#submitDiv").show();
 
@@ -147,7 +155,7 @@ $scope.result=function(){
             $("#viewHighscore").fadeIn();
             $("#submitDiv").hide();
             $("#startoverbtn").hide();
-            $("#continuebtn").show();
+            $(".continuebtn").show();
         }
     }
 
@@ -203,6 +211,7 @@ $scope.result=function(){
         })
     }
 }
+
 
     
 })
