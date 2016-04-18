@@ -136,7 +136,7 @@ $scope.result=function(){
     highscoreBtn = function(){
         var highscore_status = document.getElementById("highscore");
         if (highscore_status.value == "Submit highscore"){          //Förlust
-            $("#resultMenu").fadeOut();
+            // $("#resultMenu").fadeOut();
             $("#viewHighscore").fadeIn();
             $("#continuebtn").hide();
             $("#startoverbtn").hide();
@@ -149,6 +149,10 @@ $scope.result=function(){
             $("#startoverbtn").hide();
             $("#continuebtn").show();
         }
+    }
+
+    exitHighscore = function(){
+        $("#viewHighscore").fadeOut();
     }
 
 

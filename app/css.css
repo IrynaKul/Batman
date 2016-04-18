@@ -418,29 +418,32 @@ p{
 
 /* FIGHT */
 
+.fightcircle {
+	width: 185px;
+	height: 185px;
+	-moz-border-radius: 93px;
+	-webkit-border-radius: 93px;
+	border-radius: 200px;
+
+	border: 30px solid #2f2d49;
+	box-shadow: 5px 5px 5px black;
+}
+
 .fighter_box {
-	width: 250px;
-	height: 320px;
 	background-color: #535363;
 	text-align: center;
 	float: left;
-	border-radius: 3px;
-
 }
 
 .fighter_box img {
+	position: relative;
 	display: block;
-	height: 45%;
-	margin: 30px auto 20px auto;
-
+	/*height: 45%;*/
+	/*margin: 30px auto 20px auto;*/
 }
-
-.nametagchoice img{
-	height: 70%
-}
-
 
 .vsnametag{
+	position: relative;
 	display:block;
 	font-family: pantonblack;
 	font-size: 20px;
@@ -451,7 +454,7 @@ p{
 	border-radius: 10px;
 	width: 150px;
 
-	margin:20px auto 0 auto;
+	/*margin:-20px auto 0 auto;*/
 
 	box-shadow: 5px 5px 5px black;
 }
@@ -481,7 +484,8 @@ p{
 }
 
 #resultMenu p{
-	font-size: 90px;
+	font-family: pantonblack;
+	font-size: 80px;
 	color: white;
 	position: absolute;
 	top: 35%;
