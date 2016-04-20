@@ -199,9 +199,7 @@ p{
 #container{
 	height: 88vh;
 	text-align: center;
-	overflow-y:scroll;
-
-	width: 100%;
+	width: 99%;
 	display: inline-block;
 
 	background-color: #232328;
