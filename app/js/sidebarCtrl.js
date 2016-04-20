@@ -5,10 +5,10 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 		$("#sidebutton").click(function(){
 			console.log("activate");
 			var button_status = document.getElementById("sidebutton");
-			//console.log("status", button_status);
-			if (button_status.value=="Show sidebar"){
+			console.log("status", button_status);
+			if (button_status.value=="show sidebar"){
 				console.log("if");
-				button_status.value = "Hide sidebar";
+				button_status.value = "hide sidebar";
 				$("#sidebar").animate({
 					width: 'toggle'
 				});
@@ -18,8 +18,8 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 			}
 
 			else{
-			//	console.log("else");
-				button_status.value = "Show sidebar";
+				console.log("else");
+				button_status.value = "show sidebar";
 				$("#sidebar").animate({
 					width: 'toggle'
 				});

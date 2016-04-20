@@ -1,4 +1,4 @@
-batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel){
+batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel,$timeout){
 
 // $scope.getCharacterId=function(){
 //     return batmanModel.getCharacterId();
@@ -33,6 +33,7 @@ $scope.Gif=function(){
     return batmanModel.getGif();
 }
 
+
 // Kollar om bilden är gif lr ej. Om inte gif (false) visa img tag med class .circle för att göra bilden rund
     $scope.getGif=function(){
         var gif = $scope.Gif();
@@ -54,10 +55,14 @@ $scope.Gif=function(){
         $("#villain_choise_img").attr({
                "src": $scope.getPicture()
             });
+        $scope.showMessage = false;
+        $timeout(function(){
+          $scope.showMessage = true;
+        }, 3000);
+
         setTimeout(function(){
             setRound();
         }, 2500);
-
         
         setTimeout(function(){
             resetPosition(choise);
@@ -66,6 +71,11 @@ $scope.Gif=function(){
         setTimeout(function(){
             decideWinner();
         }, 3000);
+
+        
+
+
+        
 
         
 
@@ -82,7 +92,8 @@ $scope.Gif=function(){
             console.log("You win everything!!");
             $("#resultPicture").attr({
                 //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
-                "src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
+                //"src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
+                "src": "https://media.giphy.com/media/xTiTnloxS7cAdzNCCI/giphy.gif"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
 
@@ -104,7 +115,8 @@ $scope.Gif=function(){
             batmanModel.clearBeatenEnemy();
             console.log("You lose everything!!");
             $("#resultPicture").attr({
-                "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
+                "src":"https://media.giphy.com/media/VM5TVKbYSExcQ/giphy.gif"
+                //"src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
                 // "src": "http://images-cdn.moviepilot.com/image/upload/c_limit,h_379,w_500/t_mp_quality/batman-v-superman-who-would-win-in-this-situation-superman-breaks-the-bat-jpeg-74958.jpg"
             });
             document.getElementById("resultText").innerHTML = "GAME OVER";
@@ -220,6 +232,11 @@ $scope.Gif=function(){
         })
     }
 }
+$scope.showMessage = true;
+$scope.message=function(){
+    return batmanModel.returnMessage();
+}
+
 
 
     

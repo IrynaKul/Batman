@@ -158,6 +158,8 @@ div #name {
 
 
 
+
+
 /* */
 
 body{
@@ -299,6 +301,7 @@ p{
 	position: relative;
 	border-radius: 3px;
 }
+
 
 
 /* CHATT */
@@ -492,6 +495,26 @@ p{
 	right: 15%;
 }
 
+#showMessage {
+	display:block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: white;
+	letter-spacing: 2px;
+	padding: 5px;
+	border-radius: 30px;
+	width: 300px;
+
+	/*margin:-20px auto 0 auto;*/
+
+	-moz-border-radius: 93px;
+	-webkit-border-radius: 93px;
+	border-radius: 200px;
+
+	border: 30px solid #2f2d49;
+	box-shadow: 5px 5px 5px black;
+
+}
 
 
 /*spin choise*/
