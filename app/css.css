@@ -244,6 +244,7 @@ p{
 	box-shadow: 5px 5px 5px black;
 }
 
+
 .circle:hover {
 	border: 5px solid #fade28;
 }
@@ -296,7 +297,8 @@ p{
 	background-color: #535363;
 	float:right;
 	width: 380px;
-	height: 70vh;
+	height: 500px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 25px 0 rgba(0, 0, 0, 0.3);
 	position: relative;
 	border-radius: 3px;
 }
