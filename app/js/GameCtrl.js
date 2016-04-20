@@ -1,9 +1,11 @@
 batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel,$timeout){
 
-// $scope.getCharacterId=function(){
-//     return batmanModel.getCharacterId();
-// }
-
+$scope.getCharacterId=function(){
+    return batmanModel.getCharacterId();
+}
+$scope.getUserScore=function(){
+    return batmanModel.getUserScore();
+}
 $scope.getCharacter= function(){
     return batmanModel.getCharacter();
 };
@@ -32,8 +34,6 @@ $scope.result=function(){
 $scope.Gif=function(){
     return batmanModel.getGif();
 }
-
-
 // Kollar om bilden är gif lr ej. Om inte gif (false) visa img tag med class .circle för att göra bilden rund
     $scope.getGif=function(){
         var gif = $scope.Gif();
@@ -58,8 +58,7 @@ $scope.Gif=function(){
         $scope.showMessage = false;
         $timeout(function(){
           $scope.showMessage = true;
-        }, 3000);
-
+        }, 2200);
         setTimeout(function(){
             setRound();
         }, 2500);
@@ -71,6 +70,7 @@ $scope.Gif=function(){
         setTimeout(function(){
             decideWinner();
         }, 3000);
+        
 
         
 
@@ -82,18 +82,15 @@ $scope.Gif=function(){
     }
 
     decideWinner = function(){
-        //console.log("userWinning ",$scope.userWinning());
+        
         if ($scope.userWinning() == 2) {
-            console.log("userWinning ", batmanModel.getUserWinning());
             batmanModel.clearGameCookies();
             batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
-            console.log("userWinning ", batmanModel.getUserWinning());
-
             console.log("You win everything!!");
             $("#resultPicture").attr({
                 //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
                 //"src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
-                "src": "https://media.giphy.com/media/xTiTnloxS7cAdzNCCI/giphy.gif"
+                "src": "https://media.giphy.com/media/bdcTSZn3ECM4o/giphy.gif"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
 
@@ -102,15 +99,19 @@ $scope.Gif=function(){
             highscore_status.value="View highscore";
             continue_status.value="Next Villain";
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
-
             $("#resultMenu").fadeIn();({
             });
             $("#continue1").css({
                 display:'block'
-            })
+            });
         }
 
         else if ($scope.computerWinning() == 2) {
+            setTimeout(function(){
+                $("#resultMenu").css({
+                    display: 'block'
+                });
+            }, 3000);
             batmanModel.clearGameCookies();
             batmanModel.clearBeatenEnemy();
             console.log("You lose everything!!");
@@ -144,22 +145,6 @@ $scope.Gif=function(){
         console.log("score",batmanModel.getUserScore());
         return batmanModel.getUserScore();
     };    
-
-// //Vänstra knappen
-//     continueBtn = function(){
-//         var continue_status = document.getElementById("continue2");
-//         if (continue_status.value == "Start Over"){                  //Förlust
-            
-//             //$location.path('/home');
-//             console.log("start over btn")
-            
-//         }
-//         else if (continue_status.value == "Next Villain"){            //Vinst
-//             //$location.path('/search');
-            
-//             console.log("ny villain btn")
-//         }
-//     };
 
 //Högra knappen
     highscoreBtn = function(){

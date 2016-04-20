@@ -10,6 +10,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	var enemiesArray=[];
 	var character=[];
 	var arrayObjectsID=[];
+	var score;
 
 	//APIs
 	var findCharacter= this.findCharacter=function(filter){
@@ -81,6 +82,12 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	var enemiesBeaten = $cookieStore.get("enemiesBeaten"); //Lista med slagna skurkar
 	if(typeof enemiesBeaten=="undefined"){
 		enemiesBeaten=[];
+	}
+	if(enemiesBeaten.length!==0){
+		score = enemiesBeaten.length;
+	}
+	else{
+		score=0;
 	}
 	// var highscoreList = [];	//Temporär lista med highscore
 
@@ -182,20 +189,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		return hideshow;
 	}
 
-	///////////////////////// måste fixas(kanske ändra attribut i enemies array till "dead":true/false);
-
-	// this.checkIfDead=function(id){
-	// 	for(var i=0;i<enemiesBeaten.length;i++){
-	// 		if(id==enemiesBeaten[i].id){
-	// 			$("#dead").css({
-	// 				display: 'block'
-	// 			});
-	// 			// $("#villain_image").css({
-	// 			// 	-webkit-filter: 'grayscale(100%)'
-	// 			// });
-	// 		}
-	// 	}
-	// }
 
 	this.getArray = function(){
 		return arrayObjects;
@@ -235,11 +228,13 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		// message="Choose a fight icon!";
 		enemiesBeaten.push(enemy);
 		$cookieStore.put("enemiesBeaten",enemiesBeaten);
+		score = enemiesBeaten.length;
 		console.log("enemiesBeaten ", enemiesBeaten, "cookie ", $cookieStore.get("enemiesBeaten"));
 	};
 
 //Clearar listan med slagna skurkar då man förlorat
 	this.clearBeatenEnemy = function(){
+		score=0;
 		enemiesBeaten = [];
 		$cookieStore.remove("enemiesBeaten");
 		console.log("Game over! List cleared", enemiesBeaten);
@@ -272,9 +267,10 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 //Tar ut score
  	this.getUserScore = function(){
-		var score = enemiesBeaten.length;
 		return score;
 	};
+
+
 
 //Hämtar ut en slumpad GIF från array med GIF:ar
 	this.randomiseWaitingGif=function(){
@@ -304,7 +300,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	// var computerChoice = choises[Math.floor(Math.random()*choises.length)];
 	var computerChoice = "rock";
 	var setRoundChoice;
-	var message="Choose a fight icon!";
+	var message="Choose a Fight Icon!";
 
 	this.setUserChoise= function(choise){
 		userChoice = choise;
@@ -396,7 +392,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		//console.log("userWinning ", $cookieStore.get("userWinning"),"computerWinning", $cookieStore.get("computerWinning"));
 		userWinning=0;
 		computerWinning=0;
-		message="Choose a fight icon!";
+		message="Choose a Fight Icon!";
 		// $cookieStore.remove('userWinning');
 		// $cookieStore.remove('computerWinning');
 	}

@@ -79,10 +79,11 @@
 	</div>
 
 	<center>
-
-		<div id="resultMenu">
+		<div id="resultMenu" style="margin-top: -15px;">
 			<img id="resultPicture" style="width: 760px; position: relative; left: 0px;"/>
+			<div id="yourScore"><span>Your score: {{getUserScore()+1}}</span></div>
 			<!-- http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg -->
+			
 			<p id="resultText"></p>
 			<br/>
 			<p id="resultText2" style="font-size: 20px; top: 60%"></p>
@@ -150,7 +151,7 @@
 			<!-- <img src="http://www.gamersunity.de/img/sys/2010-17/mvsc3-VS.Logo.jpg"> -->
 			<img src="http://www.flexraid.com/wp-content/uploads/2013/10/Vs.pn_.png" style="width: 200px;">
 
-			<div class="fightcircle fighter_box" style="float: right;">
+			<div class="fightcircle fighter_box" style="float: right; display: block;">
 				<div class="vsnametag" style="top:-45px; left: 12.5px;">{{getCharacter()[0].name}}</div>
 				
 

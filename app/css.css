@@ -493,6 +493,15 @@ p{
 	left: 15%;
 	right: 15%;
 }
+#yourScore span{
+	font-family: pantonblack;
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	top: 5%;
+	left: 15%;
+	right: 15%;
+}
 
 #showMessage {
 	display:block;
