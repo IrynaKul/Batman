@@ -24,7 +24,7 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 					width: 'toggle'
 				});
 				$("#container").animate({
-					width: '100%'
+					width: '99%'
 				});
 			}
 
