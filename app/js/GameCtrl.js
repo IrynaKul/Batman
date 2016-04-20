@@ -167,8 +167,8 @@ $scope.Gif=function(){
         if (highscore_status.value == "Submit highscore"){          //Förlust
             // $("#resultMenu").fadeOut();
             $("#viewHighscore").fadeIn();
-            $(".continuebtn").hide();
-            $("#startoverbtn").hide();
+            $("#continuebtn").hide();
+            $("#startoverbtn").show();
             $("#submitDiv").show();
 
         }
@@ -176,7 +176,7 @@ $scope.Gif=function(){
             $("#viewHighscore").fadeIn();
             $("#submitDiv").hide();
             $("#startoverbtn").hide();
-            $(".continuebtn").show();
+            $("#continuebtn").show();
         }
     }
 
