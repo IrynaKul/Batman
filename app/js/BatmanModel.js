@@ -66,14 +66,11 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	var waitingGif;
 
 	var gifArray=[{id:6129, gifurl:'http://s1.gamewalkers.com/games/tabs/mugen/heroes/bane.gif'},
-				{id:1696, gifurl:'http://i202.photobucket.com/albums/aa64/DARKTALBAIN/harley2ev1.gif'},
 				{id:1807, gifurl:'http://i.imgur.com/bwz90US.gif'},
 				{id:5555, gifurl:'http://i.imgur.com/qoeEe.gif'},
 				{id:1697, gifurl:'http://i71.photobucket.com/albums/i143/esn23/ivystance-2.gif'},
 				{id:3715, gifurl:'http://i255.photobucket.com/albums/hh135/afrikabambaataassf/DC%20SPRITES%20ANIMATION/mrfreeze.gif'},
 				{id:1702, gifurl:'http://i282.photobucket.com/albums/kk255/super_joker/jokerstance2013sj_zps377b96af.gif'},
-				{id:3726, gifurl:'http://i132.photobucket.com/albums/q17/beast96240/angelecksfix.gif'},
-				{id:9589, gifurl:'http://orig00.deviantart.net/70f6/f/2015/302/a/a/clayface_walkcycle_by_bwwd-d9c1afs.gif'},
 				{id:3718, gifurl:'http://i2.photobucket.com/albums/y32/thedudes/the-riddler-walk-1.gif'}
 				];
 
