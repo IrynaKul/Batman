@@ -180,19 +180,19 @@ $scope.Gif=function(){
 
         if (choise == "rock") {
             $("#rock").animate({
-                left: '0px'
+                left: '125px'
             });
         }
 
         else if (choise == "paper") {
             $("#paper").animate({
-                left: '0px'
+                left: '90px'
             });
         }
 
         else if (choise == "scissors") {
             $("#scissors").animate({
-                left: '0px'
+                left: '16px'
             });
         }
 
