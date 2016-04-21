@@ -112,7 +112,6 @@ $scope.Gif=function(){
 
         else if ($scope.computerWinning() == 2) {
             batmanModel.clearGameCookies();
-            batmanModel.clearBeatenEnemy();
             $("#yourScore2").css({
                 display:'block'
             })
@@ -201,6 +200,10 @@ $scope.Gif=function(){
                 transform: 'rotateY(0deg)'
             });
         }, 1000);
+    }
+    youLost=function(){
+        console.log("hhshhshs");
+        batmanModel.clearBeatenEnemy();
     }
 
     setRound=function(){

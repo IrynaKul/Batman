@@ -92,7 +92,7 @@
 				<input type="button" id="continue1" class="fightbtn continuebtn" value="" style="position: absolute; padding: 0px; font-size: 15px; left: 150px; top:75%; display:none;"></input>
 			</a>
 			<a ng-href="#/home">
-				<input type="button" id="continue2" class="fightbtn continuebtn" value="" style="position: absolute; padding: 0px; font-size: 15px;left: 150px; top:75%; display:none;"></input>
+				<input type="button" id="continue2" class="fightbtn continuebtn" value="" onclick="youLost()" style="position: absolute; padding: 0px; font-size: 15px;left: 150px; top:75%; display:none;"></input>
 			</a>
 				<input type="button" id="highscore" class="fightbtn" value="" onclick="highscoreBtn()" style="position: absolute; padding: 0px; font-size: 15px; right: 150px; top:75%;"></input>
 			
@@ -104,7 +104,7 @@
 			<div id="exitButton" class="smallcircle" style="background-color: darkred; top: 10px; right: 10px; box-shadow: 0 0 0 0;" onclick="exitHighscore()">
 				<img src="http://simpleicon.com/wp-content/uploads/cross.png" style="max-width:90%; max-height:90%; margin-top: 3px;"/>
 			</div>
-
+			<div id="yourScore" class="yourScore" style="margin-top: -20px; border-bottom: 1px solid;font-size: 14px"><span>Your score: {{getUserScore()}}</span></div>
 			<div id="highscoreDiv">
 				<table>
 					<tr>
@@ -124,7 +124,7 @@
 			</div>
 
 			<a ng-href="#/home" type="button">
-				<button id="startoverbtn" class="fightbtn">Start Over</button>
+				<button id="startoverbtn" class="fightbtn" onclick="youLost()">Start Over</button>
 			</a>
 
 			<a ng-href="#/search" type="button">
@@ -153,12 +153,12 @@
 			<img src="http://www.flexraid.com/wp-content/uploads/2013/10/Vs.pn_.png" style="width: 200px;">
 
 			<div class="fightcircle fighter_box" style="float: right; display: block;">
-				<center style="top:-100px; left: 12.5px;">
-					<div class="vsnametagVillain">{{getCharacter()[0].name}}</div>
-				</center>
+
+				<div class="vsnametagVillain" style="top:-100px; left: 12.5px;">{{getCharacter()[0].name}}</div>
+				
 
 				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin: -10px 0px 0px 50px" />
-				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="border:none; box-shadow:none; max-width:100%; max-height:100%; margin: -33px 0px 0px 1px"/>
+				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="max-width:100%; max-height:100%; margin: -40px 0px 0px -10px"/>
 
 
 
@@ -171,7 +171,7 @@
 				<div class="flip-container" style="position: relative; top: -115px; left: -90px;">
 					<div class="flipper">
 						<div id="villain_choise_front" class="front smallcircle" style="position: relative; left: 27px">
-							<img src="http://www.csc.kth.se/~blundk/DM2518/sign.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
+							<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
 						</div>
 
 						<div id="villain_choise_back" class="back smallcircle" style="position: relative; left: -27px; backface-visibility: hidden;">
