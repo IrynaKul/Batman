@@ -354,7 +354,7 @@ p{
 /* HIGHSCORE */
 
 #highscoreDiv {
-	margin:20px;
+	margin-top:20px;
 }
 
 #highscoreDiv th {
@@ -377,7 +377,7 @@ p{
 }
 
 #highscoreDiv table {
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
 
