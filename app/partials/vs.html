@@ -136,7 +136,7 @@
 
 		<div style="margin-top: 5%; width: 60%;">
 			<div class="fightcircle fighter_box">
-				<div class="vsnametag" style="top:-45px; left: 12.5px;">BATMAN</div>
+				<div class="vsnametagBatman" style="top:-45px; left: 12.5px;">BATMAN</div>
 				<img src="http://www.infinitymugenteam.com/images/AceySprites/Batman.gif" style="max-width:100%; max-height:100%;" />
 				<div id="rock" class="smallcircle" style="position: relative; top: -165px; left: 125px;" ng-click="setChoise('rock')" onclick="rock()">
 					<img src="https://www.randomlists.com/img/rock-paper-scissors/rock.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 6px;"/>
@@ -153,12 +153,12 @@
 			<img src="http://www.flexraid.com/wp-content/uploads/2013/10/Vs.pn_.png" style="width: 200px;">
 
 			<div class="fightcircle fighter_box" style="float: right; display: block;">
-				<div class="vsnametag" style="top:-45px; left: 12.5px;">{{getCharacter()[0].name}}</div>
-				
-
+				<center style="top:-100px; left: 12.5px;">
+					<div class="vsnametagVillain">{{getCharacter()[0].name}}</div>
+				</center>
 
 				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin: -10px 0px 0px 50px" />
-				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="max-width:100%; max-height:100%; margin: -40px 0px 0px -10px"/>
+				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="border:none; box-shadow:none; max-width:100%; max-height:100%; margin: -33px 0px 0px 1px"/>
 
 
 
@@ -171,7 +171,7 @@
 				<div class="flip-container" style="position: relative; top: -115px; left: -90px;">
 					<div class="flipper">
 						<div id="villain_choise_front" class="front smallcircle" style="position: relative; left: 27px">
-							<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
+							<img src="http://www.csc.kth.se/~blundk/DM2518/sign.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
 						</div>
 
 						<div id="villain_choise_back" class="back smallcircle" style="position: relative; left: -27px; backface-visibility: hidden;">

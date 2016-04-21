@@ -249,6 +249,7 @@ p{
 	border: 5px solid #fade28;
 }
 
+
 .nametag{
 	z-index: 1;
 	position: absolute;
@@ -443,9 +444,10 @@ p{
 	display: block;
 	/*height: 45%;*/
 	margin: 0px auto 20px auto;
+
 }
 
-.vsnametag{
+.vsnametagBatman{
 	position: relative;
 	display:block;
 	font-family: pantonblack;
@@ -456,6 +458,24 @@ p{
 	padding: 5px;
 	border-radius: 10px;
 	width: 150px;
+
+	/*margin:-20px auto 0 auto;*/
+
+	box-shadow: 5px 5px 5px black;
+}
+.vsnametagVillain{
+	position: relative;
+	display:inline-block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	background-color: #fade28;
+	padding: 5px;
+	border-radius: 10px;
+	white-space: nowrap;
+	clear: both;
+	overflow: hidden;
 
 	/*margin:-20px auto 0 auto;*/
 

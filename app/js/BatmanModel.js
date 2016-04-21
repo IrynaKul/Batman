@@ -56,15 +56,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		})
 	}
 
-	//array with searching GIFs
-	var waitingArray=["https://media.giphy.com/media/Mz5Oo0VSqaZlC/giphy.gif",
-					"https://media.giphy.com/media/O3IHMKIYwLT8I/giphy.gif",
-					"https://media.giphy.com/media/vgSJqTTWV7tC0/giphy.gif",
-					"https://media.giphy.com/media/JDTbmhOGrx6es/giphy.gif",
-					"https://media.giphy.com/media/SgBFcIje2WNkk/giphy.gif",
-					"https://media.giphy.com/media/b1O5lApuMGEhi/giphy.gif",
-					"https://media.giphy.com/media/VNONSuCtUMRdC/giphy.gif"]
-	var waitingGif;
 
 	var gifArray=[{id:6129, gifurl:'http://s1.gamewalkers.com/games/tabs/mugen/heroes/bane.gif'},
 				{id:1807, gifurl:'http://i.imgur.com/bwz90US.gif'},
@@ -209,7 +200,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 			}
 		}
 		if(typeof character[0]=="undefined"){
-			gif="https://www.randomlists.com/img/rock-paper-scissors/rock.png";
+			gif="https://business.comcast.com/img/preloader.gif";
 		}
 		if(typeof gif=="undefined"){
 			gif=character[0].image.small_url;
