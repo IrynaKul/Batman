@@ -7,7 +7,7 @@
 
 		function rock(){
 			$("#rock").animate({
-				left: '280px'
+				left: '285px'
 			});
 
 			$(".flipper").animate({
@@ -39,7 +39,7 @@
 
 		function scissors(){
 			$("#scissors").animate({
-				left: '155px'
+				left: '176px'
 			});
 
 			$(".flipper").animate({
@@ -99,7 +99,7 @@
 
 		</div>
 
-		<div id="viewHighscore" ng-controller="HighscoreCtrl">
+		<div id="viewHighscore" ng-controller="HighscoreCtrl" style="margin-top: -15px;">
 
 			<div id="exitButton" class="smallcircle" style="background-color: darkred; top: 10px; right: 10px; box-shadow: 0 0 0 0;" onclick="exitHighscore()">
 				<img src="http://simpleicon.com/wp-content/uploads/cross.png" style="max-width:90%; max-height:90%; margin-top: 3px;"/>
@@ -119,8 +119,8 @@
 			</div>
 
 			<div id="submitDiv" style="margin-bottom:5px;">
-				<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name">
-				<button ng-click="submitScore(scoreName)">Submit</button>
+				<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name" style="border-radius:2px;">
+				<button ng-click="submitScore(scoreName)" style="background-color: #fade28; border-radius:2px; border-style: none; font-family:pantonblack; font-size:13px;">Submit</button>
 			</div>
 
 			<a ng-href="#/home" type="button">
@@ -153,9 +153,10 @@
 			<img src="http://www.flexraid.com/wp-content/uploads/2013/10/Vs.pn_.png" style="width: 200px;">
 
 			<div class="fightcircle fighter_box" style="float: right; display: block;">
+				<div style="text-align:center width:auto; top:-120px; left: 12.5px;">
+					<div class="vsnametagVillain" style="margin-left:-12px; margin-top:-42px; margin-right:auto; margin-bottom:38px; z-index:1;">{{getCharacter()[0].name}}</div>
+				</div>
 
-				<div class="vsnametagVillain" style="top:-100px; left: 12.5px;">{{getCharacter()[0].name}}</div>
-				
 
 				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin: -10px 0px 0px 50px" />
 				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="max-width:100%; max-height:100%; margin: -40px 0px 0px -10px"/>
