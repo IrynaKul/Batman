@@ -87,6 +87,9 @@ $scope.Gif=function(){
             batmanModel.clearGameCookies();
             batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
             console.log("You win everything!!");
+            $("#yourScore1").css({
+                display:'block'
+            })
             $("#resultPicture").attr({
                 //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
                 //"src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
@@ -104,16 +107,15 @@ $scope.Gif=function(){
             $("#continue1").css({
                 display:'block'
             });
+            
         }
 
         else if ($scope.computerWinning() == 2) {
-            setTimeout(function(){
-                $("#resultMenu").css({
-                    display: 'block'
-                });
-            }, 3000);
             batmanModel.clearGameCookies();
             batmanModel.clearBeatenEnemy();
+            $("#yourScore2").css({
+                display:'block'
+            })
             console.log("You lose everything!!");
             $("#resultPicture").attr({
                 "src":"https://media.giphy.com/media/VM5TVKbYSExcQ/giphy.gif"
@@ -134,6 +136,7 @@ $scope.Gif=function(){
             $("#continue2").css({
                 display:'block'
             })
+
 
         }
 

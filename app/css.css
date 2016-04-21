@@ -496,7 +496,7 @@ p{
 	left: 15%;
 	right: 15%;
 }
-#yourScore span{
+.yourScore span{
 	font-family: pantonblack;
 	font-size: 20px;
 	color: white;
