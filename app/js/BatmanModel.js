@@ -124,6 +124,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 				if (enemyname.indexOf(query)!== -1 && counter<12){
 					findCharacter(enemiesArray[j].id).get(function(data){
 					var a=data.results[0];
+					console.log(a.image)
 					arrayObjects.push({id:a.id,
 								name:a.name,
 								real_name:a.real_name,
