@@ -209,7 +209,6 @@ $scope.Gif=function(){
         }, 1000);
     }
     youLost=function(){
-        console.log("hhshhshs");
         batmanModel.clearBeatenEnemy();
     }
 

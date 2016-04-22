@@ -273,7 +273,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	var choises = ["rock", "paper", "scissors"];
 
 	// var computerChoice = choises[Math.floor(Math.random()*choises.length)];
-	var computerChoice = "rock";
 	var setRoundChoice;
 	var message="Choose a Fight Icon!";
 
@@ -299,7 +298,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 	this.compareChoices=function(){
 
-		// computerChoice= choises[Math.floor(Math.random()*choises.length)];
+		computerChoice= choises[Math.floor(Math.random()*choises.length)];
 
 		if(userChoice == "rock"){
             if(computerChoice == "rock"){
