@@ -1,6 +1,5 @@
 batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanModel){
 
-	//function activateSideMenu(){
 
 		$("#sidebutton").click(function(){
 			console.log("activate");
@@ -31,7 +30,9 @@ batmanPlannerApp.controller('sideBarCtrl', function ($scope,$routeParams,batmanM
 		})
 		
 		
-	//}
+	$scope.getUserScore=function(){
+    return batmanModel.getUserScore();
+	}
 
 
 
