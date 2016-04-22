@@ -1,6 +1,7 @@
-batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
+batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel,$route){
   $scope.top12=batmanModel.getTop12();
   $("#top12").show();
+  $("#top12button").hide();
   $("#morebutton").hide();
    $(".noresults").hide();
   $scope.array= function(){
@@ -24,6 +25,8 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
   $scope.search = function(query) {
   $(".noresults").hide();
   $("#top12").hide();
+  $("#top12button").show();
+
    $(".villain").css({
       display: 'none'
    });
@@ -40,6 +43,10 @@ batmanPlannerApp.controller('SearchCtrl', function ($scope,batmanModel){
 
  $scope.isDead=function(id){
   return batmanModel.setEnemyToDead(id);
+ }
+
+ $scope.top12reload = function(){
+  $route.reload();
  }
 
 

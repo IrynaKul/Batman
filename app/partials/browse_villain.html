@@ -3,7 +3,10 @@
 	<p style="font-size: 15px;">Fuck you crime</p>
 </div>
 
-<input type="button" value="show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -60px; margin-right:20px; border: none;"></input>
+<input type="button" value="Top 12 villains" id="top12button" ng-click="top12reload()" class="nametag" style="z-index:1; position: absolute; float: right; margin-top:-60px; margin-left:20px; border: none;"></input>
+</div>
+
+<input type="button" value="show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top:-60px; margin-right:20px; border: none;"></input>
 </div>
 
 <ng-include src="'partials/sidebar.html'" ng-controller="sideBarCtrl"></ng-include>
@@ -28,7 +31,7 @@
 			<div id="dead" class="smallcircle" ng-style="{'display':isDead(a.id)[0].dead}">
 				<img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Healthcare-Skull-icon.png" style="max-width:70%; max-height:70%; margin-top: 8px;"/>
 			</div>
-			<img id="villain_image" class="circle" style="-webkit-filter:grayscale({{isDead(a.id)[0].grayscale}}%)" src="{{a.image.small_url}}"/>
+			<img id="villain_image" class="circle" style="-webkit-filter:grayscale({{isDead(a.id)[0].grayscale}}%)" src="{{a.image.medium_url}}"/>
 			<br/>
 			<div class="nametag" style="left: 25%; right: 25%; margin-top: -30px;">{{a.name}}</div>
 		</a>
