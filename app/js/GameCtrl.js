@@ -90,6 +90,9 @@ $scope.Gif=function(){
             $("#yourScore1").css({
                 display:'block'
             })
+            $("#yourScore3").css({
+                display:'block'
+            })
             $("#resultPicture").attr({
                 //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
                 //"src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
@@ -113,6 +116,9 @@ $scope.Gif=function(){
         else if ($scope.computerWinning() == 2) {
             batmanModel.clearGameCookies();
             $("#yourScore2").css({
+                display:'block'
+            })
+            $("#yourScore4").css({
                 display:'block'
             })
             console.log("You lose everything!!");
@@ -165,6 +171,7 @@ $scope.Gif=function(){
             $("#startoverbtn").hide();
             $("#continuebtn").show();
         }
+
     }
 
     exitHighscore = function(){

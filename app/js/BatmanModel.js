@@ -229,6 +229,7 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	};
 
 //Tar ut listan med slagna skurkar
+	
 	this.getBeatenEnemies = function(){
 		return enemiesBeaten;
 	};
@@ -246,25 +247,11 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 		return deadArray;
 	}
 
-//Tar längden av listan med slagna skurkar och lägger till i highscore-listan
-	// this.setHighscore = function(){
-	// 	var score = enemiesBeaten.length
-	// 	highscoreList.push(score)
-	// 	console.log(highscoreList)
-	// };
-
 //Tar ut score
  	this.getUserScore = function(){
 		return score;
 	};
 
-
-
-//Hämtar ut en slumpad GIF från array med GIF:ar
-	this.randomiseWaitingGif=function(){
-		waitingGif=waitingArray[Math.floor(Math.random()*waitingArray.length)];
-		return waitingGif;
-	}
 	this.setEnemiesArray();
 
 
@@ -282,7 +269,6 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 	if(typeof computerWinning=="undefined"){
 		computerWinning=0;
 	}
-	console.log("userWinning ", userWinning, "computerWinning ", computerWinning);
 	var choises = ["rock", "paper", "scissors"];
 
 	// var computerChoice = choises[Math.floor(Math.random()*choises.length)];
@@ -316,17 +302,17 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
 
 		if(userChoice == "rock"){
             if(computerChoice == "rock"){
-                console.log("TIE!");
+                //console.log("TIE!");
                 message="It's a tie!"
             }
             else if(computerChoice == "paper"){
-                console.log("Computer wins(papper slår rock)");
+                //console.log("Computer wins(papper slår rock)");
                 computerWinning += 1;
                 setRoundChoice=false;
                 message="You lose this round!"
             }
             else if(computerChoice == "scissors"){
-                console.log("You win(rock slår scissors)");
+                //console.log("You win(rock slår scissors)");
                 userWinning += 1;
                 setRoundChoice=true;
                 message="You win this round!"
@@ -335,17 +321,17 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
         
         else if(userChoice == "paper"){
             if(computerChoice == "rock"){
-                console.log("You win(paper slår rock)");
+                //console.log("You win(paper slår rock)");
                 userWinning += 1;
                 setRoundChoice=true;
                 message="You win this round!"
             }
             else if(computerChoice == "paper"){
-                console.log("TIE");
+                //console.log("TIE");
                 message="It's a tie!"
             }
             else if(computerChoice == "scissors"){
-                console.log("Computer wins(rock slår scissors)");
+                //console.log("Computer wins(rock slår scissors)");
                 computerWinning += 1;
                 setRoundChoice=false;
                 message="You lose this round!"
@@ -354,20 +340,20 @@ batmanPlannerApp.factory('batmanModel',function ($resource,$cookieStore) {
         
         else if(userChoice == "scissors"){
             if(computerChoice == "rock"){
-                console.log("Computer wins(rock slår scissors)");
+                //console.log("Computer wins(rock slår scissors)");
                 computerWinning += 1;
                 setRoundChoice=false;
                 message="You lose this round!"
                 
             }
             else if(computerChoice == "paper"){
-                console.log("You win(scissors slår paper)");
+                //console.log("You win(scissors slår paper)");
                 userWinning += 1;
                 setRoundChoice=true;
                 message="You win this round!"
             }
             else if(computerChoice == "scissors"){
-                console.log("Tie");
+                //console.log("Tie");
                 message="It's a tie!"
             }
         }
