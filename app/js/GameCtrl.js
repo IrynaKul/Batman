@@ -1,9 +1,11 @@
-batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel){
+batmanPlannerApp.controller('GameCtrl', function($scope, $location, batmanModel,$timeout){
 
-// $scope.getCharacterId=function(){
-//     return batmanModel.getCharacterId();
-// }
-
+$scope.getCharacterId=function(){
+    return batmanModel.getCharacterId();
+}
+$scope.getUserScore=function(){
+    return batmanModel.getUserScore();
+}
 $scope.getCharacter= function(){
     return batmanModel.getCharacter();
 };
@@ -32,7 +34,6 @@ $scope.result=function(){
 $scope.Gif=function(){
     return batmanModel.getGif();
 }
-
 // Kollar om bilden är gif lr ej. Om inte gif (false) visa img tag med class .circle för att göra bilden rund
     $scope.getGif=function(){
         var gif = $scope.Gif();
@@ -54,10 +55,13 @@ $scope.Gif=function(){
         $("#villain_choise_img").attr({
                "src": $scope.getPicture()
             });
+        $scope.showMessage = false;
+        $timeout(function(){
+          $scope.showMessage = true;
+        }, 2200);
         setTimeout(function(){
             setRound();
         }, 2500);
-
         
         setTimeout(function(){
             resetPosition(choise);
@@ -66,23 +70,33 @@ $scope.Gif=function(){
         setTimeout(function(){
             decideWinner();
         }, 3000);
+        
+
+        
+
+
+        
 
         
 
     }
 
     decideWinner = function(){
-        //console.log("userWinning ",$scope.userWinning());
+        
         if ($scope.userWinning() == 2) {
-            console.log("userWinning ", batmanModel.getUserWinning());
             batmanModel.clearGameCookies();
             batmanModel.addBeatenEnemy($scope.getCharacter()[0].id);
-            console.log("userWinning ", batmanModel.getUserWinning());
-
             console.log("You win everything!!");
+            $("#yourScore1").css({
+                display:'block'
+            })
+            $("#yourScore3").css({
+                display:'block'
+            })
             $("#resultPicture").attr({
                 //"src": "http://1.bp.blogspot.com/_x71ibPMLr4Y/TJvpHl796zI/AAAAAAAAAy0/-jJshPk9HOo/s1600/LIL+HAPPY+BATMAN.jpg"
-                "src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
+                //"src": "https://media.giphy.com/media/11mkwYN8k9v5T2/giphy.gif"
+                "src": "https://media.giphy.com/media/bdcTSZn3ECM4o/giphy.gif"
             });
             document.getElementById("resultText").innerHTML = "YOU WIN";
 
@@ -91,20 +105,26 @@ $scope.Gif=function(){
             highscore_status.value="View highscore";
             continue_status.value="Next Villain";
             // document.getElementById("resultText2").innerHTML = "Hit continue to fight more villains!";
-
             $("#resultMenu").fadeIn();({
             });
             $("#continue1").css({
                 display:'block'
-            })
+            });
+            
         }
 
         else if ($scope.computerWinning() == 2) {
             batmanModel.clearGameCookies();
-            batmanModel.clearBeatenEnemy();
+            $("#yourScore2").css({
+                display:'block'
+            })
+            $("#yourScore4").css({
+                display:'block'
+            })
             console.log("You lose everything!!");
             $("#resultPicture").attr({
-                "src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
+                "src":"https://media.giphy.com/media/VM5TVKbYSExcQ/giphy.gif"
+                //"src": "http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg"
                 // "src": "http://images-cdn.moviepilot.com/image/upload/c_limit,h_379,w_500/t_mp_quality/batman-v-superman-who-would-win-in-this-situation-superman-breaks-the-bat-jpeg-74958.jpg"
             });
             document.getElementById("resultText").innerHTML = "GAME OVER";
@@ -122,6 +142,7 @@ $scope.Gif=function(){
                 display:'block'
             })
 
+
         }
 
     }
@@ -133,30 +154,14 @@ $scope.Gif=function(){
         return batmanModel.getUserScore();
     };    
 
-// //Vänstra knappen
-//     continueBtn = function(){
-//         var continue_status = document.getElementById("continue2");
-//         if (continue_status.value == "Start Over"){                  //Förlust
-            
-//             //$location.path('/home');
-//             console.log("start over btn")
-            
-//         }
-//         else if (continue_status.value == "Next Villain"){            //Vinst
-//             //$location.path('/search');
-            
-//             console.log("ny villain btn")
-//         }
-//     };
-
 //Högra knappen
     highscoreBtn = function(){
         var highscore_status = document.getElementById("highscore");
         if (highscore_status.value == "Submit highscore"){          //Förlust
             // $("#resultMenu").fadeOut();
             $("#viewHighscore").fadeIn();
-            $(".continuebtn").hide();
-            $("#startoverbtn").hide();
+            $("#continuebtn").hide();
+            $("#startoverbtn").show();
             $("#submitDiv").show();
 
         }
@@ -164,8 +169,9 @@ $scope.Gif=function(){
             $("#viewHighscore").fadeIn();
             $("#submitDiv").hide();
             $("#startoverbtn").hide();
-            $(".continuebtn").show();
+            $("#continuebtn").show();
         }
+
     }
 
     exitHighscore = function(){
@@ -180,19 +186,19 @@ $scope.Gif=function(){
 
         if (choise == "rock") {
             $("#rock").animate({
-                left: '0px'
+                left: '125px'
             });
         }
 
         else if (choise == "paper") {
             $("#paper").animate({
-                left: '0px'
+                left: '90px'
             });
         }
 
         else if (choise == "scissors") {
             $("#scissors").animate({
-                left: '0px'
+                left: '16px'
             });
         }
 
@@ -201,6 +207,9 @@ $scope.Gif=function(){
                 transform: 'rotateY(0deg)'
             });
         }, 1000);
+    }
+    youLost=function(){
+        batmanModel.clearBeatenEnemy();
     }
 
     setRound=function(){
@@ -220,6 +229,11 @@ $scope.Gif=function(){
         })
     }
 }
+$scope.showMessage = true;
+$scope.message=function(){
+    return batmanModel.returnMessage();
+}
+
 
 
     

@@ -1,4 +1,3 @@
-
 		<script>
 
 		function action(){
@@ -8,11 +7,11 @@
 
 		function rock(){
 			$("#rock").animate({
-				left: '315px'
+				left: '285px'
 			});
 
 			$(".flipper").animate({
-				left: '-230px'
+				left: '-145px'
 			});
 
 			setTimeout(function(){
@@ -28,7 +27,7 @@
 			});
 
 			$(".flipper").animate({
-				left: '-230px'
+				left: '-145px'
 			});
 
 			setTimeout(function(){
@@ -40,11 +39,11 @@
 
 		function scissors(){
 			$("#scissors").animate({
-				left: '145px'
+				left: '176px'
 			});
 
 			$(".flipper").animate({
-				left: '-230px'
+				left: '-145px'
 			});
 
 			setTimeout(function(){
@@ -60,10 +59,10 @@
 		<script src="js/highscore.js"></script>
 
 
-	<div class="header">
+	<div class="header" style="margin-bottom:5px;">
 		<p>BATMAN</p>
 		<p style="font-size: 15px;">Justice!</p>
-		<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back</span></a>
+		<a id="backbutton" style="float:left;" ng-href="#/search"><span>Back to search</span></a>
 	</div>
 
 <!-- 	<input type="button" value="Show sidebar" id="sidebutton" class="nametag" style="position: relative; float: right; margin-top: -60px; margin-right:20px; border: none;"></input>
@@ -80,31 +79,31 @@
 	</div>
 
 	<center>
-
-		<div id="resultMenu">
+		<div id="resultMenu" style="margin-top: -15px;">
 			<img id="resultPicture" style="width: 760px; position: relative; left: 0px;"/>
+			<div id="yourScore1" class="yourScore" style="display: none;"><span>Your score: {{getUserScore()+1}}</span></div>
+			<div id="yourScore2" class="yourScore" style="display: none;"><span>Your score: {{getUserScore()}}</span></div>
 			<!-- http://cdn1-www.craveonline.com/assets/uploads/2012/01/file_181433_0_batman5cover658.jpg -->
+			
 			<p id="resultText"></p>
 			<br/>
 			<p id="resultText2" style="font-size: 20px; top: 60%"></p>
 			<a ng-href="#/search">
-				<input type="button" id="continue1" class="fightbtn" value="" onclick="continueBtn()" style="position: absolute; padding: 0px; font-size: 15px; left: 150px; top:75%; display:none;"></input>
+				<input type="button" id="continue1" class="fightbtn continuebtn" value="" style="position: absolute; padding: 0px; font-size: 15px; left: 150px; top:75%; display:none;"></input>
 			</a>
 			<a ng-href="#/home">
-				<input type="button" id="continue2" class="fightbtn" value="" onclick="continueBtn()" style="position: absolute; padding: 0px; font-size: 15px;left: 150px; top:75%; display:none;"></input>
+				<input type="button" id="continue2" class="fightbtn continuebtn" value="" onclick="youLost()" style="position: absolute; padding: 0px; font-size: 15px;left: 150px; top:75%; display:none;"></input>
 			</a>
 				<input type="button" id="highscore" class="fightbtn" value="" onclick="highscoreBtn()" style="position: absolute; padding: 0px; font-size: 15px; right: 150px; top:75%;"></input>
 			
 
 		</div>
 
-		<div id="viewHighscore" ng-controller="HighscoreCtrl">
-
-			<div id="exitButton" class="smallcircle" style="background-color: darkred; top: 10px; right: 10px; box-shadow: 0 0 0 0;" onclick="exitHighscore()">
-				<img src="http://simpleicon.com/wp-content/uploads/cross.png" style="max-width:90%; max-height:90%; margin-top: 3px;"/>
-			</div>
-
-			<div id="highscoreDiv">
+		<div id="viewHighscore" ng-controller="HighscoreCtrl" style="margin-top: -15px;">
+			<div id="yourScore3" class="yourScore" style="display: none; border-bottom: 1px solid;font-size: 14px"><span>Your score: {{userScore()+1}}</span></div>
+			<div id="yourScore4" class="yourScore" style="display: none; border-bottom: 1px solid;font-size: 14px"><span>Your score: {{userScore()}}</span></div>
+			<!-- <div id="yourScoreInHighscore" class="yourScore" style="margin-top: -5px; border-bottom: 1px solid;font-size: 14px"><span>Your score: {{userScore()}}</span></div> -->
+			<div id="highscoreDiv" style="margin-top: 50px;">
 				<table>
 					<tr>
 						<th>NAME</th>
@@ -116,14 +115,12 @@
 					</tr>
 				</table>
 			</div>
-
-			<div id="submitDiv">
-				<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name">
-				<button ng-click="submitScore(scoreName)">Submit</button>
+			<div id="submitDiv" style="margin-bottom:5px;">
+				<input ng-model="scoreName" type="text" id="scoreInput" placeholder="Name" style="border-radius:2px;">
+				<button ng-click="submitScore(scoreName)" style="background-color: #fade28; border-radius:2px; border-style: none; font-family:pantonblack; font-size:13px;">Submit</button>
 			</div>
-
 			<a ng-href="#/home" type="button">
-				<button id="startoverbtn" class="fightbtn">Start Over</button>
+				<button id="startoverbtn" class="fightbtn" onclick="youLost()">Start Over</button>
 			</a>
 
 			<a ng-href="#/search" type="button">
@@ -132,52 +129,44 @@
 
 		</div>
 
-
 		<div style="margin-top: 5%; width: 60%;">
 			<div class="fightcircle fighter_box">
-				<div class="vsnametag" style="top:-45px; left: 12.5px;">BATMAN</div>
-				<img src="http://www.infinitymugenteam.com/images/AceySprites/Batman.gif" style="max-width:100%; max-height:100%; margin-left: -30px;" />
-				<div id="rock" class="smallcircle" style="position: relative; top: -145px; left: 125px;" ng-click="setChoise('rock')" onclick="rock()">
+				<div class="vsnametagBatman" style="top:-45px; left: 12.5px;">BATMAN</div>
+				<img src="http://www.infinitymugenteam.com/images/AceySprites/Batman.gif" style="max-width:100%; max-height:100%;" />
+				<div id="rock" class="smallcircle" style="position: relative; top: -165px; left: 125px;" ng-click="setChoise('rock')" onclick="rock()">
 					<img src="https://www.randomlists.com/img/rock-paper-scissors/rock.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 6px;"/>
 				</div>
-				<div id="paper" class="smallcircle" style="position: relative; top: -90px; left: 90px;" ng-click="setChoise('paper')" onclick="paper()">
+				<div id="paper" class="smallcircle" style="position: relative; top: -110px; left: 90px;" ng-click="setChoise('paper')" onclick="paper()">
 					<img src="http://www.veryicon.com/icon/ico/System/Icons8%20Metro%20Style/Rock%20Paper%20Scissors%20Paper.ico" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 6px;"/>
 				</div>
-				<div id="scissors" class="smallcircle" style="position: relative; top: -36px; left: 16px;" ng-click="setChoise('scissors')" onclick="scissors()">
+				<div id="scissors" class="smallcircle" style="position: relative; top: -56px; left: 16px;" ng-click="setChoise('scissors')" onclick="scissors()">
 					<img src="http://megaicons.net/static/img/icons_sizes/8/178/256/rock-paper-scissors-scissors-icon.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 6px;"/>
 				</div>
 			</div>
-
-			<!-- <img src="http://www.gamersunity.de/img/sys/2010-17/mvsc3-VS.Logo.jpg"> -->
 			<img src="http://www.flexraid.com/wp-content/uploads/2013/10/Vs.pn_.png" style="width: 200px;">
 
-			<div class="fightcircle fighter_box" style="float: right;">
-				<div class="vsnametag" style="top:-45px; left: 12.5px;">{{getCharacter()[0].name}}</div>
-				
-
-
-				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin-left: 110px;" />
-				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="max-width:100%; max-height:100%; margin-left: 110px;" />
-
-
-
-				<div class="smallcircle" style="position: relative; top: -175px; left: -45px;">
-					<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
+			<div class="fightcircle fighter_box" style="float: right; display: block;">
+				<div style="text-align:center width:auto; top:-120px; left: 12.5px;">
+					<div class="vsnametagVillain" style="margin-left:-12px; margin-top:-42px; margin-right:auto; margin-bottom:38px; z-index:1;">{{getCharacter()[0].name}}</div>
 				</div>
-				<div class="smallcircle" style="position: relative; top: -60px; left: -85px;">
-					<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
-				</div>
-				<div class="flip-container" style="position: relative; top: -125px;">
+
+
+				<img src="{{getGif()}}" ng-show="gif" class="flipimg" style="max-width:100%; max-height:100%; margin: -10px 0px 0px 50px" />
+				<img src="{{getGif()}}" ng-show="!gif" class="circle" style="border:none; box-shadow:none; max-width:100%; max-height:100%; margin: -34px 0px 0px 0px"/>
+
+				<div class="flip-container" style="position: relative; top: -115px; left: -90px;">
 					<div class="flipper">
-						<div id="villain_choise_front" class="front smallcircle" style="position: relative; z-index: 1;">
-							<img src="http://www.csc.kth.se/~blundk/DM2518/question.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
+						<div id="villain_choise_front" class="front smallcircle" style="position: relative; left: 27px">
+							<img src="http://www.csc.kth.se/~blundk/DM2518/sign.png" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 14px;"/>
 						</div>
 
-						<div id="villain_choise_back" class="back smallcircle" style="position: relative; backface-visibility: z-index: 2;">
+						<div id="villain_choise_back" class="back smallcircle" style="position: relative; left: -27px; backface-visibility: hidden;">
 							<img id="villain_choise_img" style="max-width:70%; max-height:70%; margin-top: 8px; margin-left: 6px;"/>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="showMessage" ng-show="showMessage">{{message()}}
 		</div>
 	</center>

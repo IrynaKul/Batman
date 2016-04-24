@@ -158,6 +158,8 @@ div #name {
 
 
 
+
+
 /* */
 
 body{
@@ -199,9 +201,7 @@ p{
 #container{
 	height: 88vh;
 	text-align: center;
-	overflow-y:scroll;
-
-	width: 100%;
+	width: 99%;
 	display: inline-block;
 
 	background-color: #232328;
@@ -244,9 +244,11 @@ p{
 	box-shadow: 5px 5px 5px black;
 }
 
+
 .circle:hover {
 	border: 5px solid #fade28;
 }
+
 
 .nametag{
 	z-index: 1;
@@ -296,10 +298,12 @@ p{
 	background-color: #535363;
 	float:right;
 	width: 380px;
-	height: 70vh;
+	height: 500px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 25px 0 rgba(0, 0, 0, 0.3);
 	position: relative;
 	border-radius: 3px;
 }
+
 
 
 /* CHATT */
@@ -350,7 +354,7 @@ p{
 /* HIGHSCORE */
 
 #highscoreDiv {
-	margin:20px;
+	margin-top:20px;
 }
 
 #highscoreDiv th {
@@ -373,7 +377,7 @@ p{
 }
 
 #highscoreDiv table {
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
 
@@ -439,10 +443,11 @@ p{
 	position: relative;
 	display: block;
 	/*height: 45%;*/
-	/*margin: 30px auto 20px auto;*/
+	margin: 0px auto 20px auto;
+
 }
 
-.vsnametag{
+.vsnametagBatman{
 	position: relative;
 	display:block;
 	font-family: pantonblack;
@@ -453,6 +458,24 @@ p{
 	padding: 5px;
 	border-radius: 10px;
 	width: 150px;
+
+	/*margin:-20px auto 0 auto;*/
+
+	box-shadow: 5px 5px 5px black;
+}
+.vsnametagVillain{
+	position: relative;
+	display:inline-block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	background-color: #fade28;
+	padding: 5px;
+	border-radius: 10px;
+	white-space: nowrap;
+	clear: both;
+	overflow: hidden;
 
 	/*margin:-20px auto 0 auto;*/
 
@@ -492,7 +515,36 @@ p{
 	left: 15%;
 	right: 15%;
 }
+.yourScore span{
+	font-family: pantonblack;
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	top: 5%;
+	left: 15%;
+	right: 15%;
+}
 
+#showMessage {
+	display:block;
+	font-family: pantonblack;
+	font-size: 20px;
+	color: white;
+	letter-spacing: 2px;
+	padding: 5px;
+	border-radius: 30px;
+	width: 300px;
+
+	/*margin:-20px auto 0 auto;*/
+
+	-moz-border-radius: 93px;
+	-webkit-border-radius: 93px;
+	border-radius: 200px;
+
+	border: 30px solid #2f2d49;
+	box-shadow: 5px 5px 5px black;
+
+}
 
 
 /*spin choise*/
