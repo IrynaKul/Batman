@@ -25,7 +25,7 @@ $scope.userScore = function(){
       //       $('#yourScoreInHighscore').innerHTML= $('#yourScore2').innerHTML;
       //   }
   $scope.submitScore = function(username) {
-      console.log($score.userScore())
+      //console.log($scope.userScore())
          $scope.scorelist.$add({ name: username, score: $scope.userScore() });
           $("#submitDiv").hide();
           $("#startoverbtn").show();
